@@ -1,3 +1,5 @@
 {
-  "WriterAgent": "agents.writeragent"
+  "WriterAgent": "agents.writer_agent",
+  "PosterAgent": "agents.poster_agent"
+  
 }

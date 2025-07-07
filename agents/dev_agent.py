@@ -3,6 +3,7 @@
 import os
 import subprocess
 import json
+from dotenv import load_dotenv
 from agents.agent_shell import AgentShell
 from memory.memory import Memory
 
@@ -14,34 +15,36 @@ class DevAgent(AgentShell):
     def think(self):
         self.task_context = "Use Gemini CLI to build agents from user goal"
         self.mission = self.memory.load("mission_plan")
-        self.goal = self.mission.get("goal", "Manual Mission Execution")
+        self.goal = self.mission.get("goal", "").strip()
         self.log(f"Goal: {self.goal}")
 
-def act(self):
-    agent_name = self.extract_agent_name(self.goal)
-    context_path = "AGENTOS_CONTEXT.md"
+    def act(self):
+        load_dotenv()
+        gemini_cli = os.getenv("GEMINI_CLI")
+        if not gemini_cli:
+            self.log("❌ GEMINI_CLI path not found in .env.")
+            return
 
-    # Load global AgentOS context
-    try:
-        with open(context_path, "r", encoding="utf-8") as f:
+        # Abort if user skipped or gave no meaningful goal
+        if not self.goal or self.goal.lower() in ["", "manual mission execution", "skip", "none"]:
+            self.log("⚠️ No valid goal found. Skipping DevAgent.")
+            return
+
+        self.log(f"🔧 Gemini_CLI: {gemini_cli}")
+
+        agent_name = self.extract_agent_name(self.goal)
+
+        # Load project context
+        context_file = "agentos_context.md"
+        if not os.path.exists(context_file):
+            self.log(f"❌ {context_file} not found.")
+            return
+
+        with open(context_file, "r", encoding="utf-8") as f:
             context = f.read()
-    except FileNotFoundError:
-        self.log(f"❌ Context file not found: {context_path}")
-        return
 
-    # Load existing agent code if present
-    existing_code = ""
-    agent_path = f"agents/{agent_name.lower()}.py"
-    if os.path.exists(agent_path):
-        with open(agent_path, "r", encoding="utf-8") as f:
-            existing_code = f.read()
-
-    # Combine prompt
-    prompt = f"""{context}
-
----
-
----
+        # Build prompt
+        prompt = f"""{context.strip()}
 
 ---
 
@@ -52,55 +55,47 @@ Now generate the full Python code for `{agent_name}`.
 Only return code. Do not explain or print anything.
 """
 
-        # Get CLI path from environment
-    GEMINI_CLI = os.getenv("GEMINI_CLI")
-    self.log(f"🔧 Gemini_CLI: {GEMINI_CLI}")
-    if not GEMINI_CLI:
-            self.log("❌ No GEMINI_CLI path found in .env.")
-            return
-
-    try:
+        try:
             result = subprocess.run(
-    ["powershell", "-ExecutionPolicy", "Bypass", "-File", GEMINI_CLI, "--yolo", "--all_files"],
-    input=prompt,
-    capture_output=True,
-    text=True
-)
-            output = result.stdout.decode("utf-8", errors="ignore")
+                ["powershell", "-ExecutionPolicy", "Bypass", "-File", gemini_cli, "--yolo"],
+                input=prompt,
+                capture_output=True,
+                text=True,
+                encoding="utf-8",
+                errors="ignore"
+            )
             output = result.stdout.strip()
-    except Exception as e:
+        except Exception as e:
             self.log(f"❌ Gemini CLI failed: {e}")
             return
 
-    if not output or "Traceback" in output:
+        if not output or "Traceback" in output:
             self.log("❌ Gemini output looks invalid or empty.")
             return
 
-        # Validate constructor
-    if "__init__" not in output or "name=" not in output:
+        if "__init__" not in output or "name=" not in output:
             self.log("❌ Agent is missing a valid __init__(self, name=...) constructor.")
             return
 
-        # Block dangerous code
-    forbidden_keywords = ["requests", "openai", "urllib", "subprocess", "http", "google_web_search"]
-    if any(kw in output for kw in forbidden_keywords):
+        forbidden_keywords = ["requests", "openai", "urllib", "subprocess", "http", "google_web_search"]
+        if any(kw in output for kw in forbidden_keywords):
             self.log("❌ Agent is trying to use forbidden libraries. Runtime Layer must be used instead.")
             return
 
-        # Save the agent code
-    filename = f"agents/{agent_name.lower()}.py"
-    try:
+        # Save agent file
+        filename = f"agents/{agent_name.lower()}.py"
+        try:
             with open(filename, "w", encoding="utf-8") as f:
                 f.write(output)
-            self.log(f"📂 Detected agent file created: {filename}")
-    except Exception as e:
+            self.log(f"📂 Agent file saved: {filename}")
+        except Exception as e:
             self.log(f"❌ Failed to save agent file: {e}")
             return
 
-        # Update agents_map.json
-    self.update_agent_map(agent_name)
-    self.log(f"🧠 {agent_name} added to agents_map.json")
-    self.log(f"✅ Agent created: {agent_name}")
+        # Update map
+        self.update_agent_map(agent_name)
+        self.log(f"🧠 {agent_name} added to agents_map.json")
+        self.log(f"✅ Agent created: {agent_name}")
 
     def extract_agent_name(self, goal):
         goal = goal.lower()
@@ -114,7 +109,9 @@ Only return code. Do not explain or print anything.
             return "DirectorAgent"
         elif "patcher" in goal:
             return "SelfPatcherAgent"
-        return "NewAgent"
+        elif "developer" in goal:
+            return "DevAgent"
+        return "AgentX"  # No fallback to NewAgent — return safe neutral name
 
     def update_agent_map(self, agent_name):
         path = "agents_map.json"

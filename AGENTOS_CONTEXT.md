@@ -34,6 +34,8 @@ AgentOS/
 │   ├── agentos_core.py        # Runtime layer (type, open app, browser, etc.)
 │   ├── supervisor.py          # Blocks dangerous or unnecessary actions
 │   └── self_patcher.py        # Detects and patches broken agents
+├── tools/
+│   └── runtime_controller.py  # Gemini-powered execution of system actions (mouse, keyboard, browser)
 ├── memory/
 │   └── memory.py              # JSON-based local memory per agent
 ├── missions/
@@ -166,3 +168,131 @@ Never import third-party APIs like requests, openai, or http.
 Always integrate with the AgentOS Runtime Layer by calling AgentOSCore.request_action(...).
 
 Only write valid agent code. No explanations or markdown.
+
+---
+
+## 📎 AgentShell Runtime API Reference
+
+This section describes the available methods provided by the `AgentShell` class. All agents must inherit from this class to gain access to core system-level controls (apps, typing, mouse, logging, memory, etc).
+
+### 🧠 Constructor
+
+```python
+def __init__(self, name="AgentName"):
+    super().__init__(name=name)
+
+🔧 Runtime Methods
+
+| Method                   | Description                                |
+| ------------------------ | ------------------------------------------ |
+| `self.log(msg)`          | Log a message (to file + console)          |
+| `self.memory.save()`     | Save internal key/value memory             |
+| `self.memory.load()`     | Load memory saved earlier                  |
+| `self.open_app(path)`    | Open a desktop app (e.g., Chrome, Notepad) |
+| `self.type_text(txt)`    | Type out text (like a human would)         |
+| `self.press_key(k)`      | Press a key (`enter`, `tab`, etc.)         |
+| `self.move_mouse(x,y)`   | Move mouse to coordinates                  |
+| `self.click_mouse()`     | Simulate a left-click                      |
+| `self.take_screenshot()` | Capture screen and save it to logs         |
+
+⚠️ Notes for Gemini
+Use these methods instead of raw pyautogui or subprocess calls.
+
+Never access OS directly. Use .open_app() to launch apps.
+
+Typing must go through .type_text(), not print().
+
+Always use .log(...) for visibility and debugging.
+
+The Supervisor approves or blocks risky actions.
+
+These functions are how agents physically control the machine.
+
+🧠 Runtime Controller (Execution Layer)
+This module is located in tools/runtime_controller.py and acts as the execution layer of AgentOS — controlling the actual keyboard, mouse, apps, browser, and screen like a human would.
+
+It works under the hood of AgentOSCore, and agents never call it directly. Instead, it is triggered after Supervisor approval via:
+
+AgentOSCore.request_action(...)
+
+🔧 Features and Responsibilities
+The RuntimeController provides intelligent control over the system, such as:
+
+| Action            | Method                       | Description                        |
+| ----------------- | ---------------------------- | ---------------------------------- |
+| Open App          | `open_app(app_name, reason)` | Launches a local application       |
+| Browse            | `browse(url, reason)`        | Opens a browser with the given URL |
+| Type Text         | `type_text(text, reason)`    | Types text like a human            |
+| Click Coordinates | `click(x, y, reason)`        | Moves and clicks the mouse         |
+| Take Screenshot   | `screenshot(path, reason)`   | Captures the current screen        |
+
+🧠 Gemini CLI Integration
+Each action can be accompanied by a reason. The reason is passed to Gemini CLI, which gives intelligent feedback or suggestions before execution: RuntimeController.type_text("Hello world", reason="Filling out the login form")
+
+Example Gemini prompt during typing:
+
+You are typing the following content: "Hello world" for reason: "Filling out the login form". Where should you type it?
+
+This adds situational awareness and reflection before acting.
+
+✅ Usage Rules
+❌ Never call RuntimeController methods directly from an agent.
+
+✅ Agents must use AgentOSCore.request_action(...)
+
+✅ AgentOSCore will call RuntimeController only if approved by the SupervisorAgent
+
+🧩 Architecture Role
+Agent → AgentShell → AgentOSCore → Supervisor → RuntimeController
+
+This structure ensures every action is:
+
+Requested by an agent
+
+Evaluated for safety
+
+Executed intelligently
+
+Logged for review or patching
+
+🛠️ Runtime Layer: AgentOSCore + RuntimeController
+
+All actions from agents (typing, clicking, opening apps) must go through AgentOSCore.request_action(...)
+
+AgentOSCore then dispatches to RuntimeController which executes the real OS-level actions via pyautogui, subprocess, browser, etc.
+
+❌ No agent should call those libraries directly.
+
+
+🧠 Runtime Layer — Real-Time Info Gathering Guidelines
+If the agent’s goal includes fetching dynamic content (e.g., trending topics, news, weather, etc.):
+
+✅ Use RuntimeController to simulate human interaction, such as:
+
+RuntimeController.open_app("chrome") → open browser
+
+RuntimeController.type_text("trending Twitter topics site:x.com") → simulate search
+
+RuntimeController.click(x, y) → interact if needed
+
+RuntimeController.screenshot(...) → capture info
+
+RuntimeController.ask_gemini(...) → interpret screen content (if needed)
+
+🚫 Never use:
+
+requests, http, openai, google_web_search, or any API
+
+Direct string scraping or parsing
+
+✅ Use reasoning to determine:
+
+What to type into Chrome
+
+When to stop
+
+What to summarize and type as output (e.g., tweet, message, note)
+
+🧠 Example logic:
+
+Open Chrome → search for "Trending topics Twitter India" → screenshot → ask Gemini: “What’s trending?” → create tweet → type.

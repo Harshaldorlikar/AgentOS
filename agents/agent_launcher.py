@@ -1,10 +1,7 @@
 # agents/agent_launcher.py
 
-import os
 import json
 import importlib
-from agents.agent_shell import AgentShell
-from agents.director_agent import DirectorAgent
 from memory.memory import Memory
 
 class AgentLauncher:
@@ -13,35 +10,25 @@ class AgentLauncher:
         self.memory = Memory()
         self.agents_map = self.load_agents_map()
 
-    def launch_director(self):
-        print("\nLaunching Director Agent...\n")
-        director = DirectorAgent()
-        director.run()
-
     def load_agents_map(self):
-        """Load and import agent classes dynamically from agents_map.json"""
-        agents_map = {}
-
+        path = "agents_map.json"
         try:
-            with open("agents_map.json", "r", encoding="utf-8") as f:
-                raw_map = json.load(f)
+            with open(path, "r", encoding="utf-8") as f:
+                return json.load(f)
         except FileNotFoundError:
             print("❌ agents_map.json not found.")
             return {}
 
-        for name, path in raw_map.items():
-            try:
-                module = importlib.import_module(path)
-                agent_class = getattr(module, name)
-                agents_map[name] = agent_class
-            except Exception as e:
-                print(f"❌ Failed to import {name} from {path}: {e}")
-
-        return agents_map
-
     def import_agent_class(self, agent_name):
-        """Get agent class from loaded map"""
-        return self.agents_map.get(agent_name)
+        module_path = self.agents_map.get(agent_name)
+        if not module_path:
+            return None
+        try:
+            module = importlib.import_module(module_path)
+            return getattr(module, agent_name)
+        except Exception as e:
+            print(f"❌ Failed to import {agent_name} from {module_path}: {e}")
+            return None
 
     def load_mission(self):
         with open(self.mission_file, "r", encoding="utf-8") as f:
@@ -60,7 +47,7 @@ class AgentLauncher:
             task = step["task"]
 
             AgentClass = self.import_agent_class(agent_name)
-            if AgentClass is None:
+            if not AgentClass:
                 print(f"⚠️ No agent available for {agent_name}")
                 step["status"] = "unavailable"
                 updated_steps.append(step)

@@ -1,53 +1,54 @@
 # system/agentos_core.py
 
-import subprocess
-import pyautogui
-import time
 from agents.supervisor import SupervisorAgent
+from tools.runtime_controller import RuntimeController
 
 class AgentOSCore:
     def __init__(self):
         self.supervisor = SupervisorAgent()
 
-    def request_action(self, agent, action_type, target=None, reason=""):
+    def request_action(self, agent, action_type, target=None, reason="", data=None):
+        # Ask supervisor for approval
         decision = self.supervisor.approve_action(agent, action_type, target or "", reason)
         if not decision:
-            print(f"[AgentOSCore] Supervisor blocked {action_type}")
+            print(f"[AgentOSCore] ❌ Supervisor blocked {action_type}")
             return False
 
-        print(f"[AgentOSCore] Executing {action_type} for {agent}")
+        print(f"[AgentOSCore] ✅ Executing {action_type} for {agent} → {target}")
 
-        if action_type == "open_browser":
-            return self._open_browser(target)
-
-        if action_type == "type_text":
-            return self._type_text(target)
-
-        if action_type == "move_mouse":
-            return self._move_mouse(*target)
-
-        if action_type == "click_mouse":
-            return self._click_mouse()
-
-        print(f"[AgentOSCore] Unknown action: {action_type}")
-        return False
-
-    def _open_browser(self, url):
+        # Dispatch actions to RuntimeController
         try:
-            subprocess.Popen(["start", "chrome", url], shell=True)
-            return True
+            if action_type == "open_app":
+                RuntimeController.open_app(target, reason)
+
+            elif action_type == "browse" or action_type == "open_browser":
+                RuntimeController.browse(target, reason)
+
+            elif action_type == "type_text":
+                RuntimeController.type_text(target, reason)
+
+            elif action_type == "click":
+                if isinstance(target, str) and "," in target:
+                    x, y = map(int, target.split(","))
+                elif isinstance(target, (list, tuple)) and len(target) == 2:
+                    x, y = target
+                else:
+                    raise ValueError("Invalid target for click. Expected 'x,y' string or [x, y] list.")
+                RuntimeController.click(x, y, reason)
+
+            elif action_type == "screenshot":
+                RuntimeController.screenshot(target, reason)
+
+            elif action_type == "post_tweet":
+                # Simulated log for now
+                print(f"[AgentOSCore] ✍️ Tweet posted: {data}")
+
+            else:
+                print(f"[AgentOSCore] ❌ Unknown action_type: {action_type}")
+                return False
+
         except Exception as e:
-            print(f"[AgentOSCore] Failed to open browser: {e}")
+            print(f"[AgentOSCore] ❌ Failed to execute {action_type}: {e}")
             return False
 
-    def _type_text(self, text):
-        pyautogui.write(text, interval=0.04)
-        return True
-
-    def _move_mouse(self, x, y):
-        pyautogui.moveTo(x, y, duration=0.3)
-        return True
-
-    def _click_mouse(self):
-        pyautogui.click()
         return True
