@@ -1,0 +1,5 @@
+{"agent": "PosterAgent", "id": "0d57c7fb-2b2f-443e-9452-1ab675cb3966", "timestamp": "2025-07-04T12:25:04.554898", "status": "initialized", "message": " Agent initialized."}
+{"agent": "PosterAgent", "id": "0d57c7fb-2b2f-443e-9452-1ab675cb3966", "timestamp": "2025-07-04T12:25:04.555914", "status": "running", "message": " Agent started running."}
+{"agent": "PosterAgent", "id": "0d57c7fb-2b2f-443e-9452-1ab675cb3966", "timestamp": "2025-07-04T12:25:04.556926", "status": "running", "message": " Thinking... (override in child class)"}
+{"agent": "PosterAgent", "id": "0d57c7fb-2b2f-443e-9452-1ab675cb3966", "timestamp": "2025-07-04T12:25:04.558428", "status": "running", "message": " Acting... (override in child class)"}
+{"agent": "PosterAgent", "id": "0d57c7fb-2b2f-443e-9452-1ab675cb3966", "timestamp": "2025-07-04T12:25:04.559432", "status": "completed", "message": " Agent finished task."}

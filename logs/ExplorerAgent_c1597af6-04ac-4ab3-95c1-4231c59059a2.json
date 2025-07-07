@@ -1,0 +1,5 @@
+{"agent": "ExplorerAgent", "id": "c1597af6-04ac-4ab3-95c1-4231c59059a2", "timestamp": "2025-07-04T12:20:16.353229", "status": "initialized", "message": " Agent initialized."}
+{"agent": "ExplorerAgent", "id": "c1597af6-04ac-4ab3-95c1-4231c59059a2", "timestamp": "2025-07-04T12:20:16.354233", "status": "running", "message": " Agent started running."}
+{"agent": "ExplorerAgent", "id": "c1597af6-04ac-4ab3-95c1-4231c59059a2", "timestamp": "2025-07-04T12:20:16.354233", "status": "running", "message": " Thinking... (override in child class)"}
+{"agent": "ExplorerAgent", "id": "c1597af6-04ac-4ab3-95c1-4231c59059a2", "timestamp": "2025-07-04T12:20:16.355237", "status": "running", "message": " Acting... (override in child class)"}
+{"agent": "ExplorerAgent", "id": "c1597af6-04ac-4ab3-95c1-4231c59059a2", "timestamp": "2025-07-04T12:20:16.356574", "status": "completed", "message": " Agent finished task."}

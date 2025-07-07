@@ -1,0 +1,15 @@
+{
+  "goal": "I want you to fix this error in Writer Agent : Failed to import WriterAgent from agents.writeragent: cannot import name 'Agent' from 'agents.agent_shell' (c:\\Users\\harsh\\OneDrive\\Desktop\\AgentOS\\agents\\agent_shell.py)",
+  "steps": [
+    {
+      "agent": "WriterAgent",
+      "task": "Write a motivational tweet using trending topics",
+      "status": "unavailable"
+    },
+    {
+      "agent": "PosterAgent",
+      "task": "Post content to X (Twitter)",
+      "status": "unavailable"
+    }
+  ]
+}

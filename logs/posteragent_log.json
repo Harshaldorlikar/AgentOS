@@ -1,0 +1,77 @@
+{"timestamp": "2025-07-04T16:46:03.231288", "agent": "PosterAgent", "message": "Agent started running."}
+{"timestamp": "2025-07-04T16:46:03.232408", "agent": "PosterAgent", "message": "Thinking... preparing to post something"}
+{"timestamp": "2025-07-04T16:46:03.232408", "agent": "PosterAgent", "message": "Attempting to open Chrome to post."}
+{"timestamp": "2025-07-04T16:46:15.032937", "agent": "PosterAgent", "message": "Supervisor blocked opening: chrome.exe"}
+{"timestamp": "2025-07-04T16:46:15.034230", "agent": "PosterAgent", "message": "Simulated post complete."}
+{"timestamp": "2025-07-04T16:46:15.035244", "agent": "PosterAgent", "message": "Agent finished execution."}
+{"timestamp": "2025-07-04T16:52:59.735018", "agent": "PosterAgent", "message": "Agent started running."}
+{"timestamp": "2025-07-04T16:52:59.736527", "agent": "PosterAgent", "message": "Thinking... preparing to post something"}
+{"timestamp": "2025-07-04T16:52:59.736527", "agent": "PosterAgent", "message": "Attempting to open Chrome to post."}
+{"timestamp": "2025-07-04T16:53:01.252697", "agent": "PosterAgent", "message": "Supervisor blocked opening: chrome.exe"}
+{"timestamp": "2025-07-04T16:53:01.253708", "agent": "PosterAgent", "message": "Simulated post complete."}
+{"timestamp": "2025-07-04T16:53:01.253708", "agent": "PosterAgent", "message": "Agent finished execution."}
+{"timestamp": "2025-07-04T20:38:39.925770", "agent": "PosterAgent", "message": "Agent started running."}
+{"timestamp": "2025-07-04T20:38:39.926773", "agent": "PosterAgent", "message": "Thinking... preparing to post something"}
+{"timestamp": "2025-07-04T20:38:39.926773", "agent": "PosterAgent", "message": "Attempting to open Chrome to post."}
+{"timestamp": "2025-07-04T20:38:40.364463", "agent": "PosterAgent", "message": "Supervisor blocked opening: chrome.exe"}
+{"timestamp": "2025-07-04T20:38:40.365479", "agent": "PosterAgent", "message": "Simulated post complete."}
+{"timestamp": "2025-07-04T20:38:40.365479", "agent": "PosterAgent", "message": "Agent finished execution."}
+{"timestamp": "2025-07-04T23:30:35.424273", "agent": "PosterAgent", "message": "Agent started running."}
+{"timestamp": "2025-07-04T23:30:35.425283", "agent": "PosterAgent", "message": "Thinking... preparing to post something"}
+{"timestamp": "2025-07-04T23:30:35.425283", "agent": "PosterAgent", "message": "Attempting to open Chrome to post."}
+{"timestamp": "2025-07-04T23:30:35.903829", "agent": "PosterAgent", "message": "Supervisor blocked opening: chrome.exe"}
+{"timestamp": "2025-07-04T23:30:35.904881", "agent": "PosterAgent", "message": "Simulated post complete."}
+{"timestamp": "2025-07-04T23:30:35.904881", "agent": "PosterAgent", "message": "Agent finished execution."}
+{"timestamp": "2025-07-04T23:35:14.883724", "agent": "PosterAgent", "message": "Agent started running."}
+{"timestamp": "2025-07-04T23:35:14.883724", "agent": "PosterAgent", "message": "Thinking... preparing to post something"}
+{"timestamp": "2025-07-04T23:35:14.884936", "agent": "PosterAgent", "message": "Attempting to open Chrome to post."}
+{"timestamp": "2025-07-04T23:35:15.347261", "agent": "PosterAgent", "message": "Supervisor blocked opening: chrome.exe"}
+{"timestamp": "2025-07-04T23:35:15.348265", "agent": "PosterAgent", "message": "Simulated post complete."}
+{"timestamp": "2025-07-04T23:35:15.348265", "agent": "PosterAgent", "message": "Agent finished execution."}
+{"timestamp": "2025-07-05T00:21:55.630526", "agent": "PosterAgent", "message": "Agent started running."}
+{"timestamp": "2025-07-05T00:21:55.630526", "agent": "PosterAgent", "message": "Thinking... preparing to post something"}
+{"timestamp": "2025-07-05T00:21:55.631532", "agent": "PosterAgent", "message": "Attempting to open Chrome to post."}
+{"timestamp": "2025-07-05T00:21:57.410160", "agent": "PosterAgent", "message": "Supervisor blocked opening: chrome.exe"}
+{"timestamp": "2025-07-05T00:21:57.411598", "agent": "PosterAgent", "message": "Simulated post complete."}
+{"timestamp": "2025-07-05T00:21:57.411598", "agent": "PosterAgent", "message": "Agent finished execution."}
+{"timestamp": "2025-07-05T00:26:15.166035", "agent": "PosterAgent", "message": "Agent started running."}
+{"timestamp": "2025-07-05T00:26:15.167053", "agent": "PosterAgent", "message": "Thinking... preparing to post something"}
+{"timestamp": "2025-07-05T00:26:15.168058", "agent": "PosterAgent", "message": "Attempting to open Chrome to post."}
+{"timestamp": "2025-07-05T00:26:16.125253", "agent": "PosterAgent", "message": "Failed to open app: [WinError 2] The system cannot find the file specified"}
+{"timestamp": "2025-07-05T00:26:16.126271", "agent": "PosterAgent", "message": "Simulated post complete."}
+{"timestamp": "2025-07-05T00:26:16.126271", "agent": "PosterAgent", "message": "Agent finished execution."}
+{"timestamp": "2025-07-05T13:24:35.394302", "agent": "PosterAgent", "message": "Agent started running."}
+{"timestamp": "2025-07-05T13:24:35.394302", "agent": "PosterAgent", "message": "Thinking... preparing to post something."}
+{"timestamp": "2025-07-05T13:24:35.405337", "agent": "PosterAgent", "message": "Loaded post: julian mcmahon is dominating the feed right now. Stay ahead. #trending"}
+{"timestamp": "2025-07-05T13:24:35.406361", "agent": "PosterAgent", "message": "Requesting browser open via AgentOSCore..."}
+{"timestamp": "2025-07-05T13:24:37.409458", "agent": "PosterAgent", "message": "Agent finished execution."}
+{"timestamp": "2025-07-05T16:13:10.107205", "agent": "PosterAgent", "message": "Agent started running."}
+{"timestamp": "2025-07-05T16:13:10.108210", "agent": "PosterAgent", "message": "Thinking... preparing to post something."}
+{"timestamp": "2025-07-05T16:13:10.118295", "agent": "PosterAgent", "message": "Loaded post: julian mcmahon is dominating the feed right now. Stay ahead. #trending"}
+{"timestamp": "2025-07-05T16:13:10.119301", "agent": "PosterAgent", "message": "Requesting browser open via AgentOSCore..."}
+{"timestamp": "2025-07-05T16:13:11.465504", "agent": "PosterAgent", "message": "Agent finished execution."}
+{"timestamp": "2025-07-05T17:36:22.504770", "agent": "PosterAgent", "message": "Agent started running."}
+{"timestamp": "2025-07-05T17:36:22.505782", "agent": "PosterAgent", "message": "Thinking... preparing to post something."}
+{"timestamp": "2025-07-05T17:36:22.516299", "agent": "PosterAgent", "message": "Loaded post: julian mcmahon is dominating the feed right now. Stay ahead. #trending"}
+{"timestamp": "2025-07-05T17:36:22.516299", "agent": "PosterAgent", "message": "Requesting browser open via AgentOSCore..."}
+{"timestamp": "2025-07-05T17:36:22.520489", "agent": "PosterAgent", "message": "Agent finished execution."}
+{"timestamp": "2025-07-05T18:01:48.249449", "agent": "PosterAgent", "message": "Agent started running."}
+{"timestamp": "2025-07-05T18:01:48.250468", "agent": "PosterAgent", "message": "Thinking... preparing to post something."}
+{"timestamp": "2025-07-05T18:01:48.253760", "agent": "PosterAgent", "message": "Loaded post: julian mcmahon is dominating the feed right now. Stay ahead. #trending"}
+{"timestamp": "2025-07-05T18:01:48.253760", "agent": "PosterAgent", "message": "Requesting browser open via AgentOSCore..."}
+{"timestamp": "2025-07-05T18:01:48.257830", "agent": "PosterAgent", "message": "Agent finished execution."}
+{"timestamp": "2025-07-05T19:01:24.935198", "agent": "PosterAgent", "message": "Agent started running."}
+{"timestamp": "2025-07-05T19:01:24.935198", "agent": "PosterAgent", "message": "Thinking... preparing to post something."}
+{"timestamp": "2025-07-05T19:01:24.936219", "agent": "PosterAgent", "message": "Loaded post: julian mcmahon is dominating the feed right now. Stay ahead. #trending"}
+{"timestamp": "2025-07-05T19:01:24.936219", "agent": "PosterAgent", "message": "Requesting browser open via AgentOSCore..."}
+{"timestamp": "2025-07-05T19:01:24.965293", "agent": "PosterAgent", "message": "Agent finished execution."}
+{"timestamp": "2025-07-05T19:10:07.965188", "agent": "PosterAgent", "message": "Agent started running."}
+{"timestamp": "2025-07-05T19:10:07.965188", "agent": "PosterAgent", "message": "Thinking... preparing to post something."}
+{"timestamp": "2025-07-05T19:10:07.966194", "agent": "PosterAgent", "message": "Loaded post: julian mcmahon is dominating the feed right now. Stay ahead. #trending"}
+{"timestamp": "2025-07-05T19:10:07.967376", "agent": "PosterAgent", "message": "Requesting browser open via AgentOSCore..."}
+{"timestamp": "2025-07-05T19:10:08.004106", "agent": "PosterAgent", "message": "Agent finished execution."}
+{"timestamp": "2025-07-05T19:30:39.915433", "agent": "PosterAgent", "message": "Agent started running."}
+{"timestamp": "2025-07-05T19:30:39.916443", "agent": "PosterAgent", "message": "Thinking... preparing to post something."}
+{"timestamp": "2025-07-05T19:30:39.917476", "agent": "PosterAgent", "message": "Loaded post: julian mcmahon is dominating the feed right now. Stay ahead. #trending"}
+{"timestamp": "2025-07-05T19:30:39.918521", "agent": "PosterAgent", "message": "Requesting browser open via AgentOSCore..."}
+{"timestamp": "2025-07-05T19:30:42.586367", "agent": "PosterAgent", "message": "Agent finished execution."}
