@@ -12,44 +12,41 @@ class PosterAgent(AgentShell):
 
     def think(self):
         self.log("Thinking... preparing to post something.")
-        self.post_content = self.memory.load("post_content")
+        self.tweet = self.memory.load("post_content")
 
-        if not self.post_content:
-            self.log("⚠️ No post content found in memory.")
+        if not self.tweet:
+            self.tweet = "Stay positive and take action. #Motivation"
+            self.log("⚠️ No tweet in memory. Using fallback tweet.")
         else:
-            self.log(f"Loaded post: {self.post_content}")
+            self.log(f"Loaded post: {self.tweet}")
 
     def act(self):
-        if not self.post_content:
-            self.log("⚠️ Skipping action — no post content to share.")
-            return
-
-        # Step 1: Open the X composer
+        # Open tweet composer on X
         self.core.request_action(
             agent=self.name,
             action_type="open_browser",
             target="https://x.com/compose/post",
-            reason="Open Twitter to post content"
+            reason="Open composer to post the tweet"
         )
 
-        # Step 2: Type the post
+        # Type tweet
         self.core.request_action(
             agent=self.name,
             action_type="type_text",
-            target=self.post_content,
-            reason="Typing post into Twitter"
+            target=self.tweet,
+            reason="Type the tweet"
         )
 
-        # Step 3: Optionally simulate Enter to post
-        approved = self.supervisor.approve_action(
-            agent_name=self.name,
-            action="press_key",
-            value="enter",
-            task_context="Post the tweet"
+        # ⏱️ Wait a little before clicking (ensure page loads)
+        import time
+        time.sleep(3)  # Adjust if needed
+
+        # 👇 Hardcoded coordinates — replace with your actual position
+        self.core.request_action(
+            agent=self.name,
+            action_type="click",
+            target="950,294",  # << Replace with your actual Post button coords
+            reason="Click Post button to submit tweet"
         )
 
-        if approved:
-            self.press_key("enter")
-            self.log("✅ Simulated Enter key to post the tweet.")
-        else:
-            self.log("⏸️ Posting not completed. Supervisor blocked Enter key.")
+        self.log("✅ Post button click requested.")

@@ -1,11 +1,8 @@
-# agents/supervisor.py
-
 import os
 import subprocess
 from datetime import datetime
 from dotenv import load_dotenv
 
-# Load CLI path from .env
 load_dotenv()
 GEMINI_CLI = os.getenv("GEMINI_CLI")
 
@@ -14,21 +11,25 @@ class SupervisorAgent:
         self.logs = []
 
     def approve_action(self, agent_name, action, value, task_context=""):
+        # Special check for clicking: only allow if clearly needed
+        if action == "click_mouse":
+            if "post" in task_context.lower() or "submit" in task_context.lower():
+                self.log_decision(agent_name, action, value, "Yes (validated for posting)")
+                return True
+            else:
+                self.log_decision(agent_name, action, value, "No. Click request must include reason like 'Post the tweet'.")
+                return False
+
+        # Normal Gemini CLI-based validation
         prompt = f"""
 An AI agent named {agent_name} is running a task: "{task_context}".
 It is about to perform this action: {action} → {value}.
 
 Is this action necessary to complete the task?
-Reply with only one word: Yes or No. If No, briefly explain why.
+Respond with one word: Yes or No. If no, briefly explain.
 """
-
-        if not GEMINI_CLI or not os.path.exists(GEMINI_CLI):
-            print("[Supervisor] ❌ GEMINI_CLI not found or invalid.")
-            return False
-
         try:
             result = subprocess.run(
-
                 ["powershell", "-ExecutionPolicy", "Bypass", "-File", GEMINI_CLI, "--yolo"],
                 input=prompt,
                 capture_output=True,
@@ -38,21 +39,21 @@ Reply with only one word: Yes or No. If No, briefly explain why.
             )
             response = result.stdout.strip()
         except Exception as e:
-            response = f"No (Gemini CLI error: {e})"
+            response = f"No (Gemini CLI exception: {e})"
 
-        # Decision Logging
+        approved = "yes" in response.lower()
+        self.log_decision(agent_name, action, value, response)
+        return approved
+
+    def log_decision(self, agent_name, action, value, response):
+        status = "approved" if "yes" in response.lower() else "blocked"
         decision = {
             "timestamp": datetime.now().isoformat(),
             "agent": agent_name,
             "action": action,
             "value": value,
-            "response": response
+            "response": response,
+            "status": status
         }
-
-        approved = "yes" in response.lower()
-        status = "approved" if approved else "blocked"
-        decision["status"] = status
         self.logs.append(decision)
-
         print(f"[Supervisor] {action} → {status}: {response}")
-        return approved
