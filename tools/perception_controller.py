@@ -1,5 +1,3 @@
-# tools/perception_controller.py
-
 import pygetwindow as gw
 import pyautogui
 import pytesseract
@@ -14,26 +12,33 @@ class PerceptionController:
             active_window = gw.getActiveWindow()
             return active_window.title if active_window else "Unknown"
         except Exception as e:
-            return f"Error getting active window: {e}"
+            return f"[Perception] ❌ Error getting active window: {e}"
 
     @staticmethod
-    def focus_and_screenshot_window(window_title_keywords):
+    def find_window_by_keywords(keywords):
         try:
-            # Match by partial keyword in title (case-insensitive)
-            all_windows = gw.getAllTitles()
-            matching_titles = [title for title in all_windows if window_title_keywords.lower() in title.lower()]
-            if not matching_titles:
-                print(f"[Perception] ❌ No window found with title containing: {window_title_keywords}")
+            windows = gw.getAllTitles()
+            for win_title in windows:
+                if all(kw.lower() in win_title.lower() for kw in keywords):
+                    return gw.getWindowsWithTitle(win_title)[0]
+        except Exception as e:
+            print(f"[Perception] ❌ Window search error: {e}")
+        return None
+
+    @staticmethod
+    def focus_and_capture_window(window_keywords):
+        try:
+            target_window = PerceptionController.find_window_by_keywords(window_keywords)
+            if not target_window:
+                print(f"[Perception] ❌ No window found with keywords: {window_keywords}")
                 return None, "Window not found"
 
-            windows = gw.getWindowsWithTitle(matching_titles[0])
-            if not windows:
-                print(f"[Perception] ❌ Window not available: {matching_titles[0]}")
-                return None, "Window not available"
-
-            target_window = windows[0]
             if not target_window.isActive:
                 target_window.activate()
+                time.sleep(1)
+
+            if not target_window.isMaximized:
+                target_window.maximize()
                 time.sleep(1)
 
             bbox = (
@@ -46,7 +51,7 @@ class PerceptionController:
             screenshot = ImageGrab.grab(bbox=bbox)
             return screenshot, target_window.title
         except Exception as e:
-            print(f"[Perception] ❌ Error focusing/screenshotting window: {e}")
+            print(f"[Perception] ❌ Error capturing window: {e}")
             return None, str(e)
 
     @staticmethod
@@ -69,9 +74,9 @@ class PerceptionController:
             return []
 
     @staticmethod
-    def get_perception_snapshot(target_window_keyword=""):
-        if target_window_keyword:
-            screenshot, window_title = PerceptionController.focus_and_screenshot_window(target_window_keyword)
+    def get_perception_snapshot(window_keywords=""):
+        if window_keywords:
+            screenshot, window_title = PerceptionController.focus_and_capture_window(window_keywords.split())
         else:
             screenshot = pyautogui.screenshot()
             window_title = PerceptionController.get_active_window_title()
@@ -83,10 +88,9 @@ class PerceptionController:
                 "ui_elements": []
             }
 
-        text_elements = PerceptionController.extract_text_elements(screenshot)
-
+        elements = PerceptionController.extract_text_elements(screenshot)
         return {
             "active_window": window_title,
-            "ocr_text": " ".join([el["text"] for el in text_elements]),
-            "ui_elements": text_elements
+            "ocr_text": " ".join([el["text"] for el in elements]),
+            "ui_elements": elements
         }

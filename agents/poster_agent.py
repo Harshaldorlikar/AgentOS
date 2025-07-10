@@ -1,78 +1,80 @@
-from agents.agent_shell import AgentShell
-from memory.memory import Memory
-from system.agentos_core import AgentOSCore
 from tools.runtime_controller import RuntimeController
+from system.agentos_core import AgentOSCore
+from tools.perception_controller import PerceptionController
+import time
 
-class PosterAgent(AgentShell):
-    def __init__(self, name="PosterAgent"):
-        super().__init__(name=name)
-        self.memory = Memory()
+class PosterAgent:
+    def __init__(self, memory, supervisor):
+        self.memory = memory
+        self.supervisor = supervisor
         self.core = AgentOSCore()
+        self.name = "PosterAgent"
+        self.task_context = "Post content to X (Twitter)"
 
-    def think(self):
-        self.post = self.memory.load("post_content")
-        if not self.post:
-            self.log("❌ No post content found in memory.")
-        else:
-            self.log(f"Loaded post: {self.post}")
-
-    def act(self):
-        if not self.post:
-            self.log("❌ Aborting: No content to post.")
+    def run(self):
+        print(f"[{self.name}] Agent started running.")
+        content = self.memory.load("post_content")
+        if not content:
+            print(f"[{self.name}] ❌ No tweet content found.")
             return
+        print(f"[{self.name}] Loaded post: {content}")
 
-        # Step 1: Open Twitter Compose
         self.core.request_action(
             agent=self.name,
             action_type="open_browser",
             target="https://x.com/compose/post",
-            reason="Prepare to post the tweet"
+            reason="Open composer to post tweet"
         )
+        time.sleep(3)
+        perception = PerceptionController.get_perception_snapshot()
+        self.supervisor.update_perception(perception)
 
-        # Step 2: Type the tweet
-        self.core.request_action(
-            agent=self.name,
-            action_type="type_text",
-            target=self.post,
-            reason="Typing tweet into compose box"
+        approved = self.supervisor.approve_action(
+            agent_name=self.name,
+            action="type_text",
+            value=content,
+            task_context=self.task_context
         )
-
-        # Step 3: Wait briefly for Post button to activate
-        self.log("⏳ Waiting for UI to reflect typed content...")
-        self.sleep(2)
-
-        # Step 4: Take screenshot and perceive UI
-        perception = self.core.request_action(
-            agent=self.name,
-            action_type="perceive",
-            target="X",
-            reason="Locate the Post button"
-        )
-
-        if not perception or not isinstance(perception, dict):
-            self.log("❌ No perception data received. Cannot proceed.")
+        if not approved:
+            print(f"[{self.name}] ❌ Supervisor blocked typing.")
             return
 
-        # Step 5: Search for "Post" button
-        ui_elements = perception.get("ui_elements", [])
-        post_button = None
-        for el in ui_elements:
-            if el["text"].strip().lower() == "post":
-                post_button = el
-                break
+        RuntimeController.type_text(
+            text=content + " ",  # 👈 Smart tweak to collapse suggestion box
+            reason="Composing tweet on X"
+        )
 
-        if not post_button:
-            self.log("❌ 'Post' button not found. UI might still be loading.")
+        print(f"[{self.name}] ⏳ Waiting for Post button to become active...")
+        time.sleep(0.8)  # 👈 Must click before Twitter shows Draft modal
+
+        perception = PerceptionController.get_perception_snapshot()
+        self.supervisor.update_perception(perception)
+        print(f"[{self.name}] 👁️ Updated perception received after typing.")
+
+        x, y, text = RuntimeController.find_button_near(
+            "Post", perception_data=perception
+        )
+        if not x or not y:
+            print(f"[{self.name}] ❌ Could not find the Post button.")
             return
 
-        x = post_button["left"] + post_button["width"] // 2
-        y = post_button["top"] + post_button["height"] // 2
+        print(f"[{self.name}] 🖱️ Clicking button at ({x},{y}) with text: '{text}'")
 
-        # Step 6: Click the "Post" button
-        self.core.request_action(
-            agent=self.name,
-            action_type="click",
-            target=f"{x},{y}",
-            reason="Clicking Post button to submit tweet"
+        approved = self.supervisor.approve_action(
+            agent_name=self.name,
+            action="click",
+            value=f"{x},{y}",
+            task_context="Click Post button to publish tweet",
+            perception=perception,
+            bounding_box={
+                "x": x,
+                "y": y,
+                "text": text
+            }
         )
-        self.log("✅ Post submitted.")
+        if not approved:
+            print(f"[{self.name}] ❌ Supervisor blocked the click.")
+            return
+
+        RuntimeController.click(x, y, reason="Click Post button to submit tweet")
+        print(f"[{self.name}] ✅ Tweet posted successfully.")

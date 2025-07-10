@@ -9,8 +9,7 @@
     {
       "agent": "PosterAgent",
       "task": "Post content to X (Twitter)",
-      "status": "error",
-      "error": "'PosterAgent' object has no attribute 'sleep'"
+      "status": "completed"
     }
   ]
 }
