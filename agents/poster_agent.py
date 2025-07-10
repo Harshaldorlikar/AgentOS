@@ -1,8 +1,7 @@
-# agents/poster_agent.py
-
 from agents.agent_shell import AgentShell
-from system.agentos_core import AgentOSCore
 from memory.memory import Memory
+from system.agentos_core import AgentOSCore
+from tools.runtime_controller import RuntimeController
 
 class PosterAgent(AgentShell):
     def __init__(self, name="PosterAgent"):
@@ -11,42 +10,69 @@ class PosterAgent(AgentShell):
         self.core = AgentOSCore()
 
     def think(self):
-        self.log("Thinking... preparing to post something.")
-        self.tweet = self.memory.load("post_content")
-
-        if not self.tweet:
-            self.tweet = "Stay positive and take action. #Motivation"
-            self.log("⚠️ No tweet in memory. Using fallback tweet.")
+        self.post = self.memory.load("post_content")
+        if not self.post:
+            self.log("❌ No post content found in memory.")
         else:
-            self.log(f"Loaded post: {self.tweet}")
+            self.log(f"Loaded post: {self.post}")
 
     def act(self):
-        # Open tweet composer on X
+        if not self.post:
+            self.log("❌ Aborting: No content to post.")
+            return
+
+        # Step 1: Open Twitter Compose
         self.core.request_action(
             agent=self.name,
             action_type="open_browser",
             target="https://x.com/compose/post",
-            reason="Open composer to post the tweet"
+            reason="Prepare to post the tweet"
         )
 
-        # Type tweet
+        # Step 2: Type the tweet
         self.core.request_action(
             agent=self.name,
             action_type="type_text",
-            target=self.tweet,
-            reason="Type the tweet"
+            target=self.post,
+            reason="Typing tweet into compose box"
         )
 
-        # ⏱️ Wait a little before clicking (ensure page loads)
-        import time
-        time.sleep(3)  # Adjust if needed
+        # Step 3: Wait briefly for Post button to activate
+        self.log("⏳ Waiting for UI to reflect typed content...")
+        self.sleep(2)
 
-        # 👇 Hardcoded coordinates — replace with your actual position
+        # Step 4: Take screenshot and perceive UI
+        perception = self.core.request_action(
+            agent=self.name,
+            action_type="perceive",
+            target="X",
+            reason="Locate the Post button"
+        )
+
+        if not perception or not isinstance(perception, dict):
+            self.log("❌ No perception data received. Cannot proceed.")
+            return
+
+        # Step 5: Search for "Post" button
+        ui_elements = perception.get("ui_elements", [])
+        post_button = None
+        for el in ui_elements:
+            if el["text"].strip().lower() == "post":
+                post_button = el
+                break
+
+        if not post_button:
+            self.log("❌ 'Post' button not found. UI might still be loading.")
+            return
+
+        x = post_button["left"] + post_button["width"] // 2
+        y = post_button["top"] + post_button["height"] // 2
+
+        # Step 6: Click the "Post" button
         self.core.request_action(
             agent=self.name,
             action_type="click",
-            target="950,294",  # << Replace with your actual Post button coords
-            reason="Click Post button to submit tweet"
+            target=f"{x},{y}",
+            reason="Clicking Post button to submit tweet"
         )
-
-        self.log("✅ Post button click requested.")
+        self.log("✅ Post submitted.")
