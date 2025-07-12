@@ -6,9 +6,10 @@ import webbrowser
 import time
 import os
 from dotenv import load_dotenv
-from tools.perception_controller import PerceptionController
-load_dotenv()
 
+from tools.gemini_interface import find_button_from_pixels  # ⬅️ NEW IMPORT
+
+load_dotenv()
 GEMINI_CLI = os.getenv("GEMINI_CLI")
 
 class RuntimeController:
@@ -79,7 +80,7 @@ class RuntimeController:
 
     @staticmethod
     def perceive(force=False):
-        """Triggers screen update and builds Gemini prompt"""
+        from tools.perception_controller import PerceptionController
         if force:
             PerceptionController.force_capture()
         else:
@@ -88,8 +89,27 @@ class RuntimeController:
 
     @staticmethod
     def analyze_screen_with_gemini(task="Identify UI buttons"):
-        snapshot = RuntimeController.perceive(force=True)
-        prompt = snapshot["prompt"]
-        print("[RuntimeController] 🧠 Asking Gemini to analyze screen...")
-        result = RuntimeController.ask_gemini_with_file(prompt)
-        return result
+            from tools.perception_controller import PerceptionController
+            snapshot = RuntimeController.perceive(force=True)
+            prompt = snapshot["prompt"]
+            print("[RuntimeController] 🧠 Asking Gemini to analyze screen...")
+            result = RuntimeController.ask_gemini_with_file(prompt)
+            return result
+
+    @staticmethod
+    def find_button_near(label: str, perception_data: dict):
+        """
+        Ask Gemini to locate a button with given label using pixel data.
+        Returns: (x, y, label)
+        """
+        pixel_array = perception_data.get("pixel_array")
+        if not pixel_array:
+            raise ValueError("Perception data missing 'pixel_array'.")
+
+        print(f"[RuntimeController] 🔎 Asking Gemini to find button: {label}")
+        result = find_button_from_pixels(pixel_array, target_label=label)
+
+        if result is None:
+            raise Exception(f"Gemini could not locate button: {label}")
+        
+        return result["x"], result["y"], result.get("label", label)

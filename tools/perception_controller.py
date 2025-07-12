@@ -97,3 +97,12 @@ Avoid any hallucination. Be literal to the pixels.
             else:
                 print("[PerceptionController] ⏸ No visual change.")
             time.sleep(0.2)
+
+    @staticmethod
+    def capture_screen_array():
+        """
+        Wrapper for PosterAgent & others.
+        Simply returns a fresh raw RGB screen pixel array.
+        """
+        pixels, _ = PerceptionController.get_active_pixels()
+        return pixels        
