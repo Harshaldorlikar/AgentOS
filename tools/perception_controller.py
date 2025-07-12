@@ -1,96 +1,70 @@
-import pygetwindow as gw
-import pyautogui
-import pytesseract
+# tools/perception_controller.py
+import time
+import hashlib
+import threading
 from PIL import ImageGrab
 import numpy as np
-import time
+import google.generativeai as genai
 
 class PerceptionController:
-    @staticmethod
-    def get_active_window_title():
+    last_hash = None
+    last_frame = None
+    last_result = None
+    event_loop_running = False
+
+    @classmethod
+    def start_event_loop(cls, interval=0.2):
+        if cls.event_loop_running:
+            print("[Perception] 🔁 Already running.")
+            return
+
+        def loop():
+            print("[Perception] 🎥 Starting event-driven perception loop...")
+            cls.event_loop_running = True
+            while cls.event_loop_running:
+                cls.trigger_if_changed()
+                time.sleep(interval)
+
+        threading.Thread(target=loop, daemon=True).start()
+
+    @classmethod
+    def stop_event_loop(cls):
+        cls.event_loop_running = False
+        print("[Perception] 🛑 Event loop stopped.")
+
+    @classmethod
+    def get_latest_frame(cls):
+        return cls.last_frame
+
+    @classmethod
+    def trigger_if_changed(cls):
         try:
-            active_window = gw.getActiveWindow()
-            return active_window.title if active_window else "Unknown"
-        except Exception as e:
-            return f"[Perception] ❌ Error getting active window: {e}"
+            img = ImageGrab.grab()
+            raw_bytes = img.tobytes()
+            current_hash = hashlib.sha1(raw_bytes).hexdigest()
 
-    @staticmethod
-    def find_window_by_keywords(keywords):
+            if current_hash != cls.last_hash:
+                cls.last_hash = current_hash
+                cls.last_frame = img
+                print("[Perception] 📸 Detected screen change. Calling Gemini...")
+                cls.last_result = cls.send_to_gemini(img)
+                print("[Perception] 🧠 Gemini Result:", cls.last_result)
+            else:
+                # print("[Perception] No change.")
+                pass
+
+        except Exception as e:
+            print(f"[Perception] ❌ Error capturing screen: {e}")
+
+    @classmethod
+    def send_to_gemini(cls, image):
         try:
-            windows = gw.getAllTitles()
-            for win_title in windows:
-                if all(kw.lower() in win_title.lower() for kw in keywords):
-                    return gw.getWindowsWithTitle(win_title)[0]
+            model = genai.GenerativeModel("gemini-pro-vision")
+            result = model.generate_content([
+                "You are an AI agent monitoring a UI. What changed in the screen?",
+                image
+            ])
+            return result.text
         except Exception as e:
-            print(f"[Perception] ❌ Window search error: {e}")
-        return None
-
-    @staticmethod
-    def focus_and_capture_window(window_keywords):
-        try:
-            target_window = PerceptionController.find_window_by_keywords(window_keywords)
-            if not target_window:
-                print(f"[Perception] ❌ No window found with keywords: {window_keywords}")
-                return None, "Window not found"
-
-            if not target_window.isActive:
-                target_window.activate()
-                time.sleep(1)
-
-            if not target_window.isMaximized:
-                target_window.maximize()
-                time.sleep(1)
-
-            bbox = (
-                target_window.left,
-                target_window.top,
-                target_window.left + target_window.width,
-                target_window.top + target_window.height
-            )
-
-            screenshot = ImageGrab.grab(bbox=bbox)
-            return screenshot, target_window.title
-        except Exception as e:
-            print(f"[Perception] ❌ Error capturing window: {e}")
-            return None, str(e)
-
-    @staticmethod
-    def extract_text_elements(image):
-        try:
-            data = pytesseract.image_to_data(image, output_type=pytesseract.Output.DICT)
-            elements = []
-            for i in range(len(data['text'])):
-                if int(data['conf'][i]) > 60 and data['text'][i].strip():
-                    elements.append({
-                        "text": data['text'][i],
-                        "left": data['left'][i],
-                        "top": data['top'][i],
-                        "width": data['width'][i],
-                        "height": data['height'][i]
-                    })
-            return elements
-        except Exception as e:
-            print(f"[Perception] ❌ OCR failed: {e}")
-            return []
-
-    @staticmethod
-    def get_perception_snapshot(window_keywords=""):
-        if window_keywords:
-            screenshot, window_title = PerceptionController.focus_and_capture_window(window_keywords.split())
-        else:
-            screenshot = pyautogui.screenshot()
-            window_title = PerceptionController.get_active_window_title()
-
-        if screenshot is None:
-            return {
-                "active_window": window_title,
-                "ocr_text": "❌ Screenshot failed",
-                "ui_elements": []
-            }
-
-        elements = PerceptionController.extract_text_elements(screenshot)
-        return {
-            "active_window": window_title,
-            "ocr_text": " ".join([el["text"] for el in elements]),
-            "ui_elements": elements
-        }
+            print(f"[Gemini] ❌ Error: {e}")
+            return None

@@ -1,6 +1,8 @@
+# agents/poster_agent.py
+
 from tools.runtime_controller import RuntimeController
-from system.agentos_core import AgentOSCore
 from tools.perception_controller import PerceptionController
+from system.agentos_core import AgentOSCore
 import time
 
 class PosterAgent:
@@ -13,22 +15,28 @@ class PosterAgent:
 
     def run(self):
         print(f"[{self.name}] Agent started running.")
+
+        # Step 1: Load tweet content from memory
         content = self.memory.load("post_content")
         if not content:
             print(f"[{self.name}] ❌ No tweet content found.")
             return
         print(f"[{self.name}] Loaded post: {content}")
 
+        # Step 2: Open X.com compose page
         self.core.request_action(
             agent=self.name,
             action_type="open_browser",
             target="https://x.com/compose/post",
             reason="Open composer to post tweet"
         )
+
+        # Step 3: Let browser stabilize and get perception
         time.sleep(3)
         perception = PerceptionController.get_perception_snapshot()
         self.supervisor.update_perception(perception)
 
+        # Step 4: Ask Supervisor for typing approval
         approved = self.supervisor.approve_action(
             agent_name=self.name,
             action="type_text",
@@ -39,42 +47,40 @@ class PosterAgent:
             print(f"[{self.name}] ❌ Supervisor blocked typing.")
             return
 
+        # Step 5: Type the content with trailing space to collapse hashtag suggestion
         RuntimeController.type_text(
-            text=content + " ",  # 👈 Smart tweak to collapse suggestion box
+            text=content + " ",
             reason="Composing tweet on X"
         )
 
+        # Step 6: Wait a bit for UI to update the button state
         print(f"[{self.name}] ⏳ Waiting for Post button to become active...")
-        time.sleep(0.8)  # 👈 Must click before Twitter shows Draft modal
+        time.sleep(1.5)
 
+        # Step 7: Refresh perception after typing
         perception = PerceptionController.get_perception_snapshot()
         self.supervisor.update_perception(perception)
         print(f"[{self.name}] 👁️ Updated perception received after typing.")
 
-        x, y, text = RuntimeController.find_button_near(
-            "Post", perception_data=perception
-        )
+        # Step 8: Use Gemini to find Post button via image + OCR
+        x, y, text = RuntimeController.find_button_gemini("Post", perception_data=perception)
         if not x or not y:
             print(f"[{self.name}] ❌ Could not find the Post button.")
             return
 
-        print(f"[{self.name}] 🖱️ Clicking button at ({x},{y}) with text: '{text}'")
-
+        # Step 9: Ask Supervisor to approve click
         approved = self.supervisor.approve_action(
             agent_name=self.name,
             action="click",
             value=f"{x},{y}",
             task_context="Click Post button to publish tweet",
             perception=perception,
-            bounding_box={
-                "x": x,
-                "y": y,
-                "text": text
-            }
+            bounding_box={"x": x, "y": y, "text": text}
         )
         if not approved:
             print(f"[{self.name}] ❌ Supervisor blocked the click.")
             return
 
+        # Step 10: Click the button
         RuntimeController.click(x, y, reason="Click Post button to submit tweet")
         print(f"[{self.name}] ✅ Tweet posted successfully.")
