@@ -1,70 +1,99 @@
-# tools/perception_controller.py
-import time
 import hashlib
-import threading
-from PIL import ImageGrab
+import time
+from PIL import ImageGrab, Image
 import numpy as np
-import google.generativeai as genai
+import subprocess
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+GEMINI_CLI = os.getenv("GEMINI_CLI")  # Path to Gemini CLI 2.5
+
 
 class PerceptionController:
-    last_hash = None
-    last_frame = None
-    last_result = None
-    event_loop_running = False
+    last_hash = None  # Used for change detection between frames
 
-    @classmethod
-    def start_event_loop(cls, interval=0.2):
-        if cls.event_loop_running:
-            print("[Perception] 🔁 Already running.")
-            return
+    @staticmethod
+    def get_active_pixels(bbox=None):
+        """
+        Capture raw RGB pixels from full screen or specified region.
+        Returns both pixel array and PIL image.
+        """
+        image = ImageGrab.grab(bbox=bbox)
+        pixels = np.array(image)
+        return pixels, image
 
-        def loop():
-            print("[Perception] 🎥 Starting event-driven perception loop...")
-            cls.event_loop_running = True
-            while cls.event_loop_running:
-                cls.trigger_if_changed()
-                time.sleep(interval)
+    @staticmethod
+    def hash_pixels(pixels):
+        """
+        Create SHA1 hash of the image for change detection.
+        """
+        return hashlib.sha1(pixels.tobytes()).hexdigest()
 
-        threading.Thread(target=loop, daemon=True).start()
+    @staticmethod
+    def has_screen_changed(pixels):
+        """
+        Compare current screen hash to the last known hash.
+        Returns True if changed, otherwise False.
+        """
+        current_hash = PerceptionController.hash_pixels(pixels)
+        changed = current_hash != PerceptionController.last_hash
+        if changed:
+            PerceptionController.last_hash = current_hash
+        return changed
 
-    @classmethod
-    def stop_event_loop(cls):
-        cls.event_loop_running = False
-        print("[Perception] 🛑 Event loop stopped.")
+    @staticmethod
+    def ask_gemini_with_pixels(pixels, reasoning_prompt="Identify visible UI components and clickable elements."):
+        """
+        Feed raw RGB pixel array to Gemini via CLI with a reasoning prompt.
+        Converts to downscaled array for efficiency and formats prompt.
+        """
+        # Optional Downscaling for token cost
+        if pixels.shape[0] > 500:
+            img = Image.fromarray(pixels)
+            img = img.resize((400, 300))
+            pixels = np.array(img)
 
-    @classmethod
-    def get_latest_frame(cls):
-        return cls.last_frame
+        # Convert to trimmed list of pixels
+        flat_rgb = pixels.tolist()[:3000]  # Truncate for token limit
 
-    @classmethod
-    def trigger_if_changed(cls):
+        prompt = f"""
+You are a computer vision AI agent perceiving the world through raw RGB pixel data.
+Each pixel is represented as a list: [R, G, B].
+
+ScreenPixels = {flat_rgb}
+
+Context: {reasoning_prompt}
+
+What elements are visible? Respond with only structured insights (e.g., button names and coordinates if possible).
+Avoid any hallucination. Be literal to the pixels.
+"""
+
         try:
-            img = ImageGrab.grab()
-            raw_bytes = img.tobytes()
-            current_hash = hashlib.sha1(raw_bytes).hexdigest()
+            result = subprocess.run(
+                ["powershell", "-ExecutionPolicy", "Bypass", "-File", GEMINI_CLI, "--yolo"],
+                input=prompt,
+                capture_output=True,
+                text=True,
+                encoding="utf-8",
+                errors="ignore"
+            )
+            return result.stdout.strip()
+        except Exception as e:
+            return f"[Gemini CLI Error] {e}"
 
-            if current_hash != cls.last_hash:
-                cls.last_hash = current_hash
-                cls.last_frame = img
-                print("[Perception] 📸 Detected screen change. Calling Gemini...")
-                cls.last_result = cls.send_to_gemini(img)
-                print("[Perception] 🧠 Gemini Result:", cls.last_result)
+    @staticmethod
+    def monitor_and_reason():
+        """
+        Continuously watch screen changes and invoke Gemini only when visual changes occur.
+        """
+        print("[PerceptionController] 👁️ Starting real-time visual loop...")
+        while True:
+            pixels, _ = PerceptionController.get_active_pixels()
+            if PerceptionController.has_screen_changed(pixels):
+                print("[PerceptionController] 🔄 Change detected. Sending to Gemini...")
+                response = PerceptionController.ask_gemini_with_pixels(pixels)
+                print("[Gemini 👁️] ", response)
             else:
-                # print("[Perception] No change.")
-                pass
-
-        except Exception as e:
-            print(f"[Perception] ❌ Error capturing screen: {e}")
-
-    @classmethod
-    def send_to_gemini(cls, image):
-        try:
-            model = genai.GenerativeModel("gemini-pro-vision")
-            result = model.generate_content([
-                "You are an AI agent monitoring a UI. What changed in the screen?",
-                image
-            ])
-            return result.text
-        except Exception as e:
-            print(f"[Gemini] ❌ Error: {e}")
-            return None
+                print("[PerceptionController] ⏸ No visual change.")
+            time.sleep(0.2)
