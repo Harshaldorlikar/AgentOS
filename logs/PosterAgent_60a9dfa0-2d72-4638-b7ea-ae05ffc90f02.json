@@ -1,4 +1,0 @@
-{"agent": "PosterAgent", "id": "60a9dfa0-2d72-4638-b7ea-ae05ffc90f02", "timestamp": "2025-07-04T15:51:22.122950", "status": "initialized", "message": " Agent initialized."}
-{"agent": "PosterAgent", "id": "60a9dfa0-2d72-4638-b7ea-ae05ffc90f02", "timestamp": "2025-07-04T15:51:22.125568", "status": "running", "message": " Agent started running."}
-{"agent": "PosterAgent", "id": "60a9dfa0-2d72-4638-b7ea-ae05ffc90f02", "timestamp": "2025-07-04T15:51:22.125568", "status": "running", "message": "Reading draft posts from memory..."}
-{"agent": "PosterAgent", "id": "60a9dfa0-2d72-4638-b7ea-ae05ffc90f02", "timestamp": "2025-07-04T15:51:22.137548", "status": "running", "message": "Preparing to post..."}

@@ -1,4 +1,0 @@
-{"agent": "ExplorerAgent", "id": "9e897efd-a59e-43fb-98ca-45c28b251461", "timestamp": "2025-07-04T13:18:25.514917", "status": "initialized", "message": " Agent initialized."}
-{"agent": "ExplorerAgent", "id": "9e897efd-a59e-43fb-98ca-45c28b251461", "timestamp": "2025-07-04T13:18:25.516434", "status": "running", "message": " Agent started running."}
-{"agent": "ExplorerAgent", "id": "9e897efd-a59e-43fb-98ca-45c28b251461", "timestamp": "2025-07-04T13:18:25.517497", "status": "running", "message": "Launching visible browser to explore trends like a human..."}
-{"agent": "ExplorerAgent", "id": "9e897efd-a59e-43fb-98ca-45c28b251461", "timestamp": "2025-07-04T13:18:35.981227", "status": "running", "message": "Please manually complete login if required... waiting for you to finish."}

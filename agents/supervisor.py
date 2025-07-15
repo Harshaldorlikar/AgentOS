@@ -1,59 +1,66 @@
-# agents/supervisor_agent.py
-
 import os
-import subprocess
-from datetime import datetime
 import tempfile
-from dotenv import load_dotenv
-from PIL import Image
+import json
+from datetime import datetime
 import numpy as np
+from PIL import Image
+from dotenv import load_dotenv
+from tools.gemini_cli import ask_gemini_with_file
+from tools.debug_visualizer import draw_button_overlay
+from tools.gemini_ui_vision import analyze_ui_elements_from_pixels
 
 load_dotenv()
-GEMINI_CLI = os.getenv("GEMINI_CLI")
+
+def strip_code_wrappers(text):
+    if text.strip().startswith("```"):
+        lines = text.strip().splitlines()
+        return "\n".join(line for line in lines if not line.strip().startswith("```"))
+    return text.strip()
 
 class SupervisorAgent:
     def __init__(self):
         self.logs = []
-        self.last_perception = None  # For visual validation
+        self.last_perception = None
+
+    def update_perception(self, snapshot: dict):
+        self.last_perception = snapshot
+        print("[Supervisor] 👁️ Updated perception stored.")
 
     def approve_action(self, agent_name, action, value, task_context="", perception=None, bounding_box=None):
-        """
-        Main decision point for agent actions. Handles click safety, typing, and Gemini validation.
-        """
         if perception:
             self.last_perception = perception
             print("[Supervisor] 👁️ Perception snapshot received.")
 
-        # 🖱️ Click validation
         if action == "click":
-            # Optional bounding box logic
+            label_hint = bounding_box.get("text") if bounding_box else task_context or "button"
+
             if bounding_box and perception:
-                if self._validate_click_with_bounding_box(perception, bounding_box):
+                if self._is_click_inside_bounding_box(value, bounding_box):
+                    print("[Supervisor] ✅ Click falls within bounding box.")
                     self.log_decision(agent_name, action, value, "Yes (bounding box match)")
                     return True
 
-            # New: Gemini-based validation using pixel image
-            if self._validate_click_with_gemini(value, perception, label_hint=task_context):
+            # Else: fallback to Gemini vision click validation
+            success, reason = self._validate_click_with_gemini(value, perception, label_hint)
+            if success:
                 self.log_decision(agent_name, action, value, "Yes (Gemini visual confirmation)")
                 return True
             else:
-                self.log_decision(agent_name, action, value, "No (Gemini rejected visual click)")
+                self.log_decision(agent_name, action, value, f"No (Gemini rejected: {reason})")
                 return False
 
-        # ✅ Safe defaults
-        if action in ["open_browser", "open_app", "screenshot", "perceive"]:
-            self.log_decision(agent_name, action, value, "Yes (safe default approval)")
-            return True
-
-        # ✍️ Typing
-        if action == "type_text":
+        elif action == "type_text":
             if not value or len(value.strip()) < 5 or "???" in value:
                 self.log_decision(agent_name, action, value, "No. Typing rejected (invalid content)")
                 return False
             self.log_decision(agent_name, action, value, "Yes (validated for typing)")
             return True
 
-        # 🧠 Fallback for complex tasks
+        elif action in ["open_browser", "open_app", "screenshot", "perceive"]:
+            self.log_decision(agent_name, action, value, "Yes (safe default approval)")
+            return True
+
+        # Fallback reasoning
         prompt = f"""
 An AI agent named {agent_name} is running a task: "{task_context}".
 It is about to perform this action: {action} → {value}.
@@ -61,15 +68,7 @@ Is this action necessary to complete the task?
 Respond with one word: Yes or No. If no, briefly explain.
 """
         try:
-            result = subprocess.run(
-                ["powershell", "-ExecutionPolicy", "Bypass", "-File", GEMINI_CLI, "--yolo"],
-                input=prompt,
-                capture_output=True,
-                text=True,
-                encoding="utf-8",
-                errors="ignore"
-            )
-            response = result.stdout.strip()
+            response = ask_gemini_with_file(prompt)
         except Exception as e:
             response = f"No (Gemini CLI exception: {e})"
 
@@ -77,55 +76,85 @@ Respond with one word: Yes or No. If no, briefly explain.
         self.log_decision(agent_name, action, value, response)
         return approved
 
-    def update_perception(self, snapshot: dict):
-        self.last_perception = snapshot
-        print("[Supervisor] 👁️ Updated perception stored.")
+    def analyze_ui(self, task_prompt):
+        """
+        Uses Gemini to extract UI elements from screenshot perception.
+        Must have pixel_array in self.last_perception.
+        """
+        print(f"[Supervisor] 🧠 Analyzing UI for task: {task_prompt}")
+        if not self.last_perception or "pixel_array" not in self.last_perception:
+            print("[Supervisor] ❌ No perception available.")
+            return []
+
+        pixel_array = self.last_perception["pixel_array"]
+
+        try:
+            parsed = analyze_ui_elements_from_pixels(pixel_array, task_prompt)
+            self.last_perception["ui_elements"] = parsed
+            return parsed
+        except Exception as e:
+            print(f"[Supervisor] ❌ Failed to analyze UI: {e}")
+            return []
 
     def _validate_click_with_gemini(self, coords, perception, label_hint="Post"):
-        """
-        Sends screenshot to Gemini to ask: "Is it safe to click at (x, y)?"
-        """
         try:
             pixel_array = perception.get("pixel_array")
             if pixel_array is None:
-                print("[Supervisor] ❌ No pixel_array found for Gemini validation.")
-                return False
+                return False, "No pixel_array found"
 
             if isinstance(coords, str):
                 x, y = map(int, coords.split(","))
             elif isinstance(coords, (list, tuple)) and len(coords) == 2:
                 x, y = coords
             else:
-                raise ValueError("Invalid coords format")
+                return False, "Invalid coords format"
 
-            # Save pixel array as image
             img = Image.fromarray(np.array(pixel_array).astype("uint8"), "RGB")
             with tempfile.NamedTemporaryFile(delete=False, suffix=".png") as tmp:
                 img.save(tmp.name, format="PNG")
                 image_path = tmp.name
 
             prompt = f"""
-You are a safety validation agent.
+You are a visual UI agent validating user interface actions.
 
-Given this screenshot, is it visually correct to click at coordinates (x={x}, y={y}) if the intent is to click a '{label_hint}' button?
+The agent wants to click a button labeled '{label_hint}'.
+⚠️ There may be multiple buttons with the same label.
+Only approve if the coordinates (x={x}, y={y}) fall **inside** the correct button (like a popup composer).
+
+Is it safe to click at (x={x}, y={y}) for the intended button?
 
 Only respond with:
 Yes
 or
-No (with 5-word reason)
+No (with brief reason)
 """
-            result = subprocess.run(
-                ["powershell", "-ExecutionPolicy", "Bypass", "-File", GEMINI_CLI, "--yolo"],
-                input=prompt + f"\n[FILE:{image_path}]",
-                capture_output=True,
-                text=True,
-                encoding="utf-8",
-                errors="ignore"
-            )
-            response = result.stdout.strip()
-            return "yes" in response.lower()
+            response = ask_gemini_with_file(prompt, image_path)
+            if "yes" in response.lower():
+                print(f"[Supervisor] ✅ Gemini approved click at ({x},{y}) for '{label_hint}'.")
+                return True, "Approved"
+            else:
+                print(f"[Supervisor] ❌ Gemini rejected click at ({x},{y}) for '{label_hint}': {response}")
+                return False, response
+
         except Exception as e:
-            print(f"[Supervisor] ❌ Gemini click validation failed: {e}")
+            return False, f"Gemini click validation error: {e}"
+
+    def _is_click_inside_bounding_box(self, coords, box):
+        try:
+            if isinstance(coords, str):
+                x, y = map(int, coords.split(","))
+            elif isinstance(coords, (list, tuple)):
+                x, y = coords
+            else:
+                return False
+
+            x_min = box["x_min"]
+            x_max = box["x_max"]
+            y_min = box["y_min"]
+            y_max = box["y_max"]
+
+            return x_min <= x <= x_max and y_min <= y <= y_max
+        except:
             return False
 
     def log_decision(self, agent_name, action, value, response):
@@ -140,14 +169,3 @@ No (with 5-word reason)
         }
         self.logs.append(decision)
         print(f"[Supervisor] {action} → {status}: {response}")
-
-    def _validate_click_with_bounding_box(self, perception, box):
-        for el in perception.get("ui_elements", []):
-            if (
-                el["text"].strip().lower() == box["text"].strip().lower() and
-                abs(el["left"] + el["width"] // 2 - box["x"]) <= 10 and
-                abs(el["top"] + el["height"] // 2 - box["y"]) <= 10
-            ):
-                print(f"[Supervisor] ✅ Exact bounding box match: {el['text']}")
-                return True
-        return False

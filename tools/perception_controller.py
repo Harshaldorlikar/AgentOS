@@ -1,13 +1,7 @@
 import hashlib
 import time
-from PIL import ImageGrab, Image
+from PIL import ImageGrab
 import numpy as np
-import subprocess
-import os
-from dotenv import load_dotenv
-
-load_dotenv()
-GEMINI_CLI = os.getenv("GEMINI_CLI")  # Path to Gemini CLI 2.5
 
 
 class PerceptionController:
@@ -43,66 +37,10 @@ class PerceptionController:
         return changed
 
     @staticmethod
-    def ask_gemini_with_pixels(pixels, reasoning_prompt="Identify visible UI components and clickable elements."):
-        """
-        Feed raw RGB pixel array to Gemini via CLI with a reasoning prompt.
-        Converts to downscaled array for efficiency and formats prompt.
-        """
-        # Optional Downscaling for token cost
-        if pixels.shape[0] > 500:
-            img = Image.fromarray(pixels)
-            img = img.resize((400, 300))
-            pixels = np.array(img)
-
-        # Convert to trimmed list of pixels
-        flat_rgb = pixels.tolist()[:3000]  # Truncate for token limit
-
-        prompt = f"""
-You are a computer vision AI agent perceiving the world through raw RGB pixel data.
-Each pixel is represented as a list: [R, G, B].
-
-ScreenPixels = {flat_rgb}
-
-Context: {reasoning_prompt}
-
-What elements are visible? Respond with only structured insights (e.g., button names and coordinates if possible).
-Avoid any hallucination. Be literal to the pixels.
-"""
-
-        try:
-            result = subprocess.run(
-                ["powershell", "-ExecutionPolicy", "Bypass", "-File", GEMINI_CLI, "--yolo"],
-                input=prompt,
-                capture_output=True,
-                text=True,
-                encoding="utf-8",
-                errors="ignore"
-            )
-            return result.stdout.strip()
-        except Exception as e:
-            return f"[Gemini CLI Error] {e}"
-
-    @staticmethod
-    def monitor_and_reason():
-        """
-        Continuously watch screen changes and invoke Gemini only when visual changes occur.
-        """
-        print("[PerceptionController] 👁️ Starting real-time visual loop...")
-        while True:
-            pixels, _ = PerceptionController.get_active_pixels()
-            if PerceptionController.has_screen_changed(pixels):
-                print("[PerceptionController] 🔄 Change detected. Sending to Gemini...")
-                response = PerceptionController.ask_gemini_with_pixels(pixels)
-                print("[Gemini 👁️] ", response)
-            else:
-                print("[PerceptionController] ⏸ No visual change.")
-            time.sleep(0.2)
-
-    @staticmethod
     def capture_screen_array():
         """
         Wrapper for PosterAgent & others.
         Simply returns a fresh raw RGB screen pixel array.
         """
         pixels, _ = PerceptionController.get_active_pixels()
-        return pixels        
+        return pixels

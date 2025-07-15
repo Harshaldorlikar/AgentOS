@@ -1,360 +1,96 @@
-{"timestamp": "2025-07-05T19:01:24.911807", "agent": "DevAgent", "message": "Agent started running."}
-{"timestamp": "2025-07-05T19:01:24.914031", "agent": "DevAgent", "message": "Goal: Create an ExplorerAgent that browses Google News and logs trending topics"}
-{"timestamp": "2025-07-05T19:01:24.914031", "agent": "DevAgent", "message": " Using Gemini CLI to generate code for: ExplorerAgent"}
-{"timestamp": "2025-07-05T19:01:24.917619", "agent": "DevAgent", "message": " Gemini CLI failed: [WinError 2] The system cannot find the file specified"}
-{"timestamp": "2025-07-05T19:01:24.917814", "agent": "DevAgent", "message": "Agent finished execution."}
-{"timestamp": "2025-07-05T19:10:07.952618", "agent": "DevAgent", "message": "Agent started running."}
-{"timestamp": "2025-07-05T19:10:07.954645", "agent": "DevAgent", "message": "Goal: Create an ExplorerAgent that browses Google News and logs trending topics"}
-{"timestamp": "2025-07-05T19:10:07.954645", "agent": "DevAgent", "message": " Using Gemini CLI to generate code for: ExplorerAgent"}
-{"timestamp": "2025-07-05T19:10:07.956651", "agent": "DevAgent", "message": " Gemini CLI failed: [WinError 2] The system cannot find the file specified"}
-{"timestamp": "2025-07-05T19:10:07.958144", "agent": "DevAgent", "message": "Agent finished execution."}
-{"timestamp": "2025-07-05T19:30:37.262880", "agent": "DevAgent", "message": "Agent started running."}
-{"timestamp": "2025-07-05T19:30:37.273017", "agent": "DevAgent", "message": "Goal: Create a WriterAgent that writes a motivational tweet using today's trending topics."}
-{"timestamp": "2025-07-05T19:30:37.273383", "agent": "DevAgent", "message": " Using Gemini CLI to generate code for: WriterAgent"}
-{"timestamp": "2025-07-05T19:30:39.908319", "agent": "DevAgent", "message": " Gemini CLI error:\n(node:14672) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.\n(Use `node --trace-deprecation ...` to show where the warning was created)\nOptions:\n  -m, --model                    Model      [string] [default: \"gemini-2.5-pro\"]\n  -p, --prompt                   Prompt. Appended to input on stdin (if any).\n                                                                        [string]\n  -s, --sandbox                  Run in sandbox?                       [boolean]\n      --sandbox-image            Sandbox image URI.                     [string]\n  -d, --debug                    Run in debug mode?   [boolean] [default: false]\n  -a, --all_files                Include ALL files in context?\n                                                      [boolean] [default: false]\n      --show_memory_usage        Show memory usage in status bar\n                                                      [boolean] [default: false]\n  -y, --yolo                     Automatically accept all actions (aka YOLO\n                                 mode, see\n                                 https://www.youtube.com/watch?v=xvFZjo5PgG0 for\n                                 more details)?       [boolean] [default: false]\n      --telemetry                Enable telemetry? This flag specifically\n                                 controls if telemetry is sent. Other\n                                 --telemetry-* flags set specific values but do\n                                 not enable telemetry on their own.    [boolean]\n      --telemetry-target         Set the telemetry target (local or gcp).\n                                 Overrides settings files.\n                                              [string] [choices: \"local\", \"gcp\"]\n      --telemetry-otlp-endpoint  Set the OTLP endpoint for telemetry. Overrides\n                                 environment variables and settings files.\n                                                                        [string]\n      --telemetry-log-prompts    Enable or disable logging of user prompts for\n                                 telemetry. Overrides settings files.  [boolean]\n  -c, --checkpointing            Enables checkpointing of file edits\n                                                      [boolean] [default: false]\n  -v, --version                  Show version number                   [boolean]\n  -h, --help                     Show help                             [boolean]\n\nUnknown argument: \nYou are creating a new agent called `WriterAgent` for a system called AgentOS.\n\nAgentOS uses the following structure:\n- All agents inherit from `AgentShell`\n- All agents must define `think()` and `act()` methods\n- All actions must use: `AgentOSCore.request_action(agent=self.name, action=...)`\n- Logging is done with: `self.log(...)`\n- The file must be saved to `agents/writeragent.py`\n- Do NOT include print statements or extra explanations \u00e2\u20ac\u201d only valid Python code.\n\nUser's goal: Create a WriterAgent that writes a motivational tweet using today's trending topics.\n\nNow generate the full Python code for `WriterAgent`."}
-{"timestamp": "2025-07-05T19:30:39.909335", "agent": "DevAgent", "message": "Agent finished execution."}
-{"timestamp": "2025-07-05T19:42:07.890725", "agent": "DevAgent", "message": "Agent started running."}
-{"timestamp": "2025-07-05T19:42:07.907851", "agent": "DevAgent", "message": "Goal: Create a WriterAgent that writes a motivational tweet using today's trending topics."}
-{"timestamp": "2025-07-05T19:42:07.908858", "agent": "DevAgent", "message": " Using Gemini CLI to generate code for: WriterAgent"}
-{"timestamp": "2025-07-05T19:42:12.025676", "agent": "DevAgent", "message": " Gemini CLI error:\n(node:13456) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.\n(Use `node --trace-deprecation ...` to show where the warning was created)\nOptions:\n  -m, --model                    Model      [string] [default: \"gemini-2.5-pro\"]\n  -p, --prompt                   Prompt. Appended to input on stdin (if any).\n                                                                        [string]\n  -s, --sandbox                  Run in sandbox?                       [boolean]\n      --sandbox-image            Sandbox image URI.                     [string]\n  -d, --debug                    Run in debug mode?   [boolean] [default: false]\n  -a, --all_files                Include ALL files in context?\n                                                      [boolean] [default: false]\n      --show_memory_usage        Show memory usage in status bar\n                                                      [boolean] [default: false]\n  -y, --yolo                     Automatically accept all actions (aka YOLO\n                                 mode, see\n                                 https://www.youtube.com/watch?v=xvFZjo5PgG0 for\n                                 more details)?       [boolean] [default: false]\n      --telemetry                Enable telemetry? This flag specifically\n                                 controls if telemetry is sent. Other\n                                 --telemetry-* flags set specific values but do\n                                 not enable telemetry on their own.    [boolean]\n      --telemetry-target         Set the telemetry target (local or gcp).\n                                 Overrides settings files.\n                                              [string] [choices: \"local\", \"gcp\"]\n      --telemetry-otlp-endpoint  Set the OTLP endpoint for telemetry. Overrides\n                                 environment variables and settings files.\n                                                                        [string]\n      --telemetry-log-prompts    Enable or disable logging of user prompts for\n                                 telemetry. Overrides settings files.  [boolean]\n  -c, --checkpointing            Enables checkpointing of file edits\n                                                      [boolean] [default: false]\n  -v, --version                  Show version number                   [boolean]\n  -h, --help                     Show help                             [boolean]\n\nUnknown argument: \nYou are creating a new agent called `WriterAgent` for a system called AgentOS.\n\nAgentOS uses the following structure:\n- All agents inherit from `AgentShell`\n- All agents must define `think()` and `act()` methods\n- All actions must use: `AgentOSCore.request_action(agent=self.name, action=...)`\n- Logging is done with: `self.log(...)`\n- The file must be saved to `agents/writeragent.py`\n- Do NOT include print statements or extra explanations \u00e2\u20ac\u201d only valid Python code.\n\nUser's goal: Create a WriterAgent that writes a motivational tweet using today's trending topics.\n\nNow generate the full Python code for `WriterAgent`."}
-{"timestamp": "2025-07-05T19:42:12.026679", "agent": "DevAgent", "message": "Agent finished execution."}
-{"timestamp": "2025-07-05T19:47:32.996639", "agent": "DevAgent", "message": "Agent started running."}
-{"timestamp": "2025-07-05T19:47:33.007367", "agent": "DevAgent", "message": "Goal: Create a WriterAgent that writes a motivational tweet using today's trending topics."}
-{"timestamp": "2025-07-05T19:47:33.007367", "agent": "DevAgent", "message": " Using Gemini CLI to generate code for: WriterAgent"}
-{"timestamp": "2025-07-05T19:48:16.845265", "agent": "DevAgent", "message": " Gemini output looks invalid or empty:\n"}
-{"timestamp": "2025-07-05T19:48:16.846275", "agent": "DevAgent", "message": "Agent finished execution."}
-{"timestamp": "2025-07-05T20:06:25.933103", "agent": "DevAgent", "message": "Agent started running."}
-{"timestamp": "2025-07-05T20:06:25.942111", "agent": "DevAgent", "message": "Goal: Create a WriterAgent that writes a motivational tweet using today's trending topics."}
-{"timestamp": "2025-07-05T20:06:25.943466", "agent": "DevAgent", "message": " Using Gemini CLI to generate code for: WriterAgent"}
-{"timestamp": "2025-07-05T20:06:54.487718", "agent": "DevAgent", "message": " Agent created: agents/writeragent.py"}
-{"timestamp": "2025-07-05T20:06:54.489890", "agent": "DevAgent", "message": " WriterAgent added to agents_map.json"}
-{"timestamp": "2025-07-05T20:06:54.489890", "agent": "DevAgent", "message": "Agent finished execution."}
-{"timestamp": "2025-07-05T20:33:06.887405", "agent": "DevAgent", "message": "Agent started running."}
-{"timestamp": "2025-07-05T20:33:06.899805", "agent": "DevAgent", "message": "Goal: Create a WriterAgent that writes a motivational tweet using today's trending topics."}
-{"timestamp": "2025-07-05T20:33:06.899805", "agent": "DevAgent", "message": "\ud83e\udde0 Using Gemini CLI to generate code for: WriterAgent"}
-{"timestamp": "2025-07-05T20:33:36.592427", "agent": "DevAgent", "message": "Gemini CLI STDERR:\n(node:8624) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.\n(Use `node --trace-deprecation ...` to show where the warning was created)"}
-{"timestamp": "2025-07-05T20:33:36.593442", "agent": "DevAgent", "message": "\u274c Syntax error: invalid syntax (<unknown>, line 1)"}
-{"timestamp": "2025-07-05T20:33:36.593442", "agent": "DevAgent", "message": "\ud83d\udd27 Attempting self-patch of broken code..."}
-{"timestamp": "2025-07-05T20:33:36.594451", "agent": "DevAgent", "message": "\ud83d\udee0 Sending broken code to Gemini CLI for patching..."}
-{"timestamp": "2025-07-05T20:35:37.195525", "agent": "DevAgent", "message": "Gemini CLI STDERR:\n(node:13028) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.\n(Use `node --trace-deprecation ...` to show where the warning was created)"}
-{"timestamp": "2025-07-05T20:35:37.196533", "agent": "DevAgent", "message": "\u274c Gemini CLI failed: 'NoneType' object has no attribute 'strip'"}
-{"timestamp": "2025-07-05T20:35:37.197539", "agent": "DevAgent", "message": "\u274c Self-patching failed. Skipping agent creation."}
-{"timestamp": "2025-07-05T20:35:37.197539", "agent": "DevAgent", "message": "Agent finished execution."}
-{"timestamp": "2025-07-05T20:43:22.714039", "agent": "DevAgent", "message": "Agent started running."}
-{"timestamp": "2025-07-05T20:43:22.725654", "agent": "DevAgent", "message": "Goal: Create a WriterAgent that writes a motivational tweet using today's trending topics."}
-{"timestamp": "2025-07-05T20:43:22.726658", "agent": "DevAgent", "message": "\ud83e\udde0 Using Gemini CLI to generate code for: WriterAgent"}
-{"timestamp": "2025-07-05T21:02:41.637650", "agent": "DevAgent", "message": "Agent started running."}
-{"timestamp": "2025-07-05T21:02:41.648905", "agent": "DevAgent", "message": "Goal: Create a WriterAgent that writes a motivational tweet using today's trending topics."}
-{"timestamp": "2025-07-05T21:02:41.649914", "agent": "DevAgent", "message": "\ud83d\udee0 Using Gemini CLI to generate code for: WriterAgent"}
-{"timestamp": "2025-07-05T21:02:41.650920", "agent": "DevAgent", "message": "\u274c Gemini CLI failed: expected str, bytes or os.PathLike object, not NoneType"}
-{"timestamp": "2025-07-05T21:02:41.650920", "agent": "DevAgent", "message": "\u274c Gemini output looks invalid or empty."}
-{"timestamp": "2025-07-05T21:02:41.652060", "agent": "DevAgent", "message": "\u26a0\ufe0f Skipping agent creation."}
-{"timestamp": "2025-07-05T21:02:41.652060", "agent": "DevAgent", "message": "Agent finished execution."}
-{"timestamp": "2025-07-05T21:05:50.869661", "agent": "DevAgent", "message": "Agent started running."}
-{"timestamp": "2025-07-05T21:05:50.882220", "agent": "DevAgent", "message": "Goal: Create a WriterAgent that writes a motivational tweet using today's trending topics."}
-{"timestamp": "2025-07-05T21:05:50.882220", "agent": "DevAgent", "message": "\ud83d\udee0 Using Gemini CLI to generate code for: WriterAgent"}
-{"timestamp": "2025-07-05T21:05:50.883622", "agent": "DevAgent", "message": "\u274c Gemini CLI failed: expected str, bytes or os.PathLike object, not NoneType"}
-{"timestamp": "2025-07-05T21:05:50.884627", "agent": "DevAgent", "message": "\u274c Gemini output looks invalid or empty."}
-{"timestamp": "2025-07-05T21:05:50.884627", "agent": "DevAgent", "message": "\u26a0\ufe0f Skipping agent creation."}
-{"timestamp": "2025-07-05T21:05:50.885630", "agent": "DevAgent", "message": "Agent finished execution."}
-{"timestamp": "2025-07-05T21:10:06.713496", "agent": "DevAgent", "message": "Agent started running."}
-{"timestamp": "2025-07-05T21:10:06.724078", "agent": "DevAgent", "message": "Goal: Create a WriterAgent that writes a motivational tweet using today's trending topics."}
-{"timestamp": "2025-07-05T21:10:06.725179", "agent": "DevAgent", "message": "\ud83d\udd27 Gemini_CLI_path: None"}
-{"timestamp": "2025-07-05T21:10:06.726194", "agent": "DevAgent", "message": "\ud83d\udee0 Using Gemini CLI to generate code for: WriterAgent"}
-{"timestamp": "2025-07-05T21:10:06.726194", "agent": "DevAgent", "message": "\u274c Gemini CLI failed: expected str, bytes or os.PathLike object, not NoneType"}
-{"timestamp": "2025-07-05T21:10:06.727437", "agent": "DevAgent", "message": "\u274c Gemini output looks invalid or empty."}
-{"timestamp": "2025-07-05T21:10:06.727437", "agent": "DevAgent", "message": "\u26a0\ufe0f Skipping agent creation."}
-{"timestamp": "2025-07-05T21:10:06.728450", "agent": "DevAgent", "message": "Agent finished execution."}
-{"timestamp": "2025-07-05T21:12:09.921166", "agent": "DevAgent", "message": "Agent started running."}
-{"timestamp": "2025-07-05T21:12:09.930335", "agent": "DevAgent", "message": "Goal: "}
-{"timestamp": "2025-07-05T21:12:09.931358", "agent": "DevAgent", "message": "\ud83d\udd27 Gemini_CLI_path: None"}
-{"timestamp": "2025-07-05T21:12:09.932394", "agent": "DevAgent", "message": "\ud83d\udee0 Using Gemini CLI to generate code for: NewAgent"}
-{"timestamp": "2025-07-05T21:12:09.933415", "agent": "DevAgent", "message": "\u274c Gemini CLI failed: expected str, bytes or os.PathLike object, not NoneType"}
-{"timestamp": "2025-07-05T21:12:09.933415", "agent": "DevAgent", "message": "\u274c Gemini output looks invalid or empty."}
-{"timestamp": "2025-07-05T21:12:09.933415", "agent": "DevAgent", "message": "\u26a0\ufe0f Skipping agent creation."}
-{"timestamp": "2025-07-05T21:12:09.934772", "agent": "DevAgent", "message": "Agent finished execution."}
-{"timestamp": "2025-07-05T21:15:19.447494", "agent": "DevAgent", "message": "Agent started running."}
-{"timestamp": "2025-07-05T21:15:19.457821", "agent": "DevAgent", "message": "Goal: Create a WriterAgent that writes a motivational tweet using today's trending topics."}
-{"timestamp": "2025-07-05T21:15:19.457821", "agent": "DevAgent", "message": "\ud83d\udd27 Gemini_CLI_path: C:/Users/harsh/AppData/Roaming/npm/gemini.ps1"}
-{"timestamp": "2025-07-05T21:15:19.458826", "agent": "DevAgent", "message": "\ud83d\udee0 Using Gemini CLI to generate code for: WriterAgent"}
-{"timestamp": "2025-07-05T21:16:24.530158", "agent": "DevAgent", "message": "\ud83e\udde0 WriterAgent added to agents_map.json"}
-{"timestamp": "2025-07-05T21:16:24.530158", "agent": "DevAgent", "message": "\u2705 Agent created: WriterAgent"}
-{"timestamp": "2025-07-05T21:16:24.531258", "agent": "DevAgent", "message": "Agent finished execution."}
-{"timestamp": "2025-07-05T21:46:18.202041", "agent": "DevAgent", "message": "Agent started running."}
-{"timestamp": "2025-07-05T21:46:18.213375", "agent": "DevAgent", "message": "Goal: "}
-{"timestamp": "2025-07-05T21:46:18.214542", "agent": "DevAgent", "message": "\ud83d\udd27 Gemini_CLI_path: C:/Users/harsh/AppData/Roaming/npm/gemini.ps1"}
-{"timestamp": "2025-07-05T21:46:18.214542", "agent": "DevAgent", "message": "\u2692\ufe0fUsing Gemini CLI to generate code for: NewAgent"}
-{"timestamp": "2025-07-05T21:46:56.348354", "agent": "DevAgent", "message": "\u274c Could not detect file path from Gemini response."}
-{"timestamp": "2025-07-05T21:46:56.349366", "agent": "DevAgent", "message": "Agent finished execution."}
-{"timestamp": "2025-07-05T22:29:21.500497", "agent": "DevAgent", "message": "Agent started running."}
-{"timestamp": "2025-07-05T22:29:21.513885", "agent": "DevAgent", "message": "Goal: "}
-{"timestamp": "2025-07-05T22:29:21.514939", "agent": "DevAgent", "message": "\ud83d\udd27 Gemini_CLI: C:/Users/harsh/AppData/Roaming/npm/gemini.ps1"}
-{"timestamp": "2025-07-05T22:29:21.515946", "agent": "DevAgent", "message": "\u2692\ufe0fUsing Gemini_CLI to generate code for: NewAgent"}
-{"timestamp": "2025-07-05T22:30:09.931827", "agent": "DevAgent", "message": "\ud83d\udcc2 Detected agent file created: agents/newagent.py"}
-{"timestamp": "2025-07-05T22:30:09.939989", "agent": "DevAgent", "message": "\ud83e\udde0 Newagent added to agents_map.json"}
-{"timestamp": "2025-07-05T22:30:09.940998", "agent": "DevAgent", "message": "\u2705 Agent created: Newagent"}
-{"timestamp": "2025-07-05T22:30:09.942008", "agent": "DevAgent", "message": "Agent finished execution."}
-{"timestamp": "2025-07-06T11:11:40.858969", "agent": "DevAgent", "message": "Agent started running."}
-{"timestamp": "2025-07-06T11:11:40.869527", "agent": "DevAgent", "message": "Goal: Manual Mission Execution"}
-{"timestamp": "2025-07-06T11:11:40.870755", "agent": "DevAgent", "message": "\ud83d\udd27 Gemini_CLI: C:/Users/harsh/AppData/Roaming/npm/gemini.ps1"}
-{"timestamp": "2025-07-06T11:11:40.870755", "agent": "DevAgent", "message": "\u2692\ufe0fUsing Gemini_CLI to generate code for: NewAgent"}
-{"timestamp": "2025-07-06T11:13:33.378901", "agent": "DevAgent", "message": "\u274c Could not detect file path from Gemini response."}
-{"timestamp": "2025-07-06T11:13:33.379410", "agent": "DevAgent", "message": "Agent finished execution."}
-{"timestamp": "2025-07-06T11:28:53.404252", "agent": "DevAgent", "message": "Agent started running."}
-{"timestamp": "2025-07-06T11:28:53.420871", "agent": "DevAgent", "message": "Goal: Manual Mission Execution"}
-{"timestamp": "2025-07-06T11:28:53.421875", "agent": "DevAgent", "message": "\ud83d\udd27 Gemini_CLI: C:/Users/harsh/AppData/Roaming/npm/gemini.ps1"}
-{"timestamp": "2025-07-06T11:28:53.422873", "agent": "DevAgent", "message": "\u26a0\ufe0f No valid goal found. Skipping DevAgent."}
-{"timestamp": "2025-07-06T11:28:53.422873", "agent": "DevAgent", "message": "Agent finished execution."}
-{"timestamp": "2025-07-06T11:44:50.895560", "agent": "DevAgent", "message": "Agent started running."}
-{"timestamp": "2025-07-06T11:44:50.906914", "agent": "DevAgent", "message": "Goal: Create a WriterAgent that writes a motivational tweet using today's trending topics."}
-{"timestamp": "2025-07-06T11:44:50.906914", "agent": "DevAgent", "message": "\ud83d\udd27 Gemini_CLI: C:/Users/harsh/AppData/Roaming/npm/gemini.ps1"}
-{"timestamp": "2025-07-06T11:44:50.908418", "agent": "DevAgent", "message": "\u2692\ufe0fUsing Gemini_CLI to generate code for: WriterAgent"}
-{"timestamp": "2025-07-06T11:45:27.246338", "agent": "DevAgent", "message": "\u274c Could not detect file path from Gemini response."}
-{"timestamp": "2025-07-06T11:45:27.247355", "agent": "DevAgent", "message": "Agent finished execution."}
-{"timestamp": "2025-07-06T14:26:44.547427", "agent": "DevAgent", "message": "Agent started running."}
-{"timestamp": "2025-07-06T14:26:44.558726", "agent": "DevAgent", "message": "Goal: Create a WriterAgent that writes a motivational tweet using today's trending topics."}
-{"timestamp": "2025-07-06T14:26:44.558726", "agent": "DevAgent", "message": "\ud83d\udd27 Gemini_CLI: C:/Users/harsh/AppData/Roaming/npm/gemini.ps1"}
-{"timestamp": "2025-07-06T14:26:44.559733", "agent": "DevAgent", "message": "\u2692\ufe0fUsing Gemini_CLI to generate code for: WriterAgent"}
-{"timestamp": "2025-07-06T14:27:11.251395", "agent": "DevAgent", "message": "\u274c Agent is missing a valid __init__(self, name=...) constructor."}
-{"timestamp": "2025-07-06T14:27:11.252394", "agent": "DevAgent", "message": "\u26a0\ufe0f Skipping invalid agent output."}
-{"timestamp": "2025-07-06T14:27:11.252394", "agent": "DevAgent", "message": "Agent finished execution."}
-{"timestamp": "2025-07-06T14:41:37.721046", "agent": "DevAgent", "message": "Agent started running."}
-{"timestamp": "2025-07-06T14:41:37.731234", "agent": "DevAgent", "message": "Goal: Create a WriterAgent that writes a motivational tweet using today's trending topics."}
-{"timestamp": "2025-07-06T14:41:37.731234", "agent": "DevAgent", "message": "\ud83d\udd27 Gemini_CLI: C:/Users/harsh/AppData/Roaming/npm/gemini.ps1"}
-{"timestamp": "2025-07-06T14:41:37.732252", "agent": "DevAgent", "message": "\u2692\ufe0fUsing Gemini_CLI to generate code for: WriterAgent"}
-{"timestamp": "2025-07-06T14:42:16.267766", "agent": "DevAgent", "message": "\u274c Could not detect file path from Gemini response."}
-{"timestamp": "2025-07-06T14:42:16.268782", "agent": "DevAgent", "message": "Agent finished execution."}
-{"timestamp": "2025-07-06T15:01:48.515861", "agent": "DevAgent", "message": "Agent started running."}
-{"timestamp": "2025-07-06T15:01:48.525714", "agent": "DevAgent", "message": "\ud83d\udd27 Gemini_CLI: C:/Users/harsh/AppData/Roaming/npm/gemini.ps1"}
-{"timestamp": "2025-07-06T15:01:48.526717", "agent": "DevAgent", "message": "\u2692\ufe0fUsing Gemini_CLI to generate code for: WriterAgent"}
-{"timestamp": "2025-07-06T15:01:48.538257", "agent": "DevAgent", "message": "\u274c Gemini CLI failed: 'charmap' codec can't encode character '\\u2192' in position 152: character maps to <undefined>"}
-{"timestamp": "2025-07-06T15:01:48.539305", "agent": "DevAgent", "message": "Agent finished execution."}
-{"timestamp": "2025-07-06T15:06:42.863153", "agent": "DevAgent", "message": "Agent started running."}
-{"timestamp": "2025-07-06T15:06:42.873676", "agent": "DevAgent", "message": "\ud83d\udd27 Gemini_CLI: C:/Users/harsh/AppData/Roaming/npm/gemini.ps1"}
-{"timestamp": "2025-07-06T15:06:42.873676", "agent": "DevAgent", "message": "\u2692\ufe0fUsing Gemini_CLI to generate code for: WriterAgent"}
-{"timestamp": "2025-07-06T15:07:45.098581", "agent": "DevAgent", "message": "\u274c Forbidden API detected: http"}
-{"timestamp": "2025-07-06T15:07:45.099586", "agent": "DevAgent", "message": "\u26a0\ufe0f Skipping invalid agent output."}
-{"timestamp": "2025-07-06T15:07:45.100602", "agent": "DevAgent", "message": "Agent finished execution."}
-{"timestamp": "2025-07-06T15:10:02.345505", "agent": "DevAgent", "message": "Agent started running."}
-{"timestamp": "2025-07-06T15:10:02.355190", "agent": "DevAgent", "message": "\ud83d\udd27 Gemini_CLI: C:/Users/harsh/AppData/Roaming/npm/gemini.ps1"}
-{"timestamp": "2025-07-06T15:10:02.355190", "agent": "DevAgent", "message": "\u2692\ufe0fUsing Gemini_CLI to generate code for: WriterAgent"}
-{"timestamp": "2025-07-06T15:10:38.357765", "agent": "DevAgent", "message": "\u2705 Agent code saved to: agents/writeragent.py"}
-{"timestamp": "2025-07-06T15:10:38.358782", "agent": "DevAgent", "message": "\ud83e\udde0 WriterAgent added to agents_map.json"}
-{"timestamp": "2025-07-06T15:10:38.359800", "agent": "DevAgent", "message": "Agent finished execution."}
-{"timestamp": "2025-07-06T15:18:22.938602", "agent": "DevAgent", "message": "Agent started running."}
-{"timestamp": "2025-07-06T15:18:22.947759", "agent": "DevAgent", "message": "\ud83d\udd27 Gemini_CLI: C:/Users/harsh/AppData/Roaming/npm/gemini.ps1"}
-{"timestamp": "2025-07-06T15:18:22.948776", "agent": "DevAgent", "message": "\u2692\ufe0fUsing Gemini_CLI to generate code for: WriterAgent"}
-{"timestamp": "2025-07-06T15:18:59.353918", "agent": "DevAgent", "message": "\u2705 Agent code saved to: agents/writeragent.py"}
-{"timestamp": "2025-07-06T15:18:59.355997", "agent": "DevAgent", "message": "\ud83e\udde0 WriterAgent added to agents_map.json"}
-{"timestamp": "2025-07-06T15:18:59.355997", "agent": "DevAgent", "message": "Agent finished execution."}
-{"timestamp": "2025-07-06T15:19:52.850499", "agent": "DevAgent", "message": "Agent started running."}
-{"timestamp": "2025-07-06T15:19:52.867882", "agent": "DevAgent", "message": "\ud83d\udd27 Gemini_CLI: C:/Users/harsh/AppData/Roaming/npm/gemini.ps1"}
-{"timestamp": "2025-07-06T15:19:52.868879", "agent": "DevAgent", "message": "\u2692\ufe0fUsing Gemini_CLI to generate code for: WriterAgent"}
-{"timestamp": "2025-07-06T15:20:47.075267", "agent": "DevAgent", "message": "\u274c Forbidden API detected: requests"}
-{"timestamp": "2025-07-06T15:20:47.076289", "agent": "DevAgent", "message": "\u26a0\ufe0f Skipping invalid agent output."}
-{"timestamp": "2025-07-06T15:20:47.077330", "agent": "DevAgent", "message": "Agent finished execution."}
-{"timestamp": "2025-07-06T15:23:36.232532", "agent": "DevAgent", "message": "Agent started running."}
-{"timestamp": "2025-07-06T15:23:36.242855", "agent": "DevAgent", "message": "\ud83d\udd27 Gemini_CLI: C:/Users/harsh/AppData/Roaming/npm/gemini.ps1"}
-{"timestamp": "2025-07-06T15:23:36.243890", "agent": "DevAgent", "message": "\u2692\ufe0fUsing Gemini_CLI to generate code for: WriterAgent"}
-{"timestamp": "2025-07-06T15:24:34.738095", "agent": "DevAgent", "message": "\u2705 Agent code saved to: agents/writeragent.py"}
-{"timestamp": "2025-07-06T15:24:34.740194", "agent": "DevAgent", "message": "\ud83e\udde0 WriterAgent added to agents_map.json"}
-{"timestamp": "2025-07-06T15:24:34.740194", "agent": "DevAgent", "message": "Agent finished execution."}
-{"timestamp": "2025-07-06T15:25:12.879035", "agent": "DevAgent", "message": "Agent started running."}
-{"timestamp": "2025-07-06T15:25:12.891371", "agent": "DevAgent", "message": "\ud83d\udd27 Gemini_CLI: C:/Users/harsh/AppData/Roaming/npm/gemini.ps1"}
-{"timestamp": "2025-07-06T15:25:12.891371", "agent": "DevAgent", "message": "\u2692\ufe0fUsing Gemini_CLI to generate code for: WriterAgent"}
-{"timestamp": "2025-07-06T15:25:32.107723", "agent": "DevAgent", "message": "\u274c Gemini output is empty."}
-{"timestamp": "2025-07-06T15:25:32.108739", "agent": "DevAgent", "message": "Agent finished execution."}
-{"timestamp": "2025-07-06T15:39:45.773968", "agent": "DevAgent", "message": "Agent started running."}
-{"timestamp": "2025-07-06T15:39:45.783664", "agent": "DevAgent", "message": "\ud83d\udd27 Gemini_CLI: C:/Users/harsh/AppData/Roaming/npm/gemini.ps1"}
-{"timestamp": "2025-07-06T15:39:45.784668", "agent": "DevAgent", "message": "\u2692\ufe0fUsing Gemini_CLI to generate code for: WriterAgent"}
-{"timestamp": "2025-07-06T15:40:43.977553", "agent": "DevAgent", "message": "\u274c Agent is missing a valid __init__(self, name=...) constructor."}
-{"timestamp": "2025-07-06T15:40:43.978561", "agent": "DevAgent", "message": "\u26a0\ufe0f Skipping invalid agent output."}
-{"timestamp": "2025-07-06T15:40:43.979567", "agent": "DevAgent", "message": "Agent finished execution."}
-{"timestamp": "2025-07-06T16:32:23.962351", "agent": "DevAgent", "message": "Agent started running."}
-{"timestamp": "2025-07-06T16:32:23.971575", "agent": "DevAgent", "message": "Goal: Update WriterAgent to use AgentOSCore for all actions and improve the writing logic using current trending topics."}
-{"timestamp": "2025-07-06T16:32:23.972587", "agent": "DevAgent", "message": "\ud83d\udd27 Gemini_CLI: C:/Users/harsh/AppData/Roaming/npm/gemini.ps1"}
-{"timestamp": "2025-07-06T16:32:23.990583", "agent": "DevAgent", "message": "\u274c Gemini CLI failed: 'charmap' codec can't encode character '\\U0001f9e0' in position 2: character maps to <undefined>"}
-{"timestamp": "2025-07-06T16:32:23.991620", "agent": "DevAgent", "message": "Agent finished execution."}
-{"timestamp": "2025-07-06T17:00:12.329356", "agent": "DevAgent", "message": "Agent started running."}
-{"timestamp": "2025-07-06T17:00:12.339615", "agent": "DevAgent", "message": "Goal: Update WriterAgent to use AgentOSCore for all actions and improve the writing logic using current trending topics."}
-{"timestamp": "2025-07-06T17:00:12.340618", "agent": "DevAgent", "message": "Acting... (override in child class)"}
-{"timestamp": "2025-07-06T17:00:12.340618", "agent": "DevAgent", "message": "Agent finished execution."}
-{"timestamp": "2025-07-06T17:01:07.494131", "agent": "DevAgent", "message": "Agent started running."}
-{"timestamp": "2025-07-06T17:01:07.504323", "agent": "DevAgent", "message": "Goal: I want you to fix this error in Writer Agent : Failed to import WriterAgent from agents.writeragent: cannot import name 'Agent' from 'agents.agent_shell' (c:\\Users\\harsh\\OneDrive\\Desktop\\AgentOS\\agents\\agent_shell.py)"}
-{"timestamp": "2025-07-06T17:01:07.505368", "agent": "DevAgent", "message": "Acting... (override in child class)"}
-{"timestamp": "2025-07-06T17:01:07.505368", "agent": "DevAgent", "message": "Agent finished execution."}
-{"timestamp": "2025-07-06T17:02:21.145200", "agent": "DevAgent", "message": "Agent started running."}
-{"timestamp": "2025-07-06T17:02:21.155507", "agent": "DevAgent", "message": "Goal: I want you to fix this error in Writer Agent : Failed to import WriterAgent from agents.writeragent: cannot import name 'Agent' from 'agents.agent_shell' (c:\\Users\\harsh\\OneDrive\\Desktop\\AgentOS\\agents\\agent_shell.py)"}
-{"timestamp": "2025-07-06T17:02:21.155507", "agent": "DevAgent", "message": "Acting... (override in child class)"}
-{"timestamp": "2025-07-06T17:02:21.156543", "agent": "DevAgent", "message": "Agent finished execution."}
-{"timestamp": "2025-07-07T11:42:51.780951", "agent": "DevAgent", "message": "Agent started running."}
-{"timestamp": "2025-07-07T11:42:51.798758", "agent": "DevAgent", "message": "Goal: Create a Writer_Agent that writes a motivational tweet using todays trending topics (Use Chrome and The Harshal Main Profile)"}
-{"timestamp": "2025-07-07T11:42:51.799757", "agent": "DevAgent", "message": "Acting... (override in child class)"}
-{"timestamp": "2025-07-07T11:42:51.800757", "agent": "DevAgent", "message": "Agent finished execution."}
-{"timestamp": "2025-07-07T13:23:50.995049", "agent": "DevAgent", "message": "Agent started running."}
-{"timestamp": "2025-07-07T13:23:51.005083", "agent": "DevAgent", "message": "Goal: Create a WriterAgent that generates a motivational tweet using trending topics and types it into the screen using the Runtime Layer."}
-{"timestamp": "2025-07-07T13:23:51.006147", "agent": "DevAgent", "message": "\ud83d\udd27 Gemini_CLI: C:/Users/harsh/AppData/Roaming/npm/gemini.ps1"}
-{"timestamp": "2025-07-07T13:23:51.025744", "agent": "DevAgent", "message": "\u274c Gemini CLI failed: 'charmap' codec can't encode character '\\U0001f9e0' in position 2: character maps to <undefined>"}
-{"timestamp": "2025-07-07T13:23:51.026756", "agent": "DevAgent", "message": "Agent finished execution."}
-{"timestamp": "2025-07-07T13:34:27.534243", "agent": "DevAgent", "message": "Agent started running."}
-{"timestamp": "2025-07-07T13:34:27.544214", "agent": "DevAgent", "message": "Goal: Create a WriterAgent that generates a motivational tweet using trending topics and types it into the screen using the Runtime Layer."}
-{"timestamp": "2025-07-07T13:34:27.545218", "agent": "DevAgent", "message": "\ud83d\udd27 Gemini_CLI: C:/Users/harsh/AppData/Roaming/npm/gemini.ps1"}
-{"timestamp": "2025-07-07T13:35:08.020045", "agent": "DevAgent", "message": "\u274c Agent is missing a valid __init__(self, name=...) constructor."}
-{"timestamp": "2025-07-07T13:35:08.021059", "agent": "DevAgent", "message": "Agent finished execution."}
-{"timestamp": "2025-07-07T13:55:49.738470", "agent": "DevAgent", "message": "Agent started running."}
-{"timestamp": "2025-07-07T13:55:49.747895", "agent": "DevAgent", "message": "Goal: Manual Mission Execution"}
-{"timestamp": "2025-07-07T13:55:49.748901", "agent": "DevAgent", "message": "\ud83d\udd27 Gemini_CLI: C:/Users/harsh/AppData/Roaming/npm/gemini.ps1"}
-{"timestamp": "2025-07-07T13:57:41.187037", "agent": "DevAgent", "message": "\u274c Agent is missing a valid __init__(self, name=...) constructor."}
-{"timestamp": "2025-07-07T13:57:41.187037", "agent": "DevAgent", "message": "Agent finished execution."}
-{"timestamp": "2025-07-07T21:17:05.317874", "agent": "DevAgent", "message": "Agent started running."}
-{"timestamp": "2025-07-07T21:17:05.332184", "agent": "DevAgent", "message": "Goal: Manual Mission Execution"}
-{"timestamp": "2025-07-07T21:17:05.333191", "agent": "DevAgent", "message": "\u26a0\ufe0f No valid goal found. Skipping DevAgent."}
-{"timestamp": "2025-07-07T21:17:05.333191", "agent": "DevAgent", "message": "Agent finished execution."}
-{"timestamp": "2025-07-07T22:12:39.292181", "agent": "DevAgent", "message": "Agent started running."}
-{"timestamp": "2025-07-07T22:12:39.301686", "agent": "DevAgent", "message": "Goal: Manual Mission Execution"}
-{"timestamp": "2025-07-07T22:12:39.303075", "agent": "DevAgent", "message": "\u26a0\ufe0f No valid goal found. Skipping DevAgent."}
-{"timestamp": "2025-07-07T22:12:39.303686", "agent": "DevAgent", "message": "Agent finished execution."}
-{"timestamp": "2025-07-08T00:27:39.758421", "agent": "DevAgent", "message": "Agent started running."}
-{"timestamp": "2025-07-08T00:27:39.769457", "agent": "DevAgent", "message": "Goal: Manual Mission Execution"}
-{"timestamp": "2025-07-08T00:27:39.770468", "agent": "DevAgent", "message": "\u26a0\ufe0f No valid goal found. Skipping DevAgent."}
-{"timestamp": "2025-07-08T00:27:39.770468", "agent": "DevAgent", "message": "Agent finished execution."}
-{"timestamp": "2025-07-08T00:31:52.656468", "agent": "DevAgent", "message": "Agent started running."}
-{"timestamp": "2025-07-08T00:31:52.667728", "agent": "DevAgent", "message": "Goal: Manual Mission Execution"}
-{"timestamp": "2025-07-08T00:31:52.668729", "agent": "DevAgent", "message": "\u26a0\ufe0f No valid goal found. Skipping DevAgent."}
-{"timestamp": "2025-07-08T00:31:52.668729", "agent": "DevAgent", "message": "Agent finished execution."}
-{"timestamp": "2025-07-09T13:41:33.704366", "agent": "DevAgent", "message": "Agent started running."}
-{"timestamp": "2025-07-09T13:41:33.717953", "agent": "DevAgent", "message": "Goal: Manual Mission Execution"}
-{"timestamp": "2025-07-09T13:41:33.718968", "agent": "DevAgent", "message": "\u26a0\ufe0f No valid goal found. Skipping DevAgent."}
-{"timestamp": "2025-07-09T13:41:33.720042", "agent": "DevAgent", "message": "Agent finished execution."}
-{"timestamp": "2025-07-09T13:44:39.872958", "agent": "DevAgent", "message": "Agent started running."}
-{"timestamp": "2025-07-09T13:44:39.883427", "agent": "DevAgent", "message": "Goal: Manual Mission Execution"}
-{"timestamp": "2025-07-09T13:44:39.885541", "agent": "DevAgent", "message": "\u26a0\ufe0f No valid goal found. Skipping DevAgent."}
-{"timestamp": "2025-07-09T13:44:39.885541", "agent": "DevAgent", "message": "Agent finished execution."}
-{"timestamp": "2025-07-09T14:33:40.229138", "agent": "DevAgent", "message": "Agent started running."}
-{"timestamp": "2025-07-09T14:33:40.239642", "agent": "DevAgent", "message": "Goal: Manual Mission Execution"}
-{"timestamp": "2025-07-09T14:33:40.240648", "agent": "DevAgent", "message": "\u26a0\ufe0f No valid goal found. Skipping DevAgent."}
-{"timestamp": "2025-07-09T14:33:40.241696", "agent": "DevAgent", "message": "Agent finished execution."}
-{"timestamp": "2025-07-09T15:10:54.110125", "agent": "DevAgent", "message": "Agent started running."}
-{"timestamp": "2025-07-09T15:10:54.120350", "agent": "DevAgent", "message": "Goal: Manual Mission Execution"}
-{"timestamp": "2025-07-09T15:10:54.122390", "agent": "DevAgent", "message": "\u26a0\ufe0f No valid goal found. Skipping DevAgent."}
-{"timestamp": "2025-07-09T15:10:54.122390", "agent": "DevAgent", "message": "Agent finished execution."}
-{"timestamp": "2025-07-09T16:09:24.557293", "agent": "DevAgent", "message": "Agent started running."}
-{"timestamp": "2025-07-09T16:09:24.568128", "agent": "DevAgent", "message": "Goal: Manual Mission Execution"}
-{"timestamp": "2025-07-09T16:09:24.569503", "agent": "DevAgent", "message": "\u26a0\ufe0f No valid goal found. Skipping DevAgent."}
-{"timestamp": "2025-07-09T16:09:24.570512", "agent": "DevAgent", "message": "Agent finished execution."}
-{"timestamp": "2025-07-10T13:08:11.216408", "agent": "DevAgent", "message": "Agent started running."}
-{"timestamp": "2025-07-10T13:08:11.226816", "agent": "DevAgent", "message": "Goal: Manual Mission Execution"}
-{"timestamp": "2025-07-10T13:08:11.228842", "agent": "DevAgent", "message": "\u26a0\ufe0f No valid goal found. Skipping DevAgent."}
-{"timestamp": "2025-07-10T13:08:11.228842", "agent": "DevAgent", "message": "Agent finished execution."}
-{"timestamp": "2025-07-10T13:35:07.192898", "agent": "DevAgent", "message": "Agent started running."}
-{"timestamp": "2025-07-10T13:35:07.204430", "agent": "DevAgent", "message": "Goal: Manual Mission Execution"}
-{"timestamp": "2025-07-10T13:35:07.205430", "agent": "DevAgent", "message": "\u26a0\ufe0f No valid goal found. Skipping DevAgent."}
-{"timestamp": "2025-07-10T13:35:07.205430", "agent": "DevAgent", "message": "Agent finished execution."}
-{"timestamp": "2025-07-10T13:48:33.823447", "agent": "DevAgent", "message": "Agent started running."}
-{"timestamp": "2025-07-10T13:48:33.833130", "agent": "DevAgent", "message": "Goal: Manual Mission Execution"}
-{"timestamp": "2025-07-10T13:48:33.835644", "agent": "DevAgent", "message": "\u26a0\ufe0f No valid goal found. Skipping DevAgent."}
-{"timestamp": "2025-07-10T13:48:33.836790", "agent": "DevAgent", "message": "Agent finished execution."}
-{"timestamp": "2025-07-10T13:53:54.055380", "agent": "DevAgent", "message": "Agent started running."}
-{"timestamp": "2025-07-10T13:53:54.065624", "agent": "DevAgent", "message": "Goal: Manual Mission Execution"}
-{"timestamp": "2025-07-10T13:53:54.067129", "agent": "DevAgent", "message": "\u26a0\ufe0f No valid goal found. Skipping DevAgent."}
-{"timestamp": "2025-07-10T13:53:54.067660", "agent": "DevAgent", "message": "Agent finished execution."}
-{"timestamp": "2025-07-10T14:01:15.544008", "agent": "DevAgent", "message": "Agent started running."}
-{"timestamp": "2025-07-10T14:01:15.554378", "agent": "DevAgent", "message": "Goal: Manual Mission Execution"}
-{"timestamp": "2025-07-10T14:01:15.555404", "agent": "DevAgent", "message": "\u26a0\ufe0f No valid goal found. Skipping DevAgent."}
-{"timestamp": "2025-07-10T14:01:15.556414", "agent": "DevAgent", "message": "Agent finished execution."}
-{"timestamp": "2025-07-10T14:05:03.657075", "agent": "DevAgent", "message": "Agent started running."}
-{"timestamp": "2025-07-10T14:05:03.667079", "agent": "DevAgent", "message": "Goal: Manual Mission Execution"}
-{"timestamp": "2025-07-10T14:05:03.668606", "agent": "DevAgent", "message": "\u26a0\ufe0f No valid goal found. Skipping DevAgent."}
-{"timestamp": "2025-07-10T14:05:03.670669", "agent": "DevAgent", "message": "Agent finished execution."}
-{"timestamp": "2025-07-10T14:14:59.272315", "agent": "DevAgent", "message": "Agent started running."}
-{"timestamp": "2025-07-10T14:14:59.283993", "agent": "DevAgent", "message": "Goal: Manual Mission Execution"}
-{"timestamp": "2025-07-10T14:14:59.285166", "agent": "DevAgent", "message": "\u26a0\ufe0f No valid goal found. Skipping DevAgent."}
-{"timestamp": "2025-07-10T14:14:59.286169", "agent": "DevAgent", "message": "Agent finished execution."}
-{"timestamp": "2025-07-10T14:40:40.445710", "agent": "DevAgent", "message": "Agent started running."}
-{"timestamp": "2025-07-10T14:40:40.456941", "agent": "DevAgent", "message": "Goal: Manual Mission Execution"}
-{"timestamp": "2025-07-10T14:40:40.457960", "agent": "DevAgent", "message": "\u26a0\ufe0f No valid goal found. Skipping DevAgent."}
-{"timestamp": "2025-07-10T14:40:40.459467", "agent": "DevAgent", "message": "Agent finished execution."}
-{"timestamp": "2025-07-10T15:13:08.285428", "agent": "DevAgent", "message": "Agent started running."}
-{"timestamp": "2025-07-10T15:13:08.294714", "agent": "DevAgent", "message": "Goal: Manual Mission Execution"}
-{"timestamp": "2025-07-10T15:13:08.295717", "agent": "DevAgent", "message": "\u26a0\ufe0f No valid goal found. Skipping DevAgent."}
-{"timestamp": "2025-07-10T15:13:08.297111", "agent": "DevAgent", "message": "Agent finished execution."}
-{"timestamp": "2025-07-10T15:21:38.748581", "agent": "DevAgent", "message": "Agent started running."}
-{"timestamp": "2025-07-10T15:21:38.759729", "agent": "DevAgent", "message": "Goal: Manual Mission Execution"}
-{"timestamp": "2025-07-10T15:21:38.761978", "agent": "DevAgent", "message": "\u26a0\ufe0f No valid goal found. Skipping DevAgent."}
-{"timestamp": "2025-07-10T15:21:38.761978", "agent": "DevAgent", "message": "Agent finished execution."}
-{"timestamp": "2025-07-10T15:37:57.285770", "agent": "DevAgent", "message": "Agent started running."}
-{"timestamp": "2025-07-10T15:37:57.296792", "agent": "DevAgent", "message": "Goal: Manual Mission Execution"}
-{"timestamp": "2025-07-10T15:37:57.296792", "agent": "DevAgent", "message": "\u26a0\ufe0f No valid goal found. Skipping DevAgent."}
-{"timestamp": "2025-07-10T15:37:57.299117", "agent": "DevAgent", "message": "Agent finished execution."}
-{"timestamp": "2025-07-10T15:53:08.667673", "agent": "DevAgent", "message": "Agent started running."}
-{"timestamp": "2025-07-10T15:53:08.677838", "agent": "DevAgent", "message": "Goal: Manual Mission Execution"}
-{"timestamp": "2025-07-10T15:53:08.679943", "agent": "DevAgent", "message": "\u26a0\ufe0f No valid goal found. Skipping DevAgent."}
-{"timestamp": "2025-07-10T15:53:08.680997", "agent": "DevAgent", "message": "Agent finished execution."}
-{"timestamp": "2025-07-10T16:07:24.213721", "agent": "DevAgent", "message": "Agent started running."}
-{"timestamp": "2025-07-10T16:07:24.223963", "agent": "DevAgent", "message": "Goal: Manual Mission Execution"}
-{"timestamp": "2025-07-10T16:07:24.224968", "agent": "DevAgent", "message": "\u26a0\ufe0f No valid goal found. Skipping DevAgent."}
-{"timestamp": "2025-07-10T16:07:24.224968", "agent": "DevAgent", "message": "Agent finished execution."}
-{"timestamp": "2025-07-10T16:22:23.338859", "agent": "DevAgent", "message": "Agent started running."}
-{"timestamp": "2025-07-10T16:22:23.349989", "agent": "DevAgent", "message": "Goal: Manual Mission Execution"}
-{"timestamp": "2025-07-10T16:22:23.353103", "agent": "DevAgent", "message": "\u26a0\ufe0f No valid goal found. Skipping DevAgent."}
-{"timestamp": "2025-07-10T16:22:23.354100", "agent": "DevAgent", "message": "Agent finished execution."}
-{"timestamp": "2025-07-10T16:36:51.245186", "agent": "DevAgent", "message": "Agent started running."}
-{"timestamp": "2025-07-10T16:36:51.255399", "agent": "DevAgent", "message": "Goal: Manual Mission Execution"}
-{"timestamp": "2025-07-10T16:36:51.257416", "agent": "DevAgent", "message": "\u26a0\ufe0f No valid goal found. Skipping DevAgent."}
-{"timestamp": "2025-07-10T16:36:51.257922", "agent": "DevAgent", "message": "Agent finished execution."}
-{"timestamp": "2025-07-10T16:53:39.198832", "agent": "DevAgent", "message": "Agent started running."}
-{"timestamp": "2025-07-10T16:53:39.210030", "agent": "DevAgent", "message": "Goal: Manual Mission Execution"}
-{"timestamp": "2025-07-10T16:53:39.212080", "agent": "DevAgent", "message": "\u26a0\ufe0f No valid goal found. Skipping DevAgent."}
-{"timestamp": "2025-07-10T16:53:39.213086", "agent": "DevAgent", "message": "Agent finished execution."}
-{"timestamp": "2025-07-10T17:07:18.282091", "agent": "DevAgent", "message": "Agent started running."}
-{"timestamp": "2025-07-10T17:07:18.293733", "agent": "DevAgent", "message": "Goal: Manual Mission Execution"}
-{"timestamp": "2025-07-10T17:07:18.295117", "agent": "DevAgent", "message": "\u26a0\ufe0f No valid goal found. Skipping DevAgent."}
-{"timestamp": "2025-07-10T17:07:18.296622", "agent": "DevAgent", "message": "Agent finished execution."}
-{"timestamp": "2025-07-10T17:22:31.128338", "agent": "DevAgent", "message": "Agent started running."}
-{"timestamp": "2025-07-10T17:22:31.138889", "agent": "DevAgent", "message": "Goal: Manual Mission Execution"}
-{"timestamp": "2025-07-10T17:22:31.140726", "agent": "DevAgent", "message": "\u26a0\ufe0f No valid goal found. Skipping DevAgent."}
-{"timestamp": "2025-07-10T17:22:31.142110", "agent": "DevAgent", "message": "Agent finished execution."}
-{"timestamp": "2025-07-12T13:46:55.372922", "agent": "DevAgent", "message": "Agent started running."}
-{"timestamp": "2025-07-12T13:46:55.375003", "agent": "DevAgent", "message": "Goal: Manual Mission Execution"}
-{"timestamp": "2025-07-12T13:46:55.376004", "agent": "DevAgent", "message": "\u26a0\ufe0f No valid goal found. Skipping DevAgent."}
-{"timestamp": "2025-07-12T13:46:55.377004", "agent": "DevAgent", "message": "Agent finished execution."}
-{"timestamp": "2025-07-12T13:58:04.404809", "agent": "DevAgent", "message": "Agent started running."}
-{"timestamp": "2025-07-12T13:58:04.404809", "agent": "DevAgent", "message": "Goal: Manual Mission Execution"}
-{"timestamp": "2025-07-12T13:58:04.406114", "agent": "DevAgent", "message": "\u26a0\ufe0f No valid goal found. Skipping DevAgent."}
-{"timestamp": "2025-07-12T13:58:04.407385", "agent": "DevAgent", "message": "Agent finished execution."}
-{"timestamp": "2025-07-12T14:02:16.524384", "agent": "DevAgent", "message": "Agent started running."}
-{"timestamp": "2025-07-12T14:02:16.525888", "agent": "DevAgent", "message": "Goal: Manual Mission Execution"}
-{"timestamp": "2025-07-12T14:02:16.526971", "agent": "DevAgent", "message": "\u26a0\ufe0f No valid goal found. Skipping DevAgent."}
-{"timestamp": "2025-07-12T14:02:16.528123", "agent": "DevAgent", "message": "Agent finished execution."}
-{"timestamp": "2025-07-12T14:45:33.046110", "agent": "DevAgent", "message": "Agent started running."}
-{"timestamp": "2025-07-12T14:45:33.047614", "agent": "DevAgent", "message": "Goal: Manual Mission Execution"}
-{"timestamp": "2025-07-12T14:45:33.048623", "agent": "DevAgent", "message": "\u26a0\ufe0f No valid goal found. Skipping DevAgent."}
-{"timestamp": "2025-07-12T14:45:33.049634", "agent": "DevAgent", "message": "Agent finished execution."}
-{"timestamp": "2025-07-12T14:55:38.334989", "agent": "DevAgent", "message": "Agent started running."}
-{"timestamp": "2025-07-12T14:55:38.336003", "agent": "DevAgent", "message": "Goal: Manual Mission Execution"}
-{"timestamp": "2025-07-12T14:55:38.337018", "agent": "DevAgent", "message": "\u26a0\ufe0f No valid goal found. Skipping DevAgent."}
-{"timestamp": "2025-07-12T14:55:38.338524", "agent": "DevAgent", "message": "Agent finished execution."}
-{"timestamp": "2025-07-12T15:03:10.804401", "agent": "DevAgent", "message": "Agent started running."}
-{"timestamp": "2025-07-12T15:03:10.805414", "agent": "DevAgent", "message": "Goal: Manual Mission Execution"}
-{"timestamp": "2025-07-12T15:03:10.806480", "agent": "DevAgent", "message": "\u26a0\ufe0f No valid goal found. Skipping DevAgent."}
-{"timestamp": "2025-07-12T15:03:10.807987", "agent": "DevAgent", "message": "Agent finished execution."}
-{"timestamp": "2025-07-12T15:14:18.720317", "agent": "DevAgent", "message": "Agent started running."}
-{"timestamp": "2025-07-12T15:14:18.721322", "agent": "DevAgent", "message": "Goal: Manual Mission Execution"}
-{"timestamp": "2025-07-12T15:14:18.723328", "agent": "DevAgent", "message": "\u26a0\ufe0f No valid goal found. Skipping DevAgent."}
-{"timestamp": "2025-07-12T15:14:18.723328", "agent": "DevAgent", "message": "Agent finished execution."}
-{"timestamp": "2025-07-12T15:17:35.839508", "agent": "DevAgent", "message": "Agent started running."}
-{"timestamp": "2025-07-12T15:17:35.841678", "agent": "DevAgent", "message": "Goal: Manual Mission Execution"}
-{"timestamp": "2025-07-12T15:17:35.842711", "agent": "DevAgent", "message": "\u26a0\ufe0f No valid goal found. Skipping DevAgent."}
-{"timestamp": "2025-07-12T15:17:35.844220", "agent": "DevAgent", "message": "Agent finished execution."}
-{"timestamp": "2025-07-12T15:31:54.985398", "agent": "DevAgent", "message": "Agent started running."}
-{"timestamp": "2025-07-12T15:31:54.987050", "agent": "DevAgent", "message": "Goal: Manual Mission Execution"}
-{"timestamp": "2025-07-12T15:31:54.988553", "agent": "DevAgent", "message": "\u26a0\ufe0f No valid goal found. Skipping DevAgent."}
-{"timestamp": "2025-07-12T15:31:54.988553", "agent": "DevAgent", "message": "Agent finished execution."}
-{"timestamp": "2025-07-12T15:34:18.939335", "agent": "DevAgent", "message": "Agent started running."}
-{"timestamp": "2025-07-12T15:34:18.940341", "agent": "DevAgent", "message": "Goal: Manual Mission Execution"}
-{"timestamp": "2025-07-12T15:34:18.942435", "agent": "DevAgent", "message": "\u26a0\ufe0f No valid goal found. Skipping DevAgent."}
-{"timestamp": "2025-07-12T15:34:18.943454", "agent": "DevAgent", "message": "Agent finished execution."}
-{"timestamp": "2025-07-12T15:37:57.346330", "agent": "DevAgent", "message": "Agent started running."}
-{"timestamp": "2025-07-12T15:37:57.347338", "agent": "DevAgent", "message": "Goal: Manual Mission Execution"}
-{"timestamp": "2025-07-12T15:37:57.348847", "agent": "DevAgent", "message": "\u26a0\ufe0f No valid goal found. Skipping DevAgent."}
-{"timestamp": "2025-07-12T15:37:57.348847", "agent": "DevAgent", "message": "Agent finished execution."}
+{"timestamp": "2025-07-13T22:44:58.279611", "agent": "DevAgent", "message": "Agent started running."}
+{"timestamp": "2025-07-13T22:44:58.280618", "agent": "DevAgent", "message": "Goal: Manual Mission Execution"}
+{"timestamp": "2025-07-13T22:44:58.282671", "agent": "DevAgent", "message": "\u26a0\ufe0f No valid goal found. Skipping DevAgent."}
+{"timestamp": "2025-07-13T22:44:58.283680", "agent": "DevAgent", "message": "Agent finished execution."}
+{"timestamp": "2025-07-13T22:54:52.807788", "agent": "DevAgent", "message": "Agent started running."}
+{"timestamp": "2025-07-13T22:54:52.808803", "agent": "DevAgent", "message": "Goal: Manual Mission Execution"}
+{"timestamp": "2025-07-13T22:54:52.809814", "agent": "DevAgent", "message": "\u26a0\ufe0f No valid goal found. Skipping DevAgent."}
+{"timestamp": "2025-07-13T22:54:52.810854", "agent": "DevAgent", "message": "Agent finished execution."}
+{"timestamp": "2025-07-13T23:12:39.561250", "agent": "DevAgent", "message": "Agent started running."}
+{"timestamp": "2025-07-13T23:12:39.563787", "agent": "DevAgent", "message": "Goal: Manual Mission Execution"}
+{"timestamp": "2025-07-13T23:12:39.564794", "agent": "DevAgent", "message": "\u26a0\ufe0f No valid goal found. Skipping DevAgent."}
+{"timestamp": "2025-07-13T23:12:39.564794", "agent": "DevAgent", "message": "Agent finished execution."}
+{"timestamp": "2025-07-13T23:25:50.081307", "agent": "DevAgent", "message": "Agent started running."}
+{"timestamp": "2025-07-13T23:25:50.082314", "agent": "DevAgent", "message": "Goal: Manual Mission Execution"}
+{"timestamp": "2025-07-13T23:25:50.082355", "agent": "DevAgent", "message": "\u26a0\ufe0f No valid goal found. Skipping DevAgent."}
+{"timestamp": "2025-07-13T23:25:50.083359", "agent": "DevAgent", "message": "Agent finished execution."}
+{"timestamp": "2025-07-13T23:34:12.889881", "agent": "DevAgent", "message": "Agent started running."}
+{"timestamp": "2025-07-13T23:34:12.889881", "agent": "DevAgent", "message": "Goal: Manual Mission Execution"}
+{"timestamp": "2025-07-13T23:34:12.889881", "agent": "DevAgent", "message": "\u26a0\ufe0f No valid goal found. Skipping DevAgent."}
+{"timestamp": "2025-07-13T23:34:12.892066", "agent": "DevAgent", "message": "Agent finished execution."}
+{"timestamp": "2025-07-13T23:39:12.810114", "agent": "DevAgent", "message": "Agent started running."}
+{"timestamp": "2025-07-13T23:39:12.811129", "agent": "DevAgent", "message": "Goal: Manual Mission Execution"}
+{"timestamp": "2025-07-13T23:39:12.812144", "agent": "DevAgent", "message": "\u26a0\ufe0f No valid goal found. Skipping DevAgent."}
+{"timestamp": "2025-07-13T23:39:12.812941", "agent": "DevAgent", "message": "Agent finished execution."}
+{"timestamp": "2025-07-13T23:43:38.081887", "agent": "DevAgent", "message": "Agent started running."}
+{"timestamp": "2025-07-13T23:43:38.082894", "agent": "DevAgent", "message": "Goal: Manual Mission Execution"}
+{"timestamp": "2025-07-13T23:43:38.083906", "agent": "DevAgent", "message": "\u26a0\ufe0f No valid goal found. Skipping DevAgent."}
+{"timestamp": "2025-07-13T23:43:38.083906", "agent": "DevAgent", "message": "Agent finished execution."}
+{"timestamp": "2025-07-13T23:50:25.010736", "agent": "DevAgent", "message": "Agent started running."}
+{"timestamp": "2025-07-13T23:50:25.011752", "agent": "DevAgent", "message": "Goal: Manual Mission Execution"}
+{"timestamp": "2025-07-13T23:50:25.013786", "agent": "DevAgent", "message": "\u26a0\ufe0f No valid goal found. Skipping DevAgent."}
+{"timestamp": "2025-07-13T23:50:25.013786", "agent": "DevAgent", "message": "Agent finished execution."}
+{"timestamp": "2025-07-13T23:59:43.803531", "agent": "DevAgent", "message": "Agent started running."}
+{"timestamp": "2025-07-13T23:59:43.803531", "agent": "DevAgent", "message": "Goal: Manual Mission Execution"}
+{"timestamp": "2025-07-13T23:59:43.805963", "agent": "DevAgent", "message": "\u26a0\ufe0f No valid goal found. Skipping DevAgent."}
+{"timestamp": "2025-07-13T23:59:43.806970", "agent": "DevAgent", "message": "Agent finished execution."}
+{"timestamp": "2025-07-14T00:06:43.910257", "agent": "DevAgent", "message": "Agent started running."}
+{"timestamp": "2025-07-14T00:06:43.911387", "agent": "DevAgent", "message": "Goal: Manual Mission Execution"}
+{"timestamp": "2025-07-14T00:06:43.912736", "agent": "DevAgent", "message": "\u26a0\ufe0f No valid goal found. Skipping DevAgent."}
+{"timestamp": "2025-07-14T00:06:43.912736", "agent": "DevAgent", "message": "Agent finished execution."}
+{"timestamp": "2025-07-14T00:10:46.445731", "agent": "DevAgent", "message": "Agent started running."}
+{"timestamp": "2025-07-14T00:10:46.446736", "agent": "DevAgent", "message": "Goal: Manual Mission Execution"}
+{"timestamp": "2025-07-14T00:10:46.447747", "agent": "DevAgent", "message": "\u26a0\ufe0f No valid goal found. Skipping DevAgent."}
+{"timestamp": "2025-07-14T00:10:46.449251", "agent": "DevAgent", "message": "Agent finished execution."}
+{"timestamp": "2025-07-14T00:11:18.540928", "agent": "DevAgent", "message": "Agent started running."}
+{"timestamp": "2025-07-14T00:11:18.541932", "agent": "DevAgent", "message": "Goal: Manual Mission Execution"}
+{"timestamp": "2025-07-14T00:11:18.542983", "agent": "DevAgent", "message": "\u26a0\ufe0f No valid goal found. Skipping DevAgent."}
+{"timestamp": "2025-07-14T00:11:18.542983", "agent": "DevAgent", "message": "Agent finished execution."}
+{"timestamp": "2025-07-14T00:11:41.179889", "agent": "DevAgent", "message": "Agent started running."}
+{"timestamp": "2025-07-14T00:11:41.182430", "agent": "DevAgent", "message": "Goal: Manual Mission Execution"}
+{"timestamp": "2025-07-14T00:11:41.183446", "agent": "DevAgent", "message": "\u26a0\ufe0f No valid goal found. Skipping DevAgent."}
+{"timestamp": "2025-07-14T00:11:41.184844", "agent": "DevAgent", "message": "Agent finished execution."}
+{"timestamp": "2025-07-14T00:14:24.636376", "agent": "DevAgent", "message": "Agent started running."}
+{"timestamp": "2025-07-14T00:14:24.638512", "agent": "DevAgent", "message": "Goal: Manual Mission Execution"}
+{"timestamp": "2025-07-14T00:14:24.640696", "agent": "DevAgent", "message": "\u26a0\ufe0f No valid goal found. Skipping DevAgent."}
+{"timestamp": "2025-07-14T00:14:24.640696", "agent": "DevAgent", "message": "Agent finished execution."}
+{"timestamp": "2025-07-14T15:57:32.713948", "agent": "DevAgent", "message": "Agent started running."}
+{"timestamp": "2025-07-14T15:57:32.716014", "agent": "DevAgent", "message": "Goal: Manual Mission Execution"}
+{"timestamp": "2025-07-14T15:57:32.717025", "agent": "DevAgent", "message": "\u26a0\ufe0f No valid goal found. Skipping DevAgent."}
+{"timestamp": "2025-07-14T15:57:32.718042", "agent": "DevAgent", "message": "Agent finished execution."}
+{"timestamp": "2025-07-14T16:05:00.851852", "agent": "DevAgent", "message": "Agent started running."}
+{"timestamp": "2025-07-14T16:05:00.852866", "agent": "DevAgent", "message": "Goal: Manual Mission Execution"}
+{"timestamp": "2025-07-14T16:05:00.853881", "agent": "DevAgent", "message": "\u26a0\ufe0f No valid goal found. Skipping DevAgent."}
+{"timestamp": "2025-07-14T16:05:00.854887", "agent": "DevAgent", "message": "Agent finished execution."}
+{"timestamp": "2025-07-14T17:04:26.687201", "agent": "DevAgent", "message": "Agent started running."}
+{"timestamp": "2025-07-14T17:04:26.687201", "agent": "DevAgent", "message": "Goal: Manual Mission Execution"}
+{"timestamp": "2025-07-14T17:04:26.689692", "agent": "DevAgent", "message": "\u26a0\ufe0f No valid goal found. Skipping DevAgent."}
+{"timestamp": "2025-07-14T17:04:26.689692", "agent": "DevAgent", "message": "Agent finished execution."}
+{"timestamp": "2025-07-15T15:05:19.631840", "agent": "DevAgent", "message": "Agent started running."}
+{"timestamp": "2025-07-15T15:05:19.632906", "agent": "DevAgent", "message": "Goal: Manual Mission Execution"}
+{"timestamp": "2025-07-15T15:05:19.633912", "agent": "DevAgent", "message": "\u26a0\ufe0f No valid goal found. Skipping DevAgent."}
+{"timestamp": "2025-07-15T15:05:19.633912", "agent": "DevAgent", "message": "Agent finished execution."}
+{"timestamp": "2025-07-15T15:30:40.250748", "agent": "DevAgent", "message": "Agent started running."}
+{"timestamp": "2025-07-15T15:30:40.252255", "agent": "DevAgent", "message": "Goal: Manual Mission Execution"}
+{"timestamp": "2025-07-15T15:30:40.253467", "agent": "DevAgent", "message": "\u26a0\ufe0f No valid goal found. Skipping DevAgent."}
+{"timestamp": "2025-07-15T15:30:40.254479", "agent": "DevAgent", "message": "Agent finished execution."}
+{"timestamp": "2025-07-15T15:32:17.267667", "agent": "DevAgent", "message": "Agent started running."}
+{"timestamp": "2025-07-15T15:32:17.268701", "agent": "DevAgent", "message": "Goal: Manual Mission Execution"}
+{"timestamp": "2025-07-15T15:32:17.269711", "agent": "DevAgent", "message": "\u26a0\ufe0f No valid goal found. Skipping DevAgent."}
+{"timestamp": "2025-07-15T15:32:17.269711", "agent": "DevAgent", "message": "Agent finished execution."}
+{"timestamp": "2025-07-15T15:43:41.410269", "agent": "DevAgent", "message": "Agent started running."}
+{"timestamp": "2025-07-15T15:43:41.411282", "agent": "DevAgent", "message": "Goal: Manual Mission Execution"}
+{"timestamp": "2025-07-15T15:43:41.412374", "agent": "DevAgent", "message": "\u26a0\ufe0f No valid goal found. Skipping DevAgent."}
+{"timestamp": "2025-07-15T15:43:41.413434", "agent": "DevAgent", "message": "Agent finished execution."}
+{"timestamp": "2025-07-15T16:29:35.686606", "agent": "DevAgent", "message": "Agent started running."}
+{"timestamp": "2025-07-15T16:29:35.688881", "agent": "DevAgent", "message": "Goal: Manual Mission Execution"}
+{"timestamp": "2025-07-15T16:29:35.689885", "agent": "DevAgent", "message": "\u26a0\ufe0f No valid goal found. Skipping DevAgent."}
+{"timestamp": "2025-07-15T16:29:35.691003", "agent": "DevAgent", "message": "Agent finished execution."}
+{"timestamp": "2025-07-15T16:35:57.301095", "agent": "DevAgent", "message": "Agent started running."}
+{"timestamp": "2025-07-15T16:35:57.302101", "agent": "DevAgent", "message": "Goal: Manual Mission Execution"}
+{"timestamp": "2025-07-15T16:35:57.303128", "agent": "DevAgent", "message": "\u26a0\ufe0f No valid goal found. Skipping DevAgent."}
+{"timestamp": "2025-07-15T16:35:57.303128", "agent": "DevAgent", "message": "Agent finished execution."}
+{"timestamp": "2025-07-15T16:46:59.735240", "agent": "DevAgent", "message": "Agent started running."}
+{"timestamp": "2025-07-15T16:46:59.737386", "agent": "DevAgent", "message": "Goal: Manual Mission Execution"}
+{"timestamp": "2025-07-15T16:46:59.738393", "agent": "DevAgent", "message": "\u26a0\ufe0f No valid goal found. Skipping DevAgent."}
+{"timestamp": "2025-07-15T16:46:59.738393", "agent": "DevAgent", "message": "Agent finished execution."}
