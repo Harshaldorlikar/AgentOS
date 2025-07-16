@@ -1,3 +1,5 @@
+# tools/gemini_ui_vision.py
+
 import json, tempfile
 import numpy as np
 from PIL import Image
@@ -15,7 +17,7 @@ def strip_code_wrappers(text):
     return text.strip()
 
 
-def analyze_ui_elements_from_pixels(pixel_array, task_prompt):
+def analyze_ui_elements_from_pixels(pixel_array, task_prompt, context_note=None):
     """
     Vision assistant using Gemini + screenshot to extract UI elements.
 
@@ -39,33 +41,31 @@ def analyze_ui_elements_from_pixels(pixel_array, task_prompt):
         raise Exception(f"[Gemini Vision] Image conversion failed: {e}")
 
     prompt = f"""
-You are a vision assistant helping agents interact with complex user interfaces.
+This is a screenshot of the agent’s current view while attempting the task:
+→ "{task_prompt}"
 
-TASK:
-{task_prompt}
+The agent needs help **perceiving** the screen visually in order to complete its mission.
+You are acting as the agent's eyes — your job is to help them locate the correct UI elements and guide them in completing the task.
 
-Analyze the screenshot and respond ONLY with this format:
+{f"NOTE: {context_note}" if context_note else ""}
 
+Return a structured JSON list of all helpful UI elements relevant to the task:
 [
   {{
     "label": "Post",
-    "x_min": 520,
-    "y_min": 420,
-    "x_max": 570,
-    "y_max": 440,
-    "confidence": 0.92,
-    "context": "popup composer"
-  }},
-  ...
+    "x_min": ..., "y_min": ..., "x_max": ..., "y_max": ...,
+    "confidence": ...,  # 0.0 to 1.0
+    "context": "brief description of region (e.g. 'popup composer', 'sidebar')"
+  }}
 ]
 
-✅ Only include UI elements that help complete the task.
-✅ Use 'label': "Post" only for the correct clickable button.
-✅ Add bounding box coordinates — not just a center point.
-✅ Provide a confidence score (0.0 to 1.0) and a short context description.
+✅ Focus only on elements relevant to the goal.
+✅ Use label 'Post' only if the button will actually submit the tweet.
+✅ Include context for each element to help the agent choose the right one.
+✅ Use coordinates and bounding box dimensions for safe clicking.
 
-⚠️ Respond with **valid JSON only**. No markdown. No commentary.
-    """
+Respond with **valid JSON only**. No extra words.
+"""
 
     print("[Gemini Vision] 🧠 Analyzing UI for task...")
     response = ask_gemini_with_file(prompt, image_path)

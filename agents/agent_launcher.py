@@ -1,4 +1,9 @@
 # agents/agent_launcher.py
+import sys
+import os
+
+# Add the root directory of AgentOS to PYTHONPATH
+sys.path.append(os.path.abspath(os.path.dirname(__file__)))
 
 import json
 import importlib

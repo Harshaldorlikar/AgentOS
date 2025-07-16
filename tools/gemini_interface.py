@@ -4,7 +4,7 @@ import json
 import numpy as np
 import tempfile
 from PIL import Image, ImageDraw
-from tools.gemini_cli import ask_gemini_with_file
+from .gemini_cli import ask_gemini_with_file
 
 
 def strip_code_wrappers(text):

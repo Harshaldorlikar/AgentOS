@@ -1,5 +1,9 @@
 {
-    "python.analysis.extraPaths": [
-        "./agents/logs/memory/tools/system"
-    ]
+  "python.analysis.extraPaths": [
+    "./tools",
+    "./agents",
+    "./system"
+  ],
+  "python.defaultInterpreterPath": ".venv/Scripts/python.exe",
+  "python.envFile": "${workspaceFolder}/.env"
 }

@@ -1,8 +1,12 @@
+# agents/poster_agent.py
+
 from tools.runtime_controller import RuntimeController
 from tools.perception_controller import PerceptionController
 from tools.gemini_ui_vision import analyze_ui_elements_from_pixels
 from system.agentos_core import AgentOSCore
+import json
 import time
+
 
 class PosterAgent:
     def __init__(self, memory, supervisor):
@@ -63,8 +67,14 @@ class PosterAgent:
         print(f"[{self.name}] 👁️ Updated perception received after typing.")
 
         # STEP 4: Analyze UI for "Post" buttons
-        task_prompt = "Find all buttons labeled 'Post' in the tweet composer popup — ignore sidebar or nav."
+        task_prompt = (
+            "Find all buttons labeled 'Post' in the tweet composer popup — "
+            "ignore sidebar or nav."
+        )
         elements = analyze_ui_elements_from_pixels(pixel_array, task_prompt)
+
+        # Log full Gemini result
+        print(f"[{self.name}] 🧠 Gemini returned UI elements:\n{json.dumps(elements, indent=2)}")
 
         if not elements:
             print(f"[{self.name}] ❌ No UI elements found.")
@@ -85,10 +95,16 @@ class PosterAgent:
         # Prioritize topmost, right-aligned buttons
         selected = min(candidates, key=lambda b: (b["y_min"], -b["x_max"]))
 
+        # Debug: print selected bounding box
+        print(f"[{self.name}] ✅ Selected UI element:\n{json.dumps(selected, indent=2)}")
+
         # Derive center click position
         x = (selected["x_min"] + selected["x_max"]) // 2
         y = (selected["y_min"] + selected["y_max"]) // 2
         label = selected.get("label", "Post")
+
+        # Debug: print final click location
+        print(f"[{self.name}] 🖱️ Clicking on Post button at ({x}, {y}) with label '{label}'")
 
         bounding_box = {
             "x_min": selected["x_min"],
