@@ -1,141 +1,121 @@
 # agents/poster_agent.py
 
-from tools.runtime_controller import RuntimeController
+import json
+import time
+import logging
+import os
+# ❌ The PosterAgent no longer needs to import RuntimeController directly.
 from tools.perception_controller import PerceptionController
 from tools.gemini_ui_vision import analyze_ui_elements_from_pixels
 from tools.display_context import DisplayContext
-from system.agentos_core import AgentOSCore
-import json
-import time
+from system.agentos_core import AgentOSCore # ✅ Import the core
+
+# Configure logging for this agent
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
+
+DEBUG_VISION_ENABLED = os.getenv('AGENTOS_DEBUG_VISION', 'false').lower() == 'true'
 
 class PosterAgent:
-    def __init__(self, memory, supervisor):
+    """
+    An autonomous agent that posts content by requesting actions through the AgentOSCore.
+    """
+    # ✅ __init__ now accepts the core object
+    def __init__(self, memory, supervisor, core: AgentOSCore):
         self.memory = memory
         self.supervisor = supervisor
-        self.core = AgentOSCore()
+        self.core = core # ✅ Store the core instance
         self.name = "PosterAgent"
         self.task_context = "Post content to X (Twitter)"
 
+    def _calculate_logical_coords(self, selected_button: dict, scaling_factor: float) -> tuple[int, int] | None:
+        """
+        Converts physical pixel coordinates to logical coordinates by dividing by the scale factor.
+        """
+        if "bounding_box" not in selected_button:
+            logger.error("Selected element is missing the 'bounding_box' key.")
+            return None
+
+        bbox = selected_button["bounding_box"]
+        midpoint_x_physical = (bbox["x_min"] + bbox["x_max"]) / 2
+        midpoint_y_physical = (bbox["y_min"] + bbox["y_max"]) / 2
+        x_logical = int(midpoint_x_physical / scaling_factor)
+        y_logical = int(midpoint_y_physical / scaling_factor)
+        return x_logical, y_logical
+
     def run(self):
-        print(f"[{self.name}] Agent started running.")
+        """Executes the full workflow for the PosterAgent."""
+        logger.info(f"Agent '{self.name}' started running.")
 
-        # ✅ STEP 0: Refresh Display Context based on active window
         display_info = DisplayContext.describe()
-        self.memory.save("display_context", display_info)
-        print(f"[{self.name}] 🖥️ Refreshed Display Info:")
-        print(f"   ↳ Resolution     : {display_info['resolution']}")
-        print(f"   ↳ DPI Scaling    : {display_info['scaling_factor'] * 100:.0f}%")
-        print(f"   ↳ Screen BBox    : {display_info['bbox']}")
+        logger.info(f"Using Display Info: {display_info['resolution']} @ {display_info['scaling_factor']*100:.0f}% scaling.")
 
-        # STEP 1: Load tweet content
-        content = self.memory.load("post_content")
-        if not content:
-            print(f"[{self.name}] ❌ No tweet content found.")
+        content_to_post = self.memory.load("post_content")
+        if not content_to_post:
+            logger.error("No post content found in memory. Aborting.")
             return
-        print(f"[{self.name}] Loaded post: {content}")
-
-        # STEP 2: Open browser to X
-        self.core.request_action(
-            agent=self.name,
-            action_type="open_browser",
-            target="https://x.com/compose/post",
-            reason="Open composer to post tweet"
-        )
+        
+        # --- FIX: All actions are now requested through the core ---
+        self.core.request_action(self.name, "browse", "https://x.com/compose/post", "Open composer to post tweet")
+        time.sleep(4)
+        self.core.request_action(self.name, "type_text", content_to_post + " ", "Composing the tweet content")
         time.sleep(3)
 
-        # STEP 3: Perceive screen before typing
-        pixel_array, screen_bbox = PerceptionController.capture_screen_array()
-        perception = {"pixel_array": pixel_array}
-        self.supervisor.update_perception(perception)
+        for attempt in range(2):
+            logger.info(f"Perception Attempt #{attempt + 1}")
 
-        # STEP 4: Get approval to type tweet
-        approved = self.supervisor.approve_action(
-            agent_name=self.name,
-            action="type_text",
-            value=content,
-            task_context=self.task_context
-        )
-        if not approved:
-            print(f"[{self.name}] ❌ Supervisor blocked typing.")
-            return
+            pixel_array, _ = PerceptionController.capture_primary_monitor()
+            if pixel_array is None:
+                logger.error("Failed to capture screen.")
+                time.sleep(1)
+                continue
+            
+            if DEBUG_VISION_ENABLED:
+                debug_image_path = os.path.join(os.getenv('TEMP', '/tmp'), f"agent_view_attempt_{attempt + 1}.png")
+                PerceptionController.save_screen_snapshot(pixel_array, debug_image_path)
+                logger.info(f"Saved debug screenshot to: {debug_image_path}")
 
-        RuntimeController.type_text(
-            text=content + " ",
-            reason="Composing tweet on X"
-        )
+            self.supervisor.update_perception(pixel_array)
 
-        print(f"[{self.name}] ⏳ Waiting for Post button to become active...")
-        time.sleep(1.5)
+            task_prompt = "Locate the clickable 'Post' button inside the tweet composer popup."
+            elements = analyze_ui_elements_from_pixels(pixel_array, task_prompt)
+            if not elements:
+                logger.warning("Vision model returned no elements.")
+                time.sleep(1)
+                continue
 
-        # STEP 5: Updated perception after typing
-        pixel_array, screen_bbox = PerceptionController.capture_screen_array()
-        perception = {"pixel_array": pixel_array}
-        self.supervisor.update_perception(perception)
-        print(f"[{self.name}] 👁️ Updated perception received after typing.")
+            logger.info(f"Raw elements from Gemini:\n{json.dumps(elements, indent=2)}")
 
-        # STEP 6: Use PerceptionController to find Post buttons via smart Gemini
-        task_prompt = (
-            "Find all buttons labeled 'Post' in the tweet composer popup — "
-            "ignore sidebar or nav or footer."
-        )
-        elements = PerceptionController.analyze_ui_elements(task_prompt)
-        print(f"[{self.name}] 🧠 Gemini returned UI elements:\n{json.dumps(elements, indent=2)}")
+            valid_buttons = [
+                e for e in elements
+                if isinstance(e, dict) and "post" in e.get("label", "").lower()
+            ]
 
-        if not elements:
-            print(f"[{self.name}] ❌ No UI elements found.")
-            return
+            if not valid_buttons:
+                logger.warning("No valid 'Post' button found after filtering.")
+                time.sleep(1)
+                continue
 
-        # STEP 7: Filter valid Post buttons
-        candidates = [
-            e for e in elements
-            if e.get("label", "").lower() == "post"
-            and e.get("confidence", 0.0) > 0.6
-            and "popup" in e.get("context", "").lower()
-        ]
+            selected_button = min(valid_buttons, key=lambda b: b.get("bounding_box", {}).get("y_min", float('inf')))
+            logger.info(f"Selected button for action:\n{json.dumps(selected_button, indent=2)}")
 
-        if not candidates:
-            print(f"[{self.name}] ❌ No valid Post button in composer popup.")
-            return
+            coords = self._calculate_logical_coords(selected_button, display_info['scaling_factor'])
+            if coords is None:
+                continue
+            
+            logical_x, logical_y = coords
+            logger.info(f"Calculated LOGICAL click coords: ({logical_x}, {logical_y})")
 
-        # STEP 8: Choose the most likely one
-        selected = min(candidates, key=lambda b: (b["y_min"], -b["x_max"]))
-        print(f"[{self.name}] ✅ Selected UI element:\n{json.dumps(selected, indent=2)}")
+            # --- FIX: The final click is also requested through the core ---
+            click_successful = self.core.request_action(
+                agent_name=self.name,
+                action_type="click",
+                value=f"{logical_x},{logical_y}",
+                task_context="Clicking the final Post button"
+            )
 
-        # ✅ STEP 9: Calculate raw & DPI-scaled absolute click coordinates
-        midpoint_x = (selected["x_min"] + selected["x_max"]) / 2
-        midpoint_y = (selected["y_min"] + selected["y_max"]) / 2
+            if click_successful:
+                logger.info("Click successful. Task complete.")
+                return
 
-        display_info = self.memory.load("display_context") or {}
-        scaling_factor = display_info.get("scaling_factor", 1.0)
-
-        abs_x = int(midpoint_x)
-        abs_y = int(midpoint_y)
-        label = selected.get("label", "Post")
-
-        print(f"[{self.name}] 🧮 Raw midpoint: ({midpoint_x}, {midpoint_y})")
-        print(f"[{self.name}] 🖱️ DPI-scaled click coords: ({abs_x}, {abs_y}) using scale {scaling_factor:.2f}")
-
-        bounding_box = {
-            "x_min": selected["x_min"],
-            "y_min": selected["y_min"],
-            "x_max": selected["x_max"],
-            "y_max": selected["y_max"],
-            "text": label
-        }
-
-        # STEP 10: Ask supervisor to approve click
-        approved = self.supervisor.approve_action(
-            agent_name=self.name,
-            action="click",
-            value=f"{abs_x},{abs_y}",
-            task_context="Click Post button to publish tweet",
-            perception=perception,
-            bounding_box=bounding_box
-        )
-        if not approved:
-            print(f"[{self.name}] ❌ Supervisor blocked the click.")
-            return
-
-        # STEP 11: Perform the click
-        RuntimeController.click(abs_x, abs_y, reason="Click Post button with absolute screen coordinates")
-        print(f"[{self.name}] ✅ Tweet posted successfully.")
+        logger.error("All attempts failed to post the tweet.")

@@ -1,59 +1,69 @@
 # system/agentos_core.py
 
-from agents.supervisor import SupervisorAgent
-from tools.display_context import DisplayContext  # ✅ New import
+import logging
+from tools.runtime_controller import RuntimeController
+
+# Configure logging for this module
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
 
 class AgentOSCore:
-    def __init__(self):
-        self.supervisor = SupervisorAgent()
+    """
+    Acts as a central, stable API gateway for agents to interact with the system.
+    It orchestrates requests by first seeking approval from the supervisor,
+    and then executing the action via the runtime controller.
+    """
+    def __init__(self, supervisor):
+        """
+        Initializes the core with the shared supervisor instance created by the launcher.
+        """
+        self.supervisor = supervisor
+        logger.info("AgentOSCore initialized with shared supervisor.")
 
-        # ✅ Cache display context in memory so all agents can access
-        display_info = DisplayContext.describe()
-        self.supervisor.memory.save("display_context", display_info)
-        print("[AgentOSCore] 🖥️ Display context cached in memory:")
-        print(f"   ↳ Resolution     : {display_info['resolution']}")
-        print(f"   ↳ DPI Scaling    : {display_info['scaling_factor'] * 100:.0f}%")
-        print(f"   ↳ Screen BBox    : {display_info['bbox']}")
+    def request_action(self, agent_name: str, action_type: str, value: any, task_context: str) -> bool:
+        """
+        The primary method for agents to request an action.
+        
+        Args:
+            agent_name (str): The name of the agent making the request.
+            action_type (str): The type of action (e.g., 'click', 'browse').
+            value (any): The target of the action (e.g., coordinates, a URL).
+            task_context (str): The high-level goal the agent is trying to achieve.
 
-    def request_action(self, agent, action_type, target=None, reason="", data=None):
-        # 🔁 Local import to break circular dependency
-        from tools.runtime_controller import RuntimeController
+        Returns:
+            bool: True if the action was approved and executed, False otherwise.
+        """
+        # 1. Ask the supervisor for approval first.
+        # The supervisor now holds the latest perception data.
+        is_approved = self.supervisor.approve_action(
+            agent_name=agent_name,
+            action=action_type,
+            value=value,
+            task_context=task_context
+        )
 
-        # Ask supervisor for approval
-        decision = self.supervisor.approve_action(agent, action_type, target or "", reason)
-        if not decision:
-            print(f"[AgentOSCore] ❌ Supervisor blocked {action_type}")
+        if not is_approved:
+            logger.warning(f"Supervisor blocked action '{action_type}' for agent '{agent_name}'.")
             return False
 
-        print(f"[AgentOSCore] ✅ Executing {action_type} for {agent} → {target}")
-
+        # 2. If approved, execute the action using the RuntimeController.
+        logger.info(f"Executing action '{action_type}' for agent '{agent_name}' with value: {value}")
         try:
-            if action_type == "open_app":
-                RuntimeController.open_app(target, reason)
-            elif action_type == "browse" or action_type == "open_browser":
-                RuntimeController.browse(target, reason)
+            if action_type == "browse":
+                RuntimeController.browse(value, reason=task_context)
             elif action_type == "type_text":
-                RuntimeController.type_text(target, reason)
+                RuntimeController.type_text(value, reason=task_context)
             elif action_type == "click":
-                if isinstance(target, str) and "," in target:
-                    x, y = map(int, target.split(","))
-                elif isinstance(target, (list, tuple)) and len(target) == 2:
-                    x, y = target
-                else:
-                    raise ValueError("Invalid target for click. Expected 'x,y' string or [x, y] list.")
-                RuntimeController.click(x, y, reason)
-            elif action_type == "screenshot":
-                RuntimeController.screenshot(target, reason)
-            elif action_type == "perceive":
-                return RuntimeController.perceive(target or None)
-            elif action_type == "post_tweet":
-                print(f"[AgentOSCore] ✍️ Tweet posted: {data}")
+                # The value is expected to be a string "x,y" from the agent
+                x, y = map(int, str(value).split(','))
+                RuntimeController.click(x, y, reason=task_context)
             else:
-                print(f"[AgentOSCore] ❌ Unknown action_type: {action_type}")
+                logger.error(f"Unknown action_type requested: {action_type}")
                 return False
+            
+            return True
 
         except Exception as e:
-            print(f"[AgentOSCore] ❌ Failed to execute {action_type}: {e}")
+            logger.error(f"Failed to execute action '{action_type}': {e}", exc_info=True)
             return False
 
-        return True

@@ -1,160 +1,119 @@
 # agents/supervisor.py
 
-import os
-import tempfile
 import json
+import logging
+import re # ✅ Import regular expressions
 from datetime import datetime
 import numpy as np
-from PIL import Image
-from dotenv import load_dotenv
+from tools.gemini_ui_vision import smart_vision_query
 
-from tools.gemini_model_api import smart_vision_query  # ✅ Replaces ask_gemini_with_file
-from tools.debug_visualizer import draw_button_overlay
-from tools.gemini_ui_vision import analyze_ui_elements_from_pixels
-from memory.memory import Memory
-
-load_dotenv()
-
-def strip_code_wrappers(text):
-    if text.strip().startswith("```"):
-        lines = text.strip().splitlines()
-        return "\n".join(line for line in lines if not line.strip().startswith("```"))
-    return text.strip()
+# Configure logging for this module
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
 
 class SupervisorAgent:
+    """
+    Acts as a selective safety and validation layer for other agents.
+    It intervenes only on high-risk actions.
+    """
     def __init__(self):
         self.logs = []
-        self.last_perception = None
-        self.memory = Memory()
+        self.last_perception_pixels = None
+        self.high_risk_keywords = [
+            "post", "delete", "confirm", "purchase", "send", "submit", 
+            "login", "password", "credentials", "pay", "buy", "approve"
+        ]
 
-    def update_perception(self, snapshot: dict):
-        self.last_perception = snapshot
-        print("[Supervisor] 👁️ Updated perception stored.")
+    def update_perception(self, pixels: np.ndarray):
+        """Stores the latest visual snapshot (pixel array) from an agent."""
+        self.last_perception_pixels = pixels
+        logger.info("Updated perception snapshot stored.")
 
-    def approve_action(self, agent_name, action, value, task_context="", perception=None, bounding_box=None):
-        if perception:
-            self.last_perception = perception
-            print("[Supervisor] 👁️ Perception snapshot received.")
-
-        if action == "click":
-            label_hint = bounding_box.get("text") if bounding_box else task_context or "button"
-
-            if bounding_box and perception:
-                if self._is_click_inside_bounding_box(value, bounding_box):
-                    print("[Supervisor] ✅ Click falls within bounding box.")
-                    self.log_decision(agent_name, action, value, "Yes (bounding box match)")
-                    return True
-
-            success, reason = self._validate_click_with_gemini(value, perception, label_hint)
-            if success:
-                self.log_decision(agent_name, action, value, "Yes (Gemini visual confirmation)")
-                return True
-            else:
-                self.log_decision(agent_name, action, value, f"No (Gemini rejected: {reason})")
-                return False
-
-        elif action == "type_text":
-            if not value or len(value.strip()) < 5 or "???" in value:
-                self.log_decision(agent_name, action, value, "No. Typing rejected (invalid content)")
-                return False
-            self.log_decision(agent_name, action, value, "Yes (validated for typing)")
-            return True
-
-        elif action in ["open_browser", "open_app", "screenshot", "perceive"]:
-            self.log_decision(agent_name, action, value, "Yes (safe default approval)")
-            return True
-
-        # Default fallback: ask Gemini text-only (no image)
-        prompt = f"""
-An AI agent named {agent_name} is running a task: "{task_context}".
-It is about to perform this action: {action} → {value}.
-Is this action necessary to complete the task?
-Respond with one word: Yes or No. If no, briefly explain.
-"""
-        try:
-            response = smart_vision_query(prompt, None)
-        except Exception as e:
-            response = f"No (Gemini exception: {e})"
-
-        approved = "yes" in response.lower()
-        self.log_decision(agent_name, action, value, response)
-        return approved
-
-    def analyze_ui(self, task_prompt):
-        print(f"[Supervisor] 🧠 Analyzing UI for task: {task_prompt}")
-        if not self.last_perception or "pixel_array" not in self.last_perception:
-            print("[Supervisor] ❌ No perception available.")
-            return []
-
-        pixel_array = self.last_perception["pixel_array"]
-        try:
-            parsed = analyze_ui_elements_from_pixels(pixel_array, task_prompt)
-            self.last_perception["ui_elements"] = parsed
-            return parsed
-        except Exception as e:
-            print(f"[Supervisor] ❌ Failed to analyze UI: {e}")
-            return []
-
-    def _validate_click_with_gemini(self, coords, perception, label_hint="Post"):
-        try:
-            pixel_array = perception.get("pixel_array")
-            if pixel_array is None:
-                return False, "No pixel_array found"
-
-            if isinstance(coords, str):
-                x, y = map(int, coords.split(","))
-            elif isinstance(coords, (list, tuple)) and len(coords) == 2:
-                x, y = coords
-            else:
-                return False, "Invalid coords format"
-
-            img = Image.fromarray(np.array(pixel_array).astype("uint8"), "RGB")
-            with tempfile.NamedTemporaryFile(delete=False, suffix=".png") as tmp:
-                img.save(tmp.name, format="PNG")
-                image_path = tmp.name
-
-            prompt = f"""
-You are a visual UI agent validating a click on a button labeled '{label_hint}'.
-Only approve if the coordinates (x={x}, y={y}) fall clearly inside the correct button (e.g. Post or Send).
-Is it safe to click at these coordinates?
-Respond strictly with:
-Yes
-or
-No (with a short reason)
-"""
-
-            response = smart_vision_query(prompt, image_path)  # ✅ Uses model fallback
-            if "yes" in response.lower():
-                print(f"[Supervisor] ✅ Gemini approved click at ({x},{y}) for '{label_hint}'.")
-                return True, "Approved"
-            else:
-                print(f"[Supervisor] ❌ Gemini rejected click at ({x},{y}) for '{label_hint}': {response}")
-                return False, response
-
-        except Exception as e:
-            return False, f"Gemini click validation error: {e}"
-
-    def _is_click_inside_bounding_box(self, coords, box):
-        try:
-            if isinstance(coords, str):
-                x, y = map(int, coords.split(","))
-            elif isinstance(coords, (list, tuple)):
-                x, y = coords
-            else:
-                return False
-            return box["x_min"] <= x <= box["x_max"] and box["y_min"] <= y <= box["y_max"]
-        except:
+    def _is_high_risk(self, action: str, value: any, task_context: str) -> bool:
+        """Determines if an action is high-risk."""
+        if action not in ["click", "type_text"]:
             return False
 
-    def log_decision(self, agent_name, action, value, response):
+        combined_text = (str(task_context) + " " + str(value)).lower()
+        for keyword in self.high_risk_keywords:
+            if keyword in combined_text:
+                logger.info(f"High-risk keyword '{keyword}' detected. Triggering deep validation.")
+                return True
+        return False
+
+    def approve_action(self, agent_name: str, action: str, value: any, task_context: str = "") -> bool:
+        """The main approval function for all agent actions."""
+        logger.info(f"Received action request from '{agent_name}': {action} -> {value}")
+        is_risky = self._is_high_risk(action, value, task_context)
+
+        if action == "click":
+            if is_risky:
+                logger.info("Action is high-risk. Performing visual validation...")
+                if self.last_perception_pixels is None:
+                    self.log_decision(agent_name, action, value, "No (Missing perception for high-risk action)")
+                    return False
+                is_approved, reason = self._validate_click_with_gemini(value, self.last_perception_pixels, task_context)
+                self.log_decision(agent_name, action, value, reason)
+                return is_approved
+            else:
+                self.log_decision(agent_name, action, value, "Yes (Low-risk click, auto-approved)")
+                return True
+        
+        # For now, all typing actions are approved after a basic content check.
+        # This could be expanded with visual validation for high-risk typing.
+        elif action == "type_text":
+            if not isinstance(value, str) or len(value.strip()) < 3:
+                self.log_decision(agent_name, action, value, "No (Invalid content)")
+                return False
+            self.log_decision(agent_name, action, value, "Yes (Content validated)")
+            return True
+
+        elif action in ["browse", "open_app"]:
+            self.log_decision(agent_name, action, value, "Yes (Safe default approval)")
+            return True
+        
+        self.log_decision(agent_name, action, value, "No (Unknown action type)")
+        return False
+
+    def _validate_click_with_gemini(self, coords_str: str, pixels: np.ndarray, task_context: str) -> tuple[bool, str]:
+        """Asks Gemini to visually confirm if a click is safe and correct."""
+        try:
+            x, y = map(int, coords_str.split(','))
+        except (ValueError, AttributeError):
+            return False, f"Invalid coords format: '{coords_str}'"
+
+        prompt = f"""You are a meticulous safety supervisor for an AI agent. The agent wants to perform a mouse click at the logical coordinates (x={x}, y={y}). The agent's current task is: "{task_context}". Analyze the provided screenshot. Is there a clearly clickable and relevant UI element at or very near these exact coordinates? Respond with a single word and a brief reason in JSON format: {{"decision": "Yes/No", "reason": "..."}}"""
+        
+        response_text = smart_vision_query(pixels, prompt)
+        if not response_text:
+            return False, "Gemini vision query failed."
+
+        logger.info(f"Received validation response from Gemini: {response_text}")
+
+        try:
+            # --- FIX: Use a regular expression to robustly find the JSON object ---
+            # This handles cases where the model wraps the JSON in markdown fences.
+            match = re.search(r'\{.*\}', response_text, re.DOTALL)
+            if not match:
+                raise json.JSONDecodeError("No JSON object found in response", response_text, 0)
+            
+            json_string = match.group(0)
+            parsed = json.loads(json_string)
+            decision = parsed.get("decision", "No").lower()
+            reason = parsed.get("reason", "No reason provided.")
+            
+            if decision == "yes":
+                logger.info(f"Gemini approved click at ({x},{y}). Reason: {reason}")
+                return True, f"Yes ({reason})"
+            else:
+                logger.warning(f"Gemini rejected click at ({x},{y}). Reason: {reason}")
+                return False, f"No ({reason})"
+        except (json.JSONDecodeError, IndexError) as e:
+            logger.error(f"Failed to parse JSON from Gemini validation response: {e}")
+            return False, f"Failed to parse validation response. Raw text: {response_text}"
+
+    def log_decision(self, agent_name: str, action: str, value: any, response: str):
+        """Logs the supervisor's decision for auditing."""
         status = "approved" if "yes" in response.lower() else "blocked"
-        decision = {
-            "timestamp": datetime.now().isoformat(),
-            "agent": agent_name,
-            "action": action,
-            "value": value,
-            "response": response,
-            "status": status
-        }
-        self.logs.append(decision)
-        print(f"[Supervisor] {action} → {status}: {response}")
+        logger.info(f"DECISION: Action '{action}' for agent '{agent_name}' -> {status.upper()}. Reason: {response}")
+        self.logs.append({"timestamp": datetime.now().isoformat(), "agent": agent_name, "action": action, "value": str(value), "response": response, "status": status})

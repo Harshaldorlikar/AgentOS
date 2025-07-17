@@ -1,15 +1,15 @@
 {
-  "goal": "Manual Mission Execution",
+  "goal": "Execute the predefined mission to write and post a tweet.",
   "steps": [
     {
       "agent": "WriterAgent",
       "task": "Write a motivational tweet using trending topics",
-      "status": "in_progress"
+      "status": "completed"
     },
     {
       "agent": "PosterAgent",
       "task": "Post content to X (Twitter)",
-      "status": "pending"
+      "status": "completed"
     }
   ]
 }

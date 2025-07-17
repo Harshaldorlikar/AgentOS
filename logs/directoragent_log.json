@@ -228,3 +228,138 @@
 {"timestamp": "2025-07-17T11:32:00.770419", "agent": "DirectorAgent", "message": "\ud83d\udccb Mission plan saved."}
 {"timestamp": "2025-07-17T11:32:00.771489", "agent": "DirectorAgent", "message": "\ud83c\udfaf Acting... (this is typically overridden)"}
 {"timestamp": "2025-07-17T11:32:00.772501", "agent": "DirectorAgent", "message": "Agent finished execution."}
+{"timestamp": "2025-07-17T14:12:48.825515", "agent": "DirectorAgent", "message": "Agent started running."}
+{"timestamp": "2025-07-17T14:12:50.719089", "agent": "DirectorAgent", "message": "\u2705 Skipping agent creation. Proceeding with existing mission."}
+{"timestamp": "2025-07-17T14:12:50.721182", "agent": "DirectorAgent", "message": "\ud83d\udccb Mission plan saved."}
+{"timestamp": "2025-07-17T14:12:50.722199", "agent": "DirectorAgent", "message": "\ud83c\udfaf Acting... (this is typically overridden)"}
+{"timestamp": "2025-07-17T14:12:50.722199", "agent": "DirectorAgent", "message": "Agent finished execution."}
+{"timestamp": "2025-07-17T14:36:33.227948", "agent": "DirectorAgent", "message": "Agent started running."}
+{"timestamp": "2025-07-17T14:36:35.302009", "agent": "DirectorAgent", "message": "\u2705 Skipping agent creation. Proceeding with existing mission."}
+{"timestamp": "2025-07-17T14:36:35.304040", "agent": "DirectorAgent", "message": "\ud83d\udccb Mission plan saved."}
+{"timestamp": "2025-07-17T14:36:35.305059", "agent": "DirectorAgent", "message": "\ud83c\udfaf Acting... (this is typically overridden)"}
+{"timestamp": "2025-07-17T14:36:35.305059", "agent": "DirectorAgent", "message": "Agent finished execution."}
+{"timestamp": "2025-07-17T14:43:06.611876", "agent": "DirectorAgent", "message": "Agent started running."}
+{"timestamp": "2025-07-17T14:43:09.781344", "agent": "DirectorAgent", "message": "\u2705 Skipping agent creation. Proceeding with existing mission."}
+{"timestamp": "2025-07-17T14:43:09.783372", "agent": "DirectorAgent", "message": "\ud83d\udccb Mission plan saved."}
+{"timestamp": "2025-07-17T14:43:09.783372", "agent": "DirectorAgent", "message": "\ud83c\udfaf Acting... (this is typically overridden)"}
+{"timestamp": "2025-07-17T14:43:09.784390", "agent": "DirectorAgent", "message": "Agent finished execution."}
+{"timestamp": "2025-07-17T14:57:02.958382", "agent": "DirectorAgent", "message": "Agent started running."}
+{"timestamp": "2025-07-17T14:57:11.555706", "agent": "DirectorAgent", "message": "\u2705 Skipping agent creation. Proceeding with existing mission."}
+{"timestamp": "2025-07-17T14:57:11.557804", "agent": "DirectorAgent", "message": "\ud83d\udccb Mission plan saved."}
+{"timestamp": "2025-07-17T14:57:11.557804", "agent": "DirectorAgent", "message": "\ud83c\udfaf Acting... (this is typically overridden)"}
+{"timestamp": "2025-07-17T14:57:11.558835", "agent": "DirectorAgent", "message": "Agent finished execution."}
+{"timestamp": "2025-07-17T15:00:04.418965", "agent": "DirectorAgent", "message": "Agent started running."}
+{"timestamp": "2025-07-17T15:00:04.418965", "agent": "DirectorAgent", "message": "\u2705 Skipping agent creation. Proceeding with existing mission."}
+{"timestamp": "2025-07-17T15:00:04.421067", "agent": "DirectorAgent", "message": "\ud83d\udccb Mission plan saved."}
+{"timestamp": "2025-07-17T15:00:04.422378", "agent": "DirectorAgent", "message": "\ud83c\udfaf Acting... (this is typically overridden)"}
+{"timestamp": "2025-07-17T15:00:04.422378", "agent": "DirectorAgent", "message": "Agent finished execution."}
+{"timestamp": "2025-07-17T15:06:40.254130", "agent": "DirectorAgent", "message": "Agent started running."}
+{"timestamp": "2025-07-17T15:06:40.914227", "agent": "DirectorAgent", "message": "\u2705 Skipping agent creation. Proceeding with existing mission."}
+{"timestamp": "2025-07-17T15:06:40.916256", "agent": "DirectorAgent", "message": "\ud83d\udccb Mission plan saved."}
+{"timestamp": "2025-07-17T15:06:40.917269", "agent": "DirectorAgent", "message": "\ud83c\udfaf Acting... (this is typically overridden)"}
+{"timestamp": "2025-07-17T15:06:40.917269", "agent": "DirectorAgent", "message": "Agent finished execution."}
+{"timestamp": "2025-07-17T15:44:30.642082", "agent": "DirectorAgent", "message": "Agent started running."}
+{"timestamp": "2025-07-17T15:44:31.326990", "agent": "DirectorAgent", "message": "\u2705 Skipping agent creation. Proceeding with existing mission."}
+{"timestamp": "2025-07-17T15:44:31.329006", "agent": "DirectorAgent", "message": "\ud83d\udccb Mission plan saved."}
+{"timestamp": "2025-07-17T15:44:31.330182", "agent": "DirectorAgent", "message": "\ud83c\udfaf Acting... (this is typically overridden)"}
+{"timestamp": "2025-07-17T15:44:31.330182", "agent": "DirectorAgent", "message": "Agent finished execution."}
+{"timestamp": "2025-07-17T16:05:16.267732", "agent": "DirectorAgent", "message": "Agent started running."}
+{"timestamp": "2025-07-17T16:05:17.148447", "agent": "DirectorAgent", "message": "\u2705 Skipping agent creation. Proceeding with existing mission."}
+{"timestamp": "2025-07-17T16:05:17.149589", "agent": "DirectorAgent", "message": "\ud83d\udccb Mission plan saved."}
+{"timestamp": "2025-07-17T16:05:17.151095", "agent": "DirectorAgent", "message": "\ud83c\udfaf Acting... (this is typically overridden)"}
+{"timestamp": "2025-07-17T16:05:17.151095", "agent": "DirectorAgent", "message": "Agent finished execution."}
+{"timestamp": "2025-07-17T16:56:30.812461", "agent": "DirectorAgent", "message": "Agent started running."}
+{"timestamp": "2025-07-17T16:56:43.048877", "agent": "DirectorAgent", "message": "\u2705 Skipping agent creation. Proceeding with existing mission."}
+{"timestamp": "2025-07-17T16:56:43.053337", "agent": "DirectorAgent", "message": "\ud83d\udccb Mission plan saved."}
+{"timestamp": "2025-07-17T16:56:43.054581", "agent": "DirectorAgent", "message": "\ud83c\udfaf Acting... (this is typically overridden)"}
+{"timestamp": "2025-07-17T16:56:43.055594", "agent": "DirectorAgent", "message": "Agent finished execution."}
+{"timestamp": "2025-07-17T16:59:19.432602", "agent": "DirectorAgent", "message": "Agent started running."}
+{"timestamp": "2025-07-17T16:59:20.479341", "agent": "DirectorAgent", "message": "\u2705 Skipping agent creation. Proceeding with existing mission."}
+{"timestamp": "2025-07-17T16:59:20.483809", "agent": "DirectorAgent", "message": "\ud83d\udccb Mission plan saved."}
+{"timestamp": "2025-07-17T16:59:20.484822", "agent": "DirectorAgent", "message": "\ud83c\udfaf Acting... (this is typically overridden)"}
+{"timestamp": "2025-07-17T16:59:20.484822", "agent": "DirectorAgent", "message": "Agent finished execution."}
+{"timestamp": "2025-07-17T17:19:57.294065", "agent": "DirectorAgent", "message": "Agent started running."}
+{"timestamp": "2025-07-17T17:19:57.892747", "agent": "DirectorAgent", "message": "\u2705 Skipping agent creation. Proceeding with existing mission."}
+{"timestamp": "2025-07-17T17:19:57.894792", "agent": "DirectorAgent", "message": "\ud83d\udccb Mission plan saved."}
+{"timestamp": "2025-07-17T17:19:57.895808", "agent": "DirectorAgent", "message": "\ud83c\udfaf Acting... (this is typically overridden)"}
+{"timestamp": "2025-07-17T17:19:57.895808", "agent": "DirectorAgent", "message": "Agent finished execution."}
+{"timestamp": "2025-07-17T17:27:44.028792", "agent": "DirectorAgent", "message": "Agent started running."}
+{"timestamp": "2025-07-17T17:27:44.676674", "agent": "DirectorAgent", "message": "\u2705 Skipping agent creation. Proceeding with existing mission."}
+{"timestamp": "2025-07-17T17:27:44.678703", "agent": "DirectorAgent", "message": "\ud83d\udccb Mission plan saved."}
+{"timestamp": "2025-07-17T17:27:44.679732", "agent": "DirectorAgent", "message": "\ud83c\udfaf Acting... (this is typically overridden)"}
+{"timestamp": "2025-07-17T17:27:44.679732", "agent": "DirectorAgent", "message": "Agent finished execution."}
+{"timestamp": "2025-07-17T17:46:23.602352", "agent": "DirectorAgent", "message": "Agent started running."}
+{"timestamp": "2025-07-17T17:46:24.202240", "agent": "DirectorAgent", "message": "\u2705 Skipping agent creation. Proceeding with existing mission."}
+{"timestamp": "2025-07-17T17:46:24.204391", "agent": "DirectorAgent", "message": "\ud83d\udccb Mission plan saved."}
+{"timestamp": "2025-07-17T17:46:24.205396", "agent": "DirectorAgent", "message": "\ud83c\udfaf Acting... (this is typically overridden)"}
+{"timestamp": "2025-07-17T17:46:24.205396", "agent": "DirectorAgent", "message": "Agent finished execution."}
+{"timestamp": "2025-07-17T17:55:16.235918", "agent": "DirectorAgent", "message": "Agent started running."}
+{"timestamp": "2025-07-17T17:55:16.946248", "agent": "DirectorAgent", "message": "\u2705 Skipping agent creation. Proceeding with existing mission."}
+{"timestamp": "2025-07-17T17:55:16.948441", "agent": "DirectorAgent", "message": "\ud83d\udccb Mission plan saved."}
+{"timestamp": "2025-07-17T17:55:16.948441", "agent": "DirectorAgent", "message": "\ud83c\udfaf Acting... (this is typically overridden)"}
+{"timestamp": "2025-07-17T17:55:16.949483", "agent": "DirectorAgent", "message": "Agent finished execution."}
+{"timestamp": "2025-07-17T18:00:45.323928", "agent": "DirectorAgent", "message": "Agent started running."}
+{"timestamp": "2025-07-17T18:00:46.753257", "agent": "DirectorAgent", "message": "\u2705 Skipping agent creation. Proceeding with existing mission."}
+{"timestamp": "2025-07-17T18:00:46.755776", "agent": "DirectorAgent", "message": "\ud83d\udccb Mission plan saved."}
+{"timestamp": "2025-07-17T18:00:46.756784", "agent": "DirectorAgent", "message": "\ud83c\udfaf Acting... (this is typically overridden)"}
+{"timestamp": "2025-07-17T18:00:46.756784", "agent": "DirectorAgent", "message": "Agent finished execution."}
+{"timestamp": "2025-07-17T18:07:39.034279", "agent": "DirectorAgent", "message": "Agent started running."}
+{"timestamp": "2025-07-17T18:07:39.426089", "agent": "DirectorAgent", "message": "\u2705 Skipping agent creation. Proceeding with existing mission."}
+{"timestamp": "2025-07-17T18:07:39.428122", "agent": "DirectorAgent", "message": "\ud83d\udccb Mission plan saved."}
+{"timestamp": "2025-07-17T18:07:39.429149", "agent": "DirectorAgent", "message": "\ud83c\udfaf Acting... (this is typically overridden)"}
+{"timestamp": "2025-07-17T18:07:39.430157", "agent": "DirectorAgent", "message": "Agent finished execution."}
+{"timestamp": "2025-07-17T21:27:05.690800", "agent": "DirectorAgent", "message": "Agent started running."}
+{"timestamp": "2025-07-17T21:27:06.964073", "agent": "DirectorAgent", "message": "\u2705 Skipping agent creation. Proceeding with existing mission."}
+{"timestamp": "2025-07-17T21:27:06.966098", "agent": "DirectorAgent", "message": "\ud83d\udccb Mission plan saved."}
+{"timestamp": "2025-07-17T21:27:06.967110", "agent": "DirectorAgent", "message": "\ud83c\udfaf Acting... (this is typically overridden)"}
+{"timestamp": "2025-07-17T21:27:06.967110", "agent": "DirectorAgent", "message": "Agent finished execution."}
+{"timestamp": "2025-07-17T21:39:16.204269", "agent": "DirectorAgent", "message": "Agent started running."}
+{"timestamp": "2025-07-17T21:39:17.042490", "agent": "DirectorAgent", "message": "\u2705 Skipping agent creation. Proceeding with existing mission."}
+{"timestamp": "2025-07-17T21:39:17.046043", "agent": "DirectorAgent", "message": "\ud83d\udccb Mission plan saved."}
+{"timestamp": "2025-07-17T21:39:17.046043", "agent": "DirectorAgent", "message": "\ud83c\udfaf Acting... (this is typically overridden)"}
+{"timestamp": "2025-07-17T21:39:17.047053", "agent": "DirectorAgent", "message": "Agent finished execution."}
+{"timestamp": "2025-07-17T21:41:08.448982", "agent": "DirectorAgent", "message": "Agent started running."}
+{"timestamp": "2025-07-17T21:41:08.779560", "agent": "DirectorAgent", "message": "\u2705 Skipping agent creation. Proceeding with existing mission."}
+{"timestamp": "2025-07-17T21:41:08.781835", "agent": "DirectorAgent", "message": "\ud83d\udccb Mission plan saved."}
+{"timestamp": "2025-07-17T21:41:08.781835", "agent": "DirectorAgent", "message": "\ud83c\udfaf Acting... (this is typically overridden)"}
+{"timestamp": "2025-07-17T21:41:08.782851", "agent": "DirectorAgent", "message": "Agent finished execution."}
+{"timestamp": "2025-07-17T21:48:11.635586", "agent": "DirectorAgent", "message": "Agent started running."}
+{"timestamp": "2025-07-17T21:48:11.954352", "agent": "DirectorAgent", "message": "\u2705 Skipping agent creation. Proceeding with existing mission."}
+{"timestamp": "2025-07-17T21:48:11.957708", "agent": "DirectorAgent", "message": "\ud83d\udccb Mission plan saved."}
+{"timestamp": "2025-07-17T21:48:11.958727", "agent": "DirectorAgent", "message": "\ud83c\udfaf Acting... (this is typically overridden)"}
+{"timestamp": "2025-07-17T21:48:11.958727", "agent": "DirectorAgent", "message": "Agent finished execution."}
+{"timestamp": "2025-07-17T22:15:00.626009", "agent": "DirectorAgent", "message": "Agent started running."}
+{"timestamp": "2025-07-17T22:15:01.536096", "agent": "DirectorAgent", "message": "\u2705 Skipping agent creation. Proceeding with existing mission."}
+{"timestamp": "2025-07-17T22:15:01.539193", "agent": "DirectorAgent", "message": "\ud83d\udccb Mission plan saved."}
+{"timestamp": "2025-07-17T22:15:01.539193", "agent": "DirectorAgent", "message": "\ud83c\udfaf Acting... (this is typically overridden)"}
+{"timestamp": "2025-07-17T22:15:01.540199", "agent": "DirectorAgent", "message": "Agent finished execution."}
+{"timestamp": "2025-07-17T22:19:57.232468", "agent": "DirectorAgent", "message": "Agent started running."}
+{"timestamp": "2025-07-17T22:19:57.233568", "agent": "DirectorAgent", "message": "\u2705 Skipping agent creation. Proceeding with existing mission."}
+{"timestamp": "2025-07-17T22:19:57.236640", "agent": "DirectorAgent", "message": "\ud83d\udccb Mission plan saved."}
+{"timestamp": "2025-07-17T22:19:57.236640", "agent": "DirectorAgent", "message": "\ud83c\udfaf Acting... (this is typically overridden)"}
+{"timestamp": "2025-07-17T22:19:57.236640", "agent": "DirectorAgent", "message": "Agent finished execution."}
+{"timestamp": "2025-07-17T22:24:30.553456", "agent": "DirectorAgent", "message": "Agent started running."}
+{"timestamp": "2025-07-17T22:24:37.552678", "agent": "DirectorAgent", "message": "\u2705 Skipping agent creation. Proceeding with existing mission."}
+{"timestamp": "2025-07-17T22:24:37.554785", "agent": "DirectorAgent", "message": "\ud83d\udccb Mission plan saved."}
+{"timestamp": "2025-07-17T22:24:37.554785", "agent": "DirectorAgent", "message": "\ud83c\udfaf Acting... (this is typically overridden)"}
+{"timestamp": "2025-07-17T22:24:37.555798", "agent": "DirectorAgent", "message": "Agent finished execution."}
+{"timestamp": "2025-07-17T23:52:00.740576", "agent": "DirectorAgent", "level": "info", "message": "Agent initialized with shared core components."}
+{"timestamp": "2025-07-17T23:52:00.740576", "agent": "DirectorAgent", "level": "info", "message": "Director Agent is running. Awaiting user input for the mission goal."}
+{"timestamp": "2025-07-17T23:52:11.586420", "agent": "DirectorAgent", "level": "info", "message": "\u2705 No user goal provided. Proceeding with the default mission plan."}
+{"timestamp": "2025-07-17T23:52:11.588468", "agent": "DirectorAgent", "level": "info", "message": "\ud83d\udccb Mission plan created and saved successfully."}
+{"timestamp": "2025-07-17T23:52:11.588468", "agent": "DirectorAgent", "level": "info", "message": "Director's work is complete. Handing off to the launcher."}
+{"timestamp": "2025-07-17T23:55:19.548420", "agent": "DirectorAgent", "level": "info", "message": "Agent initialized with shared core components."}
+{"timestamp": "2025-07-17T23:55:19.548420", "agent": "DirectorAgent", "level": "info", "message": "Director Agent is running. Awaiting user input for the mission goal."}
+{"timestamp": "2025-07-17T23:55:20.930205", "agent": "DirectorAgent", "level": "info", "message": "\u2705 No user goal provided. Proceeding with the default mission plan."}
+{"timestamp": "2025-07-17T23:55:20.932243", "agent": "DirectorAgent", "level": "info", "message": "\ud83d\udccb Mission plan created and saved successfully."}
+{"timestamp": "2025-07-17T23:55:20.933749", "agent": "DirectorAgent", "level": "info", "message": "Director's work is complete. Handing off to the launcher."}
+{"timestamp": "2025-07-18T00:16:43.073439", "agent": "DirectorAgent", "level": "info", "message": "Agent initialized with shared core components."}
+{"timestamp": "2025-07-18T00:16:43.074527", "agent": "DirectorAgent", "level": "info", "message": "Director Agent is running. Awaiting user input for the mission goal."}
+{"timestamp": "2025-07-18T00:16:45.752189", "agent": "DirectorAgent", "level": "info", "message": "\u2705 No user goal provided. Proceeding with the default mission plan."}
+{"timestamp": "2025-07-18T00:16:45.754729", "agent": "DirectorAgent", "level": "info", "message": "\ud83d\udccb Mission plan created and saved successfully."}
+{"timestamp": "2025-07-18T00:16:45.755805", "agent": "DirectorAgent", "level": "info", "message": "Director's work is complete. Handing off to the launcher."}
+{"timestamp": "2025-07-18T00:31:47.525371", "agent": "DirectorAgent", "level": "info", "message": "Agent initialized with shared core components."}
+{"timestamp": "2025-07-18T00:31:47.526370", "agent": "DirectorAgent", "level": "info", "message": "Director Agent is running. Awaiting user input for the mission goal."}
+{"timestamp": "2025-07-18T00:31:48.919308", "agent": "DirectorAgent", "level": "info", "message": "\u2705 No user goal provided. Proceeding with the default mission plan."}
+{"timestamp": "2025-07-18T00:31:48.921870", "agent": "DirectorAgent", "level": "info", "message": "\ud83d\udccb Mission plan created and saved successfully."}
+{"timestamp": "2025-07-18T00:31:48.921870", "agent": "DirectorAgent", "level": "info", "message": "Director's work is complete. Handing off to the launcher."}
