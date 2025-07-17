@@ -1,3 +1,5 @@
+# agents/supervisor.py
+
 import os
 import tempfile
 import json
@@ -5,9 +7,11 @@ from datetime import datetime
 import numpy as np
 from PIL import Image
 from dotenv import load_dotenv
-from tools.gemini_cli import ask_gemini_with_file
+
+from tools.gemini_model_api import smart_vision_query  # ✅ Replaces ask_gemini_with_file
 from tools.debug_visualizer import draw_button_overlay
 from tools.gemini_ui_vision import analyze_ui_elements_from_pixels
+from memory.memory import Memory
 
 load_dotenv()
 
@@ -21,6 +25,7 @@ class SupervisorAgent:
     def __init__(self):
         self.logs = []
         self.last_perception = None
+        self.memory = Memory()
 
     def update_perception(self, snapshot: dict):
         self.last_perception = snapshot
@@ -40,7 +45,6 @@ class SupervisorAgent:
                     self.log_decision(agent_name, action, value, "Yes (bounding box match)")
                     return True
 
-            # Else: fallback to Gemini vision click validation
             success, reason = self._validate_click_with_gemini(value, perception, label_hint)
             if success:
                 self.log_decision(agent_name, action, value, "Yes (Gemini visual confirmation)")
@@ -60,7 +64,7 @@ class SupervisorAgent:
             self.log_decision(agent_name, action, value, "Yes (safe default approval)")
             return True
 
-        # Fallback reasoning
+        # Default fallback: ask Gemini text-only (no image)
         prompt = f"""
 An AI agent named {agent_name} is running a task: "{task_context}".
 It is about to perform this action: {action} → {value}.
@@ -68,26 +72,21 @@ Is this action necessary to complete the task?
 Respond with one word: Yes or No. If no, briefly explain.
 """
         try:
-            response = ask_gemini_with_file(prompt)
+            response = smart_vision_query(prompt, None)
         except Exception as e:
-            response = f"No (Gemini CLI exception: {e})"
+            response = f"No (Gemini exception: {e})"
 
         approved = "yes" in response.lower()
         self.log_decision(agent_name, action, value, response)
         return approved
 
     def analyze_ui(self, task_prompt):
-        """
-        Uses Gemini to extract UI elements from screenshot perception.
-        Must have pixel_array in self.last_perception.
-        """
         print(f"[Supervisor] 🧠 Analyzing UI for task: {task_prompt}")
         if not self.last_perception or "pixel_array" not in self.last_perception:
             print("[Supervisor] ❌ No perception available.")
             return []
 
         pixel_array = self.last_perception["pixel_array"]
-
         try:
             parsed = analyze_ui_elements_from_pixels(pixel_array, task_prompt)
             self.last_perception["ui_elements"] = parsed
@@ -115,20 +114,16 @@ Respond with one word: Yes or No. If no, briefly explain.
                 image_path = tmp.name
 
             prompt = f"""
-You are a visual UI agent validating user interface actions.
-
-The agent wants to click a button labeled '{label_hint}'.
-⚠️ There may be multiple buttons with the same label.
-Only approve if the coordinates (x={x}, y={y}) fall **inside** the correct button (like a popup composer).
-
-Is it safe to click at (x={x}, y={y}) for the intended button?
-
-Only respond with:
+You are a visual UI agent validating a click on a button labeled '{label_hint}'.
+Only approve if the coordinates (x={x}, y={y}) fall clearly inside the correct button (e.g. Post or Send).
+Is it safe to click at these coordinates?
+Respond strictly with:
 Yes
 or
-No (with brief reason)
+No (with a short reason)
 """
-            response = ask_gemini_with_file(prompt, image_path)
+
+            response = smart_vision_query(prompt, image_path)  # ✅ Uses model fallback
             if "yes" in response.lower():
                 print(f"[Supervisor] ✅ Gemini approved click at ({x},{y}) for '{label_hint}'.")
                 return True, "Approved"
@@ -147,13 +142,7 @@ No (with brief reason)
                 x, y = coords
             else:
                 return False
-
-            x_min = box["x_min"]
-            x_max = box["x_max"]
-            y_min = box["y_min"]
-            y_max = box["y_max"]
-
-            return x_min <= x <= x_max and y_min <= y <= y_max
+            return box["x_min"] <= x <= box["x_max"] and box["y_min"] <= y <= box["y_max"]
         except:
             return False
 

@@ -1,11 +1,19 @@
 # system/agentos_core.py
 
 from agents.supervisor import SupervisorAgent
-# ❌ Removed top-level RuntimeController import
+from tools.display_context import DisplayContext  # ✅ New import
 
 class AgentOSCore:
     def __init__(self):
         self.supervisor = SupervisorAgent()
+
+        # ✅ Cache display context in memory so all agents can access
+        display_info = DisplayContext.describe()
+        self.supervisor.memory.save("display_context", display_info)
+        print("[AgentOSCore] 🖥️ Display context cached in memory:")
+        print(f"   ↳ Resolution     : {display_info['resolution']}")
+        print(f"   ↳ DPI Scaling    : {display_info['scaling_factor'] * 100:.0f}%")
+        print(f"   ↳ Screen BBox    : {display_info['bbox']}")
 
     def request_action(self, agent, action_type, target=None, reason="", data=None):
         # 🔁 Local import to break circular dependency

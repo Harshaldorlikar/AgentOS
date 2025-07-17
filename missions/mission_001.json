@@ -4,12 +4,12 @@
     {
       "agent": "WriterAgent",
       "task": "Write a motivational tweet using trending topics",
-      "status": "completed"
+      "status": "in_progress"
     },
     {
       "agent": "PosterAgent",
       "task": "Post content to X (Twitter)",
-      "status": "completed"
+      "status": "pending"
     }
   ]
 }

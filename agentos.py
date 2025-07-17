@@ -1,6 +1,6 @@
 # agentos.py
 
-print("🚀 Booting AgentOS v0.1...")
+print("Booting AgentOS v0.1...")
 
 # Step 1: Basic system boot
 print("✅ System initialized.")

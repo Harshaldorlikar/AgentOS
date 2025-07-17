@@ -1,17 +1,39 @@
 # Python
 __pycache__/
-*.pyc
+*.py[cod]
+*.egg-info/
+*.log
 
-# Environments
+# Environment
 .env
-.venv/
-venv/
+.env.*
 
-# VS Code
+# Jupyter
+.ipynb_checkpoints/
+
+# VSCode
 .vscode/
 
-# Mac
+# System
 .DS_Store
+Thumbs.db
 
-# Logs
-*.log
+# Temp
+*.tmp
+*.bak
+*.swp
+*.swo
+*.~ 
+*.png
+*.jpg
+
+# Output
+outputs/
+screenshots/
+temp/
+cache/
+*.sqlite3
+
+# Pip tools
+pip-wheel-metadata/
+*.dist-info/
