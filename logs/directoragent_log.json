@@ -363,3 +363,138 @@
 {"timestamp": "2025-07-18T00:31:48.919308", "agent": "DirectorAgent", "level": "info", "message": "\u2705 No user goal provided. Proceeding with the default mission plan."}
 {"timestamp": "2025-07-18T00:31:48.921870", "agent": "DirectorAgent", "level": "info", "message": "\ud83d\udccb Mission plan created and saved successfully."}
 {"timestamp": "2025-07-18T00:31:48.921870", "agent": "DirectorAgent", "level": "info", "message": "Director's work is complete. Handing off to the launcher."}
+{"timestamp": "2025-07-18T01:29:00.137948", "agent": "DirectorAgent", "level": "info", "message": "Agent initialized with shared core components."}
+{"timestamp": "2025-07-18T01:29:00.137948", "agent": "DirectorAgent", "level": "info", "message": "Director Agent is running. Awaiting user input for the mission goal."}
+{"timestamp": "2025-07-18T01:29:01.859058", "agent": "DirectorAgent", "level": "info", "message": "\u2705 No user goal provided. Proceeding with the default mission plan."}
+{"timestamp": "2025-07-18T01:29:01.862172", "agent": "DirectorAgent", "level": "info", "message": "\ud83d\udccb Mission plan created and saved successfully."}
+{"timestamp": "2025-07-18T01:29:01.863194", "agent": "DirectorAgent", "level": "info", "message": "Director's work is complete. Handing off to the launcher."}
+{"timestamp": "2025-07-18T01:41:08.009140", "agent": "DirectorAgent", "level": "info", "message": "Agent initialized with shared core components."}
+{"timestamp": "2025-07-18T01:41:08.009140", "agent": "DirectorAgent", "level": "info", "message": "Director Agent is running. Awaiting user input for the mission goal."}
+{"timestamp": "2025-07-18T01:41:10.762540", "agent": "DirectorAgent", "level": "info", "message": "\u2705 No user goal provided. Proceeding with the default mission plan."}
+{"timestamp": "2025-07-18T01:41:10.765610", "agent": "DirectorAgent", "level": "info", "message": "\ud83d\udccb Mission plan created and saved successfully."}
+{"timestamp": "2025-07-18T01:41:10.765610", "agent": "DirectorAgent", "level": "info", "message": "Director's work is complete. Handing off to the launcher."}
+{"timestamp": "2025-07-18T01:48:51.273885", "agent": "DirectorAgent", "level": "info", "message": "Agent initialized with shared core components."}
+{"timestamp": "2025-07-18T01:48:51.273885", "agent": "DirectorAgent", "level": "info", "message": "Director Agent is running. Awaiting user input for the mission goal."}
+{"timestamp": "2025-07-18T01:48:54.034073", "agent": "DirectorAgent", "level": "info", "message": "\u2705 No user goal provided. Proceeding with the default mission plan."}
+{"timestamp": "2025-07-18T01:48:54.037745", "agent": "DirectorAgent", "level": "info", "message": "\ud83d\udccb Mission plan created and saved successfully."}
+{"timestamp": "2025-07-18T01:48:54.037745", "agent": "DirectorAgent", "level": "info", "message": "Director's work is complete. Handing off to the launcher."}
+{"timestamp": "2025-07-18T01:57:43.634747", "agent": "DirectorAgent", "level": "info", "message": "Agent initialized with shared core components."}
+{"timestamp": "2025-07-18T01:57:43.634747", "agent": "DirectorAgent", "level": "info", "message": "Director Agent is running. Awaiting user input for the mission goal."}
+{"timestamp": "2025-07-18T01:57:44.257606", "agent": "DirectorAgent", "level": "info", "message": "\u2705 No user goal provided. Proceeding with the default mission plan."}
+{"timestamp": "2025-07-18T01:57:44.259652", "agent": "DirectorAgent", "level": "info", "message": "\ud83d\udccb Mission plan created and saved successfully."}
+{"timestamp": "2025-07-18T01:57:44.260663", "agent": "DirectorAgent", "level": "info", "message": "Director's work is complete. Handing off to the launcher."}
+{"timestamp": "2025-07-18T23:09:48.657113", "agent": "DirectorAgent", "level": "info", "message": "Agent initialized with shared core components."}
+{"timestamp": "2025-07-18T23:09:48.658167", "agent": "DirectorAgent", "level": "info", "message": "Director Agent is running. Awaiting user input for the mission goal."}
+{"timestamp": "2025-07-18T23:09:51.117923", "agent": "DirectorAgent", "level": "info", "message": "\u2705 No user goal provided. Proceeding with the default mission plan."}
+{"timestamp": "2025-07-18T23:09:51.121326", "agent": "DirectorAgent", "level": "info", "message": "\ud83d\udccb Mission plan created and saved successfully."}
+{"timestamp": "2025-07-18T23:09:51.122352", "agent": "DirectorAgent", "level": "info", "message": "Director's work is complete. Handing off to the launcher."}
+{"timestamp": "2025-07-18T23:13:54.850618", "agent": "DirectorAgent", "level": "info", "message": "Agent initialized with shared core components."}
+{"timestamp": "2025-07-18T23:13:54.851632", "agent": "DirectorAgent", "level": "info", "message": "Director Agent is running. Awaiting user input for the mission goal."}
+{"timestamp": "2025-07-18T23:13:56.197119", "agent": "DirectorAgent", "level": "info", "message": "\u2705 No user goal provided. Proceeding with the default mission plan."}
+{"timestamp": "2025-07-18T23:13:56.200159", "agent": "DirectorAgent", "level": "info", "message": "\ud83d\udccb Mission plan created and saved successfully."}
+{"timestamp": "2025-07-18T23:13:56.200159", "agent": "DirectorAgent", "level": "info", "message": "Director's work is complete. Handing off to the launcher."}
+{"timestamp": "2025-07-18T23:22:44.284810", "agent": "DirectorAgent", "level": "info", "message": "Agent initialized with shared core components."}
+{"timestamp": "2025-07-18T23:22:44.285814", "agent": "DirectorAgent", "level": "info", "message": "Director Agent is running. Awaiting user input for the mission goal."}
+{"timestamp": "2025-07-18T23:22:45.637479", "agent": "DirectorAgent", "level": "info", "message": "\u2705 No user goal provided. Proceeding with the default mission plan."}
+{"timestamp": "2025-07-18T23:22:45.639501", "agent": "DirectorAgent", "level": "info", "message": "\ud83d\udccb Mission plan created and saved successfully."}
+{"timestamp": "2025-07-18T23:22:45.640505", "agent": "DirectorAgent", "level": "info", "message": "Director's work is complete. Handing off to the launcher."}
+{"timestamp": "2025-07-18T23:41:34.865227", "agent": "DirectorAgent", "level": "info", "message": "Agent initialized with shared core components."}
+{"timestamp": "2025-07-18T23:41:34.865227", "agent": "DirectorAgent", "level": "info", "message": "Director Agent is running. Awaiting user input for the mission goal."}
+{"timestamp": "2025-07-18T23:41:36.524623", "agent": "DirectorAgent", "level": "info", "message": "\u2705 No user goal provided. Proceeding with the default mission plan."}
+{"timestamp": "2025-07-18T23:41:36.526757", "agent": "DirectorAgent", "level": "info", "message": "\ud83d\udccb Mission plan created and saved successfully."}
+{"timestamp": "2025-07-18T23:41:36.527769", "agent": "DirectorAgent", "level": "info", "message": "Director's work is complete. Handing off to the launcher."}
+{"timestamp": "2025-07-22T17:43:21.218761", "agent": "DirectorAgent", "level": "info", "message": "Agent initialized with shared core components."}
+{"timestamp": "2025-07-22T17:43:21.219769", "agent": "DirectorAgent", "level": "info", "message": "Director Agent is running. Awaiting user input for the mission goal."}
+{"timestamp": "2025-07-22T17:43:23.211472", "agent": "DirectorAgent", "level": "info", "message": "\u2705 No user goal provided. Proceeding with the default mission plan."}
+{"timestamp": "2025-07-22T17:43:23.214768", "agent": "DirectorAgent", "level": "info", "message": "\ud83d\udccb Mission plan created and saved successfully."}
+{"timestamp": "2025-07-22T17:43:23.215760", "agent": "DirectorAgent", "level": "info", "message": "Director's work is complete. Handing off to the launcher."}
+{"timestamp": "2025-07-22T17:50:43.284639", "agent": "DirectorAgent", "level": "info", "message": "Agent initialized with shared core components."}
+{"timestamp": "2025-07-22T17:50:43.284639", "agent": "DirectorAgent", "level": "info", "message": "Director Agent is running. Awaiting user input for the mission goal."}
+{"timestamp": "2025-07-22T17:50:44.523628", "agent": "DirectorAgent", "level": "info", "message": "\u2705 No user goal provided. Proceeding with the default mission plan."}
+{"timestamp": "2025-07-22T17:50:44.527461", "agent": "DirectorAgent", "level": "info", "message": "\ud83d\udccb Mission plan created and saved successfully."}
+{"timestamp": "2025-07-22T17:50:44.528506", "agent": "DirectorAgent", "level": "info", "message": "Director's work is complete. Handing off to the launcher."}
+{"timestamp": "2025-07-22T18:20:34.300097", "agent": "DirectorAgent", "level": "info", "message": "Agent initialized with shared core components."}
+{"timestamp": "2025-07-22T18:20:34.300097", "agent": "DirectorAgent", "level": "info", "message": "Director Agent is running. Awaiting user input for the mission goal."}
+{"timestamp": "2025-07-22T18:20:35.266728", "agent": "DirectorAgent", "level": "info", "message": "\u2705 No user goal provided. Proceeding with the default mission plan."}
+{"timestamp": "2025-07-22T18:20:35.269784", "agent": "DirectorAgent", "level": "info", "message": "\ud83d\udccb Mission plan created and saved successfully."}
+{"timestamp": "2025-07-22T18:20:35.270900", "agent": "DirectorAgent", "level": "info", "message": "Director's work is complete. Handing off to the launcher."}
+{"timestamp": "2025-07-22T23:19:51.393996", "agent": "DirectorAgent", "level": "info", "message": "Agent initialized with shared core components."}
+{"timestamp": "2025-07-22T23:19:51.394721", "agent": "DirectorAgent", "level": "info", "message": "Director Agent is running. Awaiting user input for the mission goal."}
+{"timestamp": "2025-07-22T23:19:54.851404", "agent": "DirectorAgent", "level": "info", "message": "\u2705 No user goal provided. Proceeding with the default mission plan."}
+{"timestamp": "2025-07-22T23:19:54.854616", "agent": "DirectorAgent", "level": "info", "message": "\ud83d\udccb Mission plan created and saved successfully."}
+{"timestamp": "2025-07-22T23:19:54.855633", "agent": "DirectorAgent", "level": "info", "message": "Director's work is complete. Handing off to the launcher."}
+{"timestamp": "2025-07-22T23:38:28.629638", "agent": "DirectorAgent", "level": "info", "message": "Agent initialized with shared core components."}
+{"timestamp": "2025-07-22T23:38:28.630662", "agent": "DirectorAgent", "level": "info", "message": "Director Agent is running. Awaiting user input for the mission goal."}
+{"timestamp": "2025-07-22T23:38:31.242510", "agent": "DirectorAgent", "level": "info", "message": "\u2705 No user goal provided. Proceeding with the default mission plan."}
+{"timestamp": "2025-07-22T23:38:31.244535", "agent": "DirectorAgent", "level": "info", "message": "\ud83d\udccb Mission plan created and saved successfully."}
+{"timestamp": "2025-07-22T23:38:31.245547", "agent": "DirectorAgent", "level": "info", "message": "Director's work is complete. Handing off to the launcher."}
+{"timestamp": "2025-07-22T23:46:15.079849", "agent": "DirectorAgent", "level": "info", "message": "Agent initialized with shared core components."}
+{"timestamp": "2025-07-22T23:46:15.082297", "agent": "DirectorAgent", "level": "info", "message": "Director Agent is running. Awaiting user input for the mission goal."}
+{"timestamp": "2025-07-22T23:46:16.025922", "agent": "DirectorAgent", "level": "info", "message": "\u2705 No user goal provided. Proceeding with the default mission plan."}
+{"timestamp": "2025-07-22T23:46:16.028943", "agent": "DirectorAgent", "level": "info", "message": "\ud83d\udccb Mission plan created and saved successfully."}
+{"timestamp": "2025-07-22T23:46:16.028943", "agent": "DirectorAgent", "level": "info", "message": "Director's work is complete. Handing off to the launcher."}
+{"timestamp": "2025-07-22T23:51:40.949871", "agent": "DirectorAgent", "level": "info", "message": "Agent initialized with shared core components."}
+{"timestamp": "2025-07-22T23:51:40.950949", "agent": "DirectorAgent", "level": "info", "message": "Director Agent is running. Awaiting user input for the mission goal."}
+{"timestamp": "2025-07-22T23:51:42.642093", "agent": "DirectorAgent", "level": "info", "message": "\ud83e\udde0 User goal received: \\"}
+{"timestamp": "2025-07-22T23:51:42.644556", "agent": "DirectorAgent", "level": "info", "message": "\ud83d\udccb Mission plan created and saved successfully."}
+{"timestamp": "2025-07-22T23:51:42.645564", "agent": "DirectorAgent", "level": "info", "message": "Director's work is complete. Handing off to the launcher."}
+{"timestamp": "2025-07-22T23:52:00.393382", "agent": "DirectorAgent", "level": "info", "message": "Agent initialized with shared core components."}
+{"timestamp": "2025-07-22T23:52:00.393382", "agent": "DirectorAgent", "level": "info", "message": "Director Agent is running. Awaiting user input for the mission goal."}
+{"timestamp": "2025-07-22T23:52:03.809698", "agent": "DirectorAgent", "level": "info", "message": "\u2705 No user goal provided. Proceeding with the default mission plan."}
+{"timestamp": "2025-07-22T23:52:03.811824", "agent": "DirectorAgent", "level": "info", "message": "\ud83d\udccb Mission plan created and saved successfully."}
+{"timestamp": "2025-07-22T23:52:03.812838", "agent": "DirectorAgent", "level": "info", "message": "Director's work is complete. Handing off to the launcher."}
+{"timestamp": "2025-07-23T00:01:08.745976", "agent": "DirectorAgent", "level": "info", "message": "Agent initialized with shared core components."}
+{"timestamp": "2025-07-23T00:01:08.746988", "agent": "DirectorAgent", "level": "info", "message": "Director Agent is running. Awaiting user input for the mission goal."}
+{"timestamp": "2025-07-23T00:01:11.985973", "agent": "DirectorAgent", "level": "info", "message": "\u2705 No user goal provided. Proceeding with the default mission plan."}
+{"timestamp": "2025-07-23T00:01:11.988526", "agent": "DirectorAgent", "level": "info", "message": "\ud83d\udccb Mission plan created and saved successfully."}
+{"timestamp": "2025-07-23T00:01:11.989526", "agent": "DirectorAgent", "level": "info", "message": "Director's work is complete. Handing off to the launcher."}
+{"timestamp": "2025-07-23T00:27:27.071401", "agent": "DirectorAgent", "level": "info", "message": "Agent initialized with shared core components."}
+{"timestamp": "2025-07-23T00:27:27.072406", "agent": "DirectorAgent", "level": "info", "message": "Director Agent is running. Awaiting user input for the mission goal."}
+{"timestamp": "2025-07-23T00:27:28.537485", "agent": "DirectorAgent", "level": "info", "message": "\u2705 No user goal provided. Proceeding with the default mission plan."}
+{"timestamp": "2025-07-23T00:27:28.538571", "agent": "DirectorAgent", "level": "info", "message": "\ud83d\udccb Mission plan created and saved successfully."}
+{"timestamp": "2025-07-23T00:27:28.540075", "agent": "DirectorAgent", "level": "info", "message": "Director's work is complete. Handing off to the launcher."}
+{"timestamp": "2025-07-23T00:37:20.336337", "agent": "DirectorAgent", "level": "info", "message": "Agent initialized with shared core components."}
+{"timestamp": "2025-07-23T00:37:20.337336", "agent": "DirectorAgent", "level": "info", "message": "Director Agent is running. Awaiting user input for the mission goal."}
+{"timestamp": "2025-07-23T00:37:22.625735", "agent": "DirectorAgent", "level": "info", "message": "\u2705 No user goal provided. Proceeding with the default mission plan."}
+{"timestamp": "2025-07-23T00:37:22.627825", "agent": "DirectorAgent", "level": "info", "message": "\ud83d\udccb Mission plan created and saved successfully."}
+{"timestamp": "2025-07-23T00:37:22.628830", "agent": "DirectorAgent", "level": "info", "message": "Director's work is complete. Handing off to the launcher."}
+{"timestamp": "2025-07-23T00:49:25.003472", "agent": "DirectorAgent", "level": "info", "message": "Agent initialized with shared core components."}
+{"timestamp": "2025-07-23T00:49:25.003472", "agent": "DirectorAgent", "level": "info", "message": "Director Agent is running. Awaiting user input for the mission goal."}
+{"timestamp": "2025-07-23T00:49:27.344277", "agent": "DirectorAgent", "level": "info", "message": "\u2705 No user goal provided. Proceeding with the default mission plan."}
+{"timestamp": "2025-07-23T00:49:27.347478", "agent": "DirectorAgent", "level": "info", "message": "\ud83d\udccb Mission plan created and saved successfully."}
+{"timestamp": "2025-07-23T00:49:27.348486", "agent": "DirectorAgent", "level": "info", "message": "Director's work is complete. Handing off to the launcher."}
+{"timestamp": "2025-07-23T00:56:45.765932", "agent": "DirectorAgent", "level": "info", "message": "Agent initialized with shared core components."}
+{"timestamp": "2025-07-23T00:56:45.765932", "agent": "DirectorAgent", "level": "info", "message": "Director Agent is running. Awaiting user input for the mission goal."}
+{"timestamp": "2025-07-23T00:56:47.272458", "agent": "DirectorAgent", "level": "info", "message": "\u2705 No user goal provided. Proceeding with the default mission plan."}
+{"timestamp": "2025-07-23T00:56:47.274525", "agent": "DirectorAgent", "level": "info", "message": "\ud83d\udccb Mission plan created and saved successfully."}
+{"timestamp": "2025-07-23T00:56:47.275546", "agent": "DirectorAgent", "level": "info", "message": "Director's work is complete. Handing off to the launcher."}
+{"timestamp": "2025-07-23T01:01:24.758569", "agent": "DirectorAgent", "level": "info", "message": "Agent initialized with shared core components."}
+{"timestamp": "2025-07-23T01:01:24.759628", "agent": "DirectorAgent", "level": "info", "message": "Director Agent is running. Awaiting user input for the mission goal."}
+{"timestamp": "2025-07-23T01:01:26.312051", "agent": "DirectorAgent", "level": "info", "message": "\u2705 No user goal provided. Proceeding with the default mission plan."}
+{"timestamp": "2025-07-23T01:01:26.314577", "agent": "DirectorAgent", "level": "info", "message": "\ud83d\udccb Mission plan created and saved successfully."}
+{"timestamp": "2025-07-23T01:01:26.315582", "agent": "DirectorAgent", "level": "info", "message": "Director's work is complete. Handing off to the launcher."}
+{"timestamp": "2025-07-23T01:29:43.172693", "agent": "DirectorAgent", "level": "info", "message": "Agent initialized with shared core components."}
+{"timestamp": "2025-07-23T01:29:43.173689", "agent": "DirectorAgent", "level": "info", "message": "Director Agent is running. Awaiting user input for the mission goal."}
+{"timestamp": "2025-07-23T01:29:50.080647", "agent": "DirectorAgent", "level": "info", "message": "\u2705 No user goal provided. Proceeding with the default mission plan."}
+{"timestamp": "2025-07-23T01:29:50.082734", "agent": "DirectorAgent", "level": "info", "message": "\ud83d\udccb Mission plan created and saved successfully."}
+{"timestamp": "2025-07-23T01:29:50.083753", "agent": "DirectorAgent", "level": "info", "message": "Director's work is complete. Handing off to the launcher."}
+{"timestamp": "2025-07-23T01:50:56.993459", "agent": "DirectorAgent", "level": "info", "message": "Agent initialized with shared core components."}
+{"timestamp": "2025-07-23T01:50:56.994493", "agent": "DirectorAgent", "level": "info", "message": "Director Agent is running. Awaiting user input for the mission goal."}
+{"timestamp": "2025-07-23T01:50:58.087094", "agent": "DirectorAgent", "level": "info", "message": "\u2705 No user goal provided. Proceeding with the default mission plan."}
+{"timestamp": "2025-07-23T01:50:58.090290", "agent": "DirectorAgent", "level": "info", "message": "\ud83d\udccb Mission plan created and saved successfully."}
+{"timestamp": "2025-07-23T01:50:58.091298", "agent": "DirectorAgent", "level": "info", "message": "Director's work is complete. Handing off to the launcher."}
+{"timestamp": "2025-07-23T01:57:12.846107", "agent": "DirectorAgent", "level": "info", "message": "Agent initialized with shared core components."}
+{"timestamp": "2025-07-23T01:57:12.846107", "agent": "DirectorAgent", "level": "info", "message": "Director Agent is running. Awaiting user input for the mission goal."}
+{"timestamp": "2025-07-23T01:57:14.175626", "agent": "DirectorAgent", "level": "info", "message": "\u2705 No user goal provided. Proceeding with the default mission plan."}
+{"timestamp": "2025-07-23T01:57:14.177689", "agent": "DirectorAgent", "level": "info", "message": "\ud83d\udccb Mission plan created and saved successfully."}
+{"timestamp": "2025-07-23T01:57:14.179009", "agent": "DirectorAgent", "level": "info", "message": "Director's work is complete. Handing off to the launcher."}
+{"timestamp": "2025-07-23T02:07:58.369776", "agent": "DirectorAgent", "level": "info", "message": "Agent initialized with shared core components."}
+{"timestamp": "2025-07-23T02:07:58.369776", "agent": "DirectorAgent", "level": "info", "message": "Director Agent is running. Awaiting user input for the mission goal."}
+{"timestamp": "2025-07-23T02:07:59.806738", "agent": "DirectorAgent", "level": "info", "message": "\u2705 No user goal provided. Proceeding with the default mission plan."}
+{"timestamp": "2025-07-23T02:07:59.810159", "agent": "DirectorAgent", "level": "info", "message": "\ud83d\udccb Mission plan created and saved successfully."}
+{"timestamp": "2025-07-23T02:07:59.810159", "agent": "DirectorAgent", "level": "info", "message": "Director's work is complete. Handing off to the launcher."}
+{"timestamp": "2025-07-23T10:41:20.060886", "agent": "DirectorAgent", "level": "info", "message": "Agent initialized with shared core components."}
+{"timestamp": "2025-07-23T10:41:20.061390", "agent": "DirectorAgent", "level": "info", "message": "Director Agent is running. Awaiting user input for the mission goal."}
+{"timestamp": "2025-07-23T10:41:21.921027", "agent": "DirectorAgent", "level": "info", "message": "\u2705 No user goal provided. Proceeding with the default mission plan."}
+{"timestamp": "2025-07-23T10:41:21.945610", "agent": "DirectorAgent", "level": "info", "message": "\ud83d\udccb Mission plan created and saved successfully."}
+{"timestamp": "2025-07-23T10:41:21.946621", "agent": "DirectorAgent", "level": "info", "message": "Director's work is complete. Handing off to the launcher."}

@@ -302,3 +302,318 @@
 {"timestamp": "2025-07-18T00:32:08.091061", "agent": "WriterAgent", "level": "info", "message": "New tweet generated: \"Sleep?  What's sleep?  Just fueled by caffeine and the sheer terror of missing the AI revolution. #StartupLife #BuildWithAI\""}
 {"timestamp": "2025-07-18T00:32:08.091061", "agent": "WriterAgent", "level": "info", "message": "\u2705 Tweet saved to memory for PosterAgent."}
 {"timestamp": "2025-07-18T00:32:08.092520", "agent": "WriterAgent", "level": "info", "message": "Work complete. Handing off to the next agent."}
+{"timestamp": "2025-07-18T01:29:01.871476", "agent": "WriterAgent", "level": "info", "message": "Agent initialized with shared core components."}
+{"timestamp": "2025-07-18T01:29:01.873535", "agent": "WriterAgent", "level": "info", "message": "Fetching trending topics to write a new post..."}
+{"timestamp": "2025-07-18T01:29:05.584302", "agent": "WriterAgent", "level": "warning", "message": "Not enough valid hashtags found, using fallback topics."}
+{"timestamp": "2025-07-18T01:29:05.585308", "agent": "WriterAgent", "level": "info", "message": "Using hashtags: #StartupLife #BuildWithAI"}
+{"timestamp": "2025-07-18T01:29:08.395440", "agent": "WriterAgent", "level": "info", "message": "New tweet generated: \"Sleep?  What's sleep?  Just fueled by caffeine and the sheer terror of not #BuildWithAI  fast enough.  Send help (and venture capital). #StartupLife\""}
+{"timestamp": "2025-07-18T01:29:08.395440", "agent": "WriterAgent", "level": "info", "message": "\u2705 Tweet saved to memory for PosterAgent."}
+{"timestamp": "2025-07-18T01:29:08.396483", "agent": "WriterAgent", "level": "info", "message": "Work complete. Handing off to the next agent."}
+{"timestamp": "2025-07-18T01:41:10.772271", "agent": "WriterAgent", "level": "info", "message": "Agent initialized with shared core components."}
+{"timestamp": "2025-07-18T01:41:10.774307", "agent": "WriterAgent", "level": "info", "message": "Fetching trending topics to write a new post..."}
+{"timestamp": "2025-07-18T01:41:14.410166", "agent": "WriterAgent", "level": "info", "message": "Using hashtags: #IndiaVsPakistan #INDvsPAK"}
+{"timestamp": "2025-07-18T01:41:20.454511", "agent": "WriterAgent", "level": "info", "message": "New tweet generated: \"My therapist told me to embrace my anxieties.  So I'm embracing this #IndiaVsPakistan match.  May the best cricket-playing nation win! #INDvsPAK\""}
+{"timestamp": "2025-07-18T01:41:20.455519", "agent": "WriterAgent", "level": "info", "message": "\u2705 Tweet saved to memory for PosterAgent."}
+{"timestamp": "2025-07-18T01:41:20.455519", "agent": "WriterAgent", "level": "info", "message": "Work complete. Handing off to the next agent."}
+{"timestamp": "2025-07-18T01:48:54.044777", "agent": "WriterAgent", "level": "info", "message": "Agent initialized with shared core components."}
+{"timestamp": "2025-07-18T01:48:54.047371", "agent": "WriterAgent", "level": "info", "message": "Fetching trending topics to write a new post..."}
+{"timestamp": "2025-07-18T01:48:55.671989", "agent": "WriterAgent", "level": "info", "message": "Using hashtags: #IndiaVsAustralia #INDvsAUS"}
+{"timestamp": "2025-07-18T01:48:56.747489", "agent": "WriterAgent", "level": "info", "message": "New tweet generated: \"India vs Australia.  May the best cricket-playing nation win... or at least the one with the most entertaining collapses. #IndiaVsAustralia #INDvsAUS\""}
+{"timestamp": "2025-07-18T01:48:56.747489", "agent": "WriterAgent", "level": "info", "message": "\u2705 Tweet saved to memory for PosterAgent."}
+{"timestamp": "2025-07-18T01:48:56.748997", "agent": "WriterAgent", "level": "info", "message": "Work complete. Handing off to the next agent."}
+{"timestamp": "2025-07-18T01:57:44.269036", "agent": "WriterAgent", "level": "info", "message": "Agent initialized with shared core components."}
+{"timestamp": "2025-07-18T01:57:44.270046", "agent": "WriterAgent", "level": "info", "message": "Fetching trending topics to write a new post..."}
+{"timestamp": "2025-07-18T01:57:47.280313", "agent": "WriterAgent", "level": "warning", "message": "Not enough valid hashtags found, using fallback topics."}
+{"timestamp": "2025-07-18T01:57:47.281328", "agent": "WriterAgent", "level": "info", "message": "Using hashtags: #StartupLife #BuildWithAI"}
+{"timestamp": "2025-07-18T01:57:51.224698", "agent": "WriterAgent", "level": "info", "message": "New tweet generated: \"Sleep?  What's sleep?  Powered by caffeine and #BuildWithAI, conquering the world, one line of code (and several all-nighters) at a time.  #StartupLife\""}
+{"timestamp": "2025-07-18T01:57:51.224698", "agent": "WriterAgent", "level": "info", "message": "\u2705 Tweet saved to memory for PosterAgent."}
+{"timestamp": "2025-07-18T01:57:51.225711", "agent": "WriterAgent", "level": "info", "message": "Work complete. Handing off to the next agent."}
+{"timestamp": "2025-07-18T23:09:51.131176", "agent": "WriterAgent", "level": "info", "message": "Agent initialized with shared core components."}
+{"timestamp": "2025-07-18T23:09:51.133275", "agent": "WriterAgent", "level": "info", "message": "Fetching trending topics to write a new post..."}
+{"timestamp": "2025-07-18T23:09:57.321616", "agent": "WriterAgent", "level": "warning", "message": "Not enough valid hashtags found, using fallback topics."}
+{"timestamp": "2025-07-18T23:09:57.322668", "agent": "WriterAgent", "level": "info", "message": "Using hashtags: #StartupLife #BuildWithAI"}
+{"timestamp": "2025-07-18T23:10:03.367024", "agent": "WriterAgent", "level": "info", "message": "New tweet generated: \"Sleep?  What's sleep?  Just fueled by caffeine and the sweet, sweet promise of AI-powered world domination. #StartupLife #BuildWithAI\""}
+{"timestamp": "2025-07-18T23:10:03.367024", "agent": "WriterAgent", "level": "info", "message": "\u2705 Tweet saved to memory for PosterAgent."}
+{"timestamp": "2025-07-18T23:10:03.368030", "agent": "WriterAgent", "level": "info", "message": "Work complete. Handing off to the next agent."}
+{"timestamp": "2025-07-18T23:13:56.206351", "agent": "WriterAgent", "level": "info", "message": "Agent initialized with shared core components."}
+{"timestamp": "2025-07-18T23:13:56.207714", "agent": "WriterAgent", "level": "info", "message": "Fetching trending topics to write a new post..."}
+{"timestamp": "2025-07-18T23:13:59.807837", "agent": "WriterAgent", "level": "warning", "message": "Not enough valid hashtags found, using fallback topics."}
+{"timestamp": "2025-07-18T23:13:59.808851", "agent": "WriterAgent", "level": "info", "message": "Using hashtags: #StartupLife #BuildWithAI"}
+{"timestamp": "2025-07-18T23:14:01.190870", "agent": "WriterAgent", "level": "info", "message": "New tweet generated: \"Sleep?  What's sleep?  My startup's fueled by caffeine and the sheer terror of not #BuildWithAI.  Send help (and maybe pizza). #StartupLife\""}
+{"timestamp": "2025-07-18T23:14:01.191875", "agent": "WriterAgent", "level": "info", "message": "\u2705 Tweet saved to memory for PosterAgent."}
+{"timestamp": "2025-07-18T23:14:01.191875", "agent": "WriterAgent", "level": "info", "message": "Work complete. Handing off to the next agent."}
+{"timestamp": "2025-07-18T23:22:45.646577", "agent": "WriterAgent", "level": "info", "message": "Agent initialized with shared core components."}
+{"timestamp": "2025-07-18T23:22:45.647581", "agent": "WriterAgent", "level": "info", "message": "Fetching trending topics to write a new post..."}
+{"timestamp": "2025-07-18T23:22:47.628413", "agent": "WriterAgent", "level": "warning", "message": "Not enough valid hashtags found, using fallback topics."}
+{"timestamp": "2025-07-18T23:22:47.628413", "agent": "WriterAgent", "level": "info", "message": "Using hashtags: #StartupLife #BuildWithAI"}
+{"timestamp": "2025-07-18T23:22:48.397099", "agent": "WriterAgent", "level": "info", "message": "New tweet generated: \"Sleep?  What's sleep?  My startup's fueled by caffeine and the sheer terror of AI taking my job.  #StartupLife #BuildWithAI\""}
+{"timestamp": "2025-07-18T23:22:48.397099", "agent": "WriterAgent", "level": "info", "message": "\u2705 Tweet saved to memory for PosterAgent."}
+{"timestamp": "2025-07-18T23:22:48.398497", "agent": "WriterAgent", "level": "info", "message": "Work complete. Handing off to the next agent."}
+{"timestamp": "2025-07-18T23:41:36.534396", "agent": "WriterAgent", "level": "info", "message": "Agent initialized with shared core components."}
+{"timestamp": "2025-07-18T23:41:36.535402", "agent": "WriterAgent", "level": "info", "message": "Fetching trending topics to write a new post..."}
+{"timestamp": "2025-07-18T23:41:41.043055", "agent": "WriterAgent", "level": "warning", "message": "Not enough valid hashtags found, using fallback topics."}
+{"timestamp": "2025-07-18T23:41:41.044074", "agent": "WriterAgent", "level": "info", "message": "Using hashtags: #StartupLife #BuildWithAI"}
+{"timestamp": "2025-07-18T23:41:47.033073", "agent": "WriterAgent", "level": "info", "message": "New tweet generated: \"Sleep?  What's sleep?  My AI-powered to-do list laughs at the concept. #StartupLife #BuildWithAI\""}
+{"timestamp": "2025-07-18T23:41:47.034096", "agent": "WriterAgent", "level": "info", "message": "\u2705 Tweet saved to memory for PosterAgent."}
+{"timestamp": "2025-07-18T23:41:47.034096", "agent": "WriterAgent", "level": "info", "message": "Work complete. Handing off to the next agent."}
+{"timestamp": "2025-07-22T17:43:23.223317", "agent": "WriterAgent", "level": "info", "message": "Agent initialized with shared core components."}
+{"timestamp": "2025-07-22T17:43:23.225822", "agent": "WriterAgent", "level": "info", "message": "Fetching trending topics to write a new post..."}
+{"timestamp": "2025-07-22T17:43:25.210449", "agent": "WriterAgent", "level": "warning", "message": "Not enough valid hashtags found, using fallback topics."}
+{"timestamp": "2025-07-22T17:43:25.212053", "agent": "WriterAgent", "level": "info", "message": "Using hashtags: #StartupLife #BuildWithAI"}
+{"timestamp": "2025-07-22T17:43:26.493277", "agent": "WriterAgent", "level": "info", "message": "New tweet generated: \"Sleep?  What's sleep?  My AI-powered coffee machine is brewing another round.  #StartupLife #BuildWithAI\""}
+{"timestamp": "2025-07-22T17:43:26.493277", "agent": "WriterAgent", "level": "info", "message": "\u2705 Tweet saved to memory for PosterAgent."}
+{"timestamp": "2025-07-22T17:43:26.494461", "agent": "WriterAgent", "level": "info", "message": "Work complete. Handing off to the next agent."}
+{"timestamp": "2025-07-22T17:50:44.535007", "agent": "WriterAgent", "level": "info", "message": "Agent initialized with shared core components."}
+{"timestamp": "2025-07-22T17:50:44.538516", "agent": "WriterAgent", "level": "info", "message": "Fetching trending topics to write a new post..."}
+{"timestamp": "2025-07-22T17:50:46.490610", "agent": "WriterAgent", "level": "warning", "message": "Not enough valid hashtags found, using fallback topics."}
+{"timestamp": "2025-07-22T17:50:46.493155", "agent": "WriterAgent", "level": "info", "message": "Using hashtags: #StartupLife #BuildWithAI"}
+{"timestamp": "2025-07-22T17:50:47.786290", "agent": "WriterAgent", "level": "info", "message": "New tweet generated: \"Sleep?  What's sleep?  Just fueled by caffeine and the sheer terror of missing the AI revolution. #StartupLife #BuildWithAI\""}
+{"timestamp": "2025-07-22T17:50:47.787311", "agent": "WriterAgent", "level": "info", "message": "\u2705 Tweet saved to memory for PosterAgent."}
+{"timestamp": "2025-07-22T17:50:47.788406", "agent": "WriterAgent", "level": "info", "message": "Work complete. Handing off to the next agent."}
+{"timestamp": "2025-07-22T18:20:35.277064", "agent": "WriterAgent", "level": "info", "message": "Agent initialized with shared core components."}
+{"timestamp": "2025-07-22T18:20:35.278076", "agent": "WriterAgent", "level": "info", "message": "Fetching trending topics to write a new post..."}
+{"timestamp": "2025-07-22T18:20:39.214839", "agent": "WriterAgent", "level": "warning", "message": "Not enough valid hashtags found, using fallback topics."}
+{"timestamp": "2025-07-22T18:20:39.214839", "agent": "WriterAgent", "level": "info", "message": "Using hashtags: #StartupLife #BuildWithAI"}
+{"timestamp": "2025-07-22T18:20:40.554653", "agent": "WriterAgent", "level": "info", "message": "New tweet generated: \"Sleep?  What's sleep?  My startup's AI-powered, and it's apparently running on caffeine and sheer will.  #StartupLife #BuildWithAI\""}
+{"timestamp": "2025-07-22T18:20:40.555666", "agent": "WriterAgent", "level": "info", "message": "\u2705 Tweet saved to memory for PosterAgent."}
+{"timestamp": "2025-07-22T18:20:40.555666", "agent": "WriterAgent", "level": "info", "message": "Work complete. Handing off to the next agent."}
+{"timestamp": "2025-07-22T23:19:54.864039", "agent": "WriterAgent", "level": "info", "message": "Agent initialized with shared core components."}
+{"timestamp": "2025-07-22T23:19:54.866366", "agent": "WriterAgent", "level": "info", "message": "Fetching trending topics to write a new post..."}
+{"timestamp": "2025-07-22T23:19:55.858454", "agent": "WriterAgent", "level": "warning", "message": "Not enough valid hashtags found, using fallback topics."}
+{"timestamp": "2025-07-22T23:19:55.859788", "agent": "WriterAgent", "level": "info", "message": "Using hashtags: #StartupLife #BuildWithAI"}
+{"timestamp": "2025-07-22T23:19:57.116352", "agent": "WriterAgent", "level": "info", "message": "New tweet generated: \"Sleep?  What's sleep?  Just fueled by caffeine and the sweet, sweet promise of AI-powered world domination. #StartupLife #BuildWithAI\""}
+{"timestamp": "2025-07-22T23:19:57.117403", "agent": "WriterAgent", "level": "info", "message": "\u2705 Tweet saved to memory for PosterAgent."}
+{"timestamp": "2025-07-22T23:19:57.117403", "agent": "WriterAgent", "level": "info", "message": "Work complete. Handing off to the next agent."}
+{"timestamp": "2025-07-22T23:38:31.250605", "agent": "WriterAgent", "level": "info", "message": "Agent initialized with shared core components."}
+{"timestamp": "2025-07-22T23:38:31.253269", "agent": "WriterAgent", "level": "info", "message": "Fetching trending topics to write a new post..."}
+{"timestamp": "2025-07-22T23:38:32.400218", "agent": "WriterAgent", "level": "warning", "message": "Not enough valid hashtags found, using fallback topics."}
+{"timestamp": "2025-07-22T23:38:32.401221", "agent": "WriterAgent", "level": "info", "message": "Using hashtags: #StartupLife #BuildWithAI"}
+{"timestamp": "2025-07-22T23:38:33.658138", "agent": "WriterAgent", "level": "info", "message": "New tweet generated: \"Sleep?  What's sleep?  Just fueled by caffeine and the sheer terror of missing my #BuildWithAI deadline.  Send help (and pizza). #StartupLife\""}
+{"timestamp": "2025-07-22T23:38:33.659152", "agent": "WriterAgent", "level": "info", "message": "\u2705 Tweet saved to memory for PosterAgent."}
+{"timestamp": "2025-07-22T23:38:33.659152", "agent": "WriterAgent", "level": "info", "message": "Work complete. Handing off to the next agent."}
+{"timestamp": "2025-07-22T23:46:16.035721", "agent": "WriterAgent", "level": "info", "message": "Agent initialized with shared core components."}
+{"timestamp": "2025-07-22T23:46:16.036725", "agent": "WriterAgent", "level": "info", "message": "Fetching trending topics to write a new post..."}
+{"timestamp": "2025-07-22T23:46:16.914341", "agent": "WriterAgent", "level": "warning", "message": "Not enough valid hashtags found, using fallback topics."}
+{"timestamp": "2025-07-22T23:46:16.914341", "agent": "WriterAgent", "level": "info", "message": "Using hashtags: #StartupLife #BuildWithAI"}
+{"timestamp": "2025-07-22T23:46:18.114115", "agent": "WriterAgent", "level": "info", "message": "New tweet generated: \"Sleep?  What's sleep?  My AI-powered startup is fueled by caffeine and existential dread.  #StartupLife #BuildWithAI\""}
+{"timestamp": "2025-07-22T23:46:18.114115", "agent": "WriterAgent", "level": "info", "message": "\u2705 Tweet saved to memory for PosterAgent."}
+{"timestamp": "2025-07-22T23:46:18.115434", "agent": "WriterAgent", "level": "info", "message": "Work complete. Handing off to the next agent."}
+{"timestamp": "2025-07-22T23:52:03.819116", "agent": "WriterAgent", "level": "info", "message": "Agent initialized with shared core components."}
+{"timestamp": "2025-07-22T23:52:03.820146", "agent": "WriterAgent", "level": "info", "message": "Fetching trending topics to write a new post..."}
+{"timestamp": "2025-07-22T23:52:06.352945", "agent": "WriterAgent", "level": "warning", "message": "Not enough valid hashtags found, using fallback topics."}
+{"timestamp": "2025-07-22T23:52:06.354464", "agent": "WriterAgent", "level": "info", "message": "Using hashtags: #StartupLife #BuildWithAI"}
+{"timestamp": "2025-07-22T23:52:07.245665", "agent": "WriterAgent", "level": "info", "message": "New tweet generated: \"Sleep?  What's sleep?  My AI-powered coffee maker is my new best friend.  #StartupLife #BuildWithAI\""}
+{"timestamp": "2025-07-22T23:52:07.246680", "agent": "WriterAgent", "level": "info", "message": "\u2705 Tweet saved to memory for PosterAgent."}
+{"timestamp": "2025-07-22T23:52:07.246680", "agent": "WriterAgent", "level": "info", "message": "Work complete. Handing off to the next agent."}
+{"timestamp": "2025-07-23T00:01:11.994703", "agent": "WriterAgent", "level": "info", "message": "Agent initialized with shared core components."}
+{"timestamp": "2025-07-23T00:01:11.996712", "agent": "WriterAgent", "level": "info", "message": "Fetching trending topics to write a new post..."}
+{"timestamp": "2025-07-23T00:01:13.002059", "agent": "WriterAgent", "level": "warning", "message": "Not enough valid hashtags found, using fallback topics."}
+{"timestamp": "2025-07-23T00:01:13.003073", "agent": "WriterAgent", "level": "info", "message": "Using hashtags: #StartupLife #BuildWithAI"}
+{"timestamp": "2025-07-23T00:01:15.527449", "agent": "WriterAgent", "level": "info", "message": "New tweet generated: \"Sleep?  What's sleep?  My AI-powered startup is fueled by caffeine and the sweet, sweet agony of #StartupLife.  At least the AI's doing *some* of the work. #BuildWithAI\""}
+{"timestamp": "2025-07-23T00:01:15.528981", "agent": "WriterAgent", "level": "info", "message": "\u2705 Tweet saved to memory for PosterAgent."}
+{"timestamp": "2025-07-23T00:01:15.529484", "agent": "WriterAgent", "level": "info", "message": "Work complete. Handing off to the next agent."}
+{"timestamp": "2025-07-23T00:27:28.545215", "agent": "WriterAgent", "level": "info", "message": "Agent initialized with shared core components."}
+{"timestamp": "2025-07-23T00:27:28.547221", "agent": "WriterAgent", "level": "info", "message": "Fetching trending topics to write a new post..."}
+{"timestamp": "2025-07-23T00:27:29.484207", "agent": "WriterAgent", "level": "info", "message": "Using hashtags: #IndiaVsAustralia #INDvsAUS"}
+{"timestamp": "2025-07-23T00:27:30.612193", "agent": "WriterAgent", "level": "info", "message": "New tweet generated: \"India vs Australia: May the best cricket-playing nation win... or at least the one with the most entertaining collapses.  #IndiaVsAustralia #INDvsAUS\""}
+{"timestamp": "2025-07-23T00:27:30.613199", "agent": "WriterAgent", "level": "info", "message": "\u2705 Tweet saved to memory for PosterAgent."}
+{"timestamp": "2025-07-23T00:27:30.613199", "agent": "WriterAgent", "level": "info", "message": "Work complete. Handing off to the next agent."}
+{"timestamp": "2025-07-23T00:37:22.634393", "agent": "WriterAgent", "level": "info", "message": "Agent initialized with shared core components."}
+{"timestamp": "2025-07-23T00:37:22.635436", "agent": "WriterAgent", "level": "info", "message": "Fetching trending topics to write a new post..."}
+{"timestamp": "2025-07-23T00:37:26.172031", "agent": "WriterAgent", "level": "info", "message": "Using hashtags: #INDvsPAK #AsiaCup2023"}
+{"timestamp": "2025-07-23T00:38:09.113697", "agent": "WriterAgent", "level": "info", "message": "New tweet generated: \"India vs Pakistan.  The only match where the tension is higher than the chai.  Let's go get 'em! #INDvsPAK #AsiaCup2023\""}
+{"timestamp": "2025-07-23T00:38:09.113697", "agent": "WriterAgent", "level": "info", "message": "\u2705 Tweet saved to memory for PosterAgent."}
+{"timestamp": "2025-07-23T00:38:09.114728", "agent": "WriterAgent", "level": "info", "message": "Work complete. Handing off to the next agent."}
+{"timestamp": "2025-07-23T00:49:27.354319", "agent": "WriterAgent", "level": "info", "message": "Agent initialized with shared core components."}
+{"timestamp": "2025-07-23T00:49:27.356922", "agent": "WriterAgent", "level": "info", "message": "Fetching trending topics to write a new post..."}
+{"timestamp": "2025-07-23T00:49:28.233649", "agent": "WriterAgent", "level": "warning", "message": "Not enough valid hashtags found, using fallback topics."}
+{"timestamp": "2025-07-23T00:49:28.235677", "agent": "WriterAgent", "level": "info", "message": "Using hashtags: #StartupLife #BuildWithAI"}
+{"timestamp": "2025-07-23T00:49:30.030682", "agent": "WriterAgent", "level": "info", "message": "New tweet generated: \"Sleep?  What's sleep?  My AI-powered coffee machine is my new best friend.  #StartupLife #BuildWithAI\""}
+{"timestamp": "2025-07-23T00:49:30.031683", "agent": "WriterAgent", "level": "info", "message": "\u2705 Tweet saved to memory for PosterAgent."}
+{"timestamp": "2025-07-23T00:49:30.031683", "agent": "WriterAgent", "level": "info", "message": "Work complete. Handing off to the next agent."}
+{"timestamp": "2025-07-23T00:56:47.281097", "agent": "WriterAgent", "level": "info", "message": "Agent initialized with shared core components."}
+{"timestamp": "2025-07-23T00:56:47.283101", "agent": "WriterAgent", "level": "info", "message": "Fetching trending topics to write a new post..."}
+{"timestamp": "2025-07-23T00:56:48.182429", "agent": "WriterAgent", "level": "warning", "message": "Not enough valid hashtags found, using fallback topics."}
+{"timestamp": "2025-07-23T00:56:48.183442", "agent": "WriterAgent", "level": "info", "message": "Using hashtags: #StartupLife #BuildWithAI"}
+{"timestamp": "2025-07-23T00:56:49.685522", "agent": "WriterAgent", "level": "info", "message": "New tweet generated: \"Sleep?  What's sleep?  My AI-powered coffee maker is my new best friend.  #StartupLife #BuildWithAI\""}
+{"timestamp": "2025-07-23T00:56:49.685522", "agent": "WriterAgent", "level": "info", "message": "\u2705 Tweet saved to memory for PosterAgent."}
+{"timestamp": "2025-07-23T00:56:49.686536", "agent": "WriterAgent", "level": "info", "message": "Work complete. Handing off to the next agent."}
+{"timestamp": "2025-07-23T01:01:26.320852", "agent": "WriterAgent", "level": "info", "message": "Agent initialized with shared core components."}
+{"timestamp": "2025-07-23T01:01:26.322393", "agent": "WriterAgent", "level": "info", "message": "Fetching trending topics to write a new post..."}
+{"timestamp": "2025-07-23T01:01:27.172420", "agent": "WriterAgent", "level": "warning", "message": "Not enough valid hashtags found, using fallback topics."}
+{"timestamp": "2025-07-23T01:01:27.172420", "agent": "WriterAgent", "level": "info", "message": "Using hashtags: #StartupLife #BuildWithAI"}
+{"timestamp": "2025-07-23T01:01:28.394449", "agent": "WriterAgent", "level": "info", "message": "New tweet generated: \"Sleep?  What's sleep?  My AI-powered coffee maker is my new best friend.  #StartupLife #BuildWithAI\""}
+{"timestamp": "2025-07-23T01:01:28.395456", "agent": "WriterAgent", "level": "info", "message": "\u2705 Tweet saved to memory for PosterAgent."}
+{"timestamp": "2025-07-23T01:01:28.395456", "agent": "WriterAgent", "level": "info", "message": "Work complete. Handing off to the next agent."}
+{"timestamp": "2025-07-23T01:29:50.090392", "agent": "WriterAgent", "level": "info", "message": "Agent initialized with shared core components."}
+{"timestamp": "2025-07-23T01:29:50.091397", "agent": "WriterAgent", "level": "info", "message": "Fetching trending topics to write a new post..."}
+{"timestamp": "2025-07-23T01:29:52.761396", "agent": "WriterAgent", "level": "warning", "message": "Not enough valid hashtags found, using fallback topics."}
+{"timestamp": "2025-07-23T01:29:52.762899", "agent": "WriterAgent", "level": "info", "message": "Using hashtags: #StartupLife #BuildWithAI"}
+{"timestamp": "2025-07-23T01:29:56.089525", "agent": "WriterAgent", "level": "info", "message": "New tweet generated: \"Sleep?  What's sleep?  My startup's fueled by caffeine and the sheer terror of AI surpassing my coding skills. #StartupLife #BuildWithAI\""}
+{"timestamp": "2025-07-23T01:29:56.089525", "agent": "WriterAgent", "level": "info", "message": "\u2705 Tweet saved to memory for PosterAgent."}
+{"timestamp": "2025-07-23T01:29:56.091030", "agent": "WriterAgent", "level": "info", "message": "Work complete. Handing off to the next agent."}
+{"timestamp": "2025-07-23T01:50:58.100109", "agent": "WriterAgent", "level": "info", "message": "Agent initialized with shared core components."}
+{"timestamp": "2025-07-23T01:50:58.101617", "agent": "WriterAgent", "level": "info", "message": "Fetching trending topics to write a new post..."}
+{"timestamp": "2025-07-23T01:51:23.016314", "agent": "WriterAgent", "level": "warning", "message": "Not enough valid hashtags found, using fallback topics."}
+{"timestamp": "2025-07-23T01:51:23.017320", "agent": "WriterAgent", "level": "info", "message": "Using hashtags: #StartupLife #BuildWithAI"}
+{"timestamp": "2025-07-23T01:51:47.890635", "agent": "WriterAgent", "level": "info", "message": "New tweet generated: \"Sleep?  What's sleep?  My AI-powered coffee machine is my new best friend.  #StartupLife #BuildWithAI\""}
+{"timestamp": "2025-07-23T01:51:47.890635", "agent": "WriterAgent", "level": "info", "message": "\u2705 Tweet saved to memory for PosterAgent."}
+{"timestamp": "2025-07-23T01:51:47.891627", "agent": "WriterAgent", "level": "info", "message": "Work complete. Handing off to the next agent."}
+{"timestamp": "2025-07-23T01:57:14.184559", "agent": "WriterAgent", "level": "info", "message": "Agent initialized with shared core components."}
+{"timestamp": "2025-07-23T01:57:14.186880", "agent": "WriterAgent", "level": "info", "message": "Fetching trending topics to write a new post..."}
+{"timestamp": "2025-07-23T01:57:16.791698", "agent": "WriterAgent", "level": "info", "message": "Using hashtags: #IndiaVsAustralia #INDvsAUS"}
+{"timestamp": "2025-07-23T01:57:17.799973", "agent": "WriterAgent", "level": "info", "message": "New tweet generated: \"India vs Australia.  May the best cricket-playing nation win... or at least the one with the most entertaining post-match interviews. #IndiaVsAustralia #INDvsAUS\""}
+{"timestamp": "2025-07-23T01:57:17.800982", "agent": "WriterAgent", "level": "info", "message": "\u2705 Tweet saved to memory for PosterAgent."}
+{"timestamp": "2025-07-23T01:57:17.802023", "agent": "WriterAgent", "level": "info", "message": "Work complete. Handing off to the next agent."}
+{"timestamp": "2025-07-23T02:07:59.816796", "agent": "WriterAgent", "level": "info", "message": "Agent initialized with shared core components."}
+{"timestamp": "2025-07-23T02:07:59.818994", "agent": "WriterAgent", "level": "info", "message": "Fetching trending topics to write a new post..."}
+{"timestamp": "2025-07-23T02:08:07.226307", "agent": "WriterAgent", "level": "warning", "message": "Not enough valid hashtags found, using fallback topics."}
+{"timestamp": "2025-07-23T02:08:07.228690", "agent": "WriterAgent", "level": "info", "message": "Using hashtags: #StartupLife #BuildWithAI"}
+{"timestamp": "2025-07-23T02:08:09.726590", "agent": "WriterAgent", "level": "info", "message": "New tweet generated: \"Sleep?  What's sleep?  My AI-powered startup is too busy revolutionizing the nap industry.  #StartupLife #BuildWithAI\""}
+{"timestamp": "2025-07-23T02:08:09.727605", "agent": "WriterAgent", "level": "info", "message": "\u2705 Tweet saved to memory for PosterAgent."}
+{"timestamp": "2025-07-23T02:08:09.727605", "agent": "WriterAgent", "level": "info", "message": "Work complete. Handing off to the next agent."}
+{"timestamp": "2025-07-23T10:41:21.970315", "agent": "WriterAgent", "level": "info", "message": "Agent initialized with shared core components."}
+{"timestamp": "2025-07-23T10:41:21.975374", "agent": "WriterAgent", "level": "info", "message": "Fetching trending topics to write a new post..."}
+{"timestamp": "2025-07-23T10:41:22.951488", "agent": "WriterAgent", "level": "warning", "message": "Not enough valid hashtags found, using fallback topics."}
+{"timestamp": "2025-07-23T10:41:22.952711", "agent": "WriterAgent", "level": "info", "message": "Using hashtags: #StartupLife #BuildWithAI"}
+{"timestamp": "2025-07-23T10:41:24.194999", "agent": "WriterAgent", "level": "info", "message": "New tweet generated: \"Sleep?  What's sleep?  My AI-powered startup is fueled by caffeine and the sweet, sweet taste of impending doom.  #StartupLife #BuildWithAI\""}
+{"timestamp": "2025-07-23T10:41:24.196001", "agent": "WriterAgent", "level": "info", "message": "\u2705 Tweet saved to memory for PosterAgent."}
+{"timestamp": "2025-07-23T10:41:24.197486", "agent": "WriterAgent", "level": "info", "message": "Work complete. Handing off to the next agent."}
+{"timestamp": "2025-07-23T17:23:47.771354", "agent": "WriterAgent", "level": "info", "message": "Agent initialized with shared core components."}
+{"timestamp": "2025-07-23T17:23:47.773336", "agent": "WriterAgent", "level": "info", "message": "Fetching trending topics to write a new post..."}
+{"timestamp": "2025-07-23T17:23:49.904978", "agent": "WriterAgent", "level": "warning", "message": "Not enough valid hashtags found, using fallback topics."}
+{"timestamp": "2025-07-23T17:23:49.906106", "agent": "WriterAgent", "level": "info", "message": "Using hashtags: #StartupLife #BuildWithAI"}
+{"timestamp": "2025-07-23T17:23:50.826977", "agent": "WriterAgent", "level": "info", "message": "New tweet generated: \"Sleep?  What's sleep?  My AI-powered coffee machine is my new best friend.  #StartupLife #BuildWithAI\""}
+{"timestamp": "2025-07-23T17:23:50.828040", "agent": "WriterAgent", "level": "info", "message": "\u2705 Tweet saved to memory for PosterAgent."}
+{"timestamp": "2025-07-23T17:23:50.829059", "agent": "WriterAgent", "level": "info", "message": "Work complete. Handing off to the next agent."}
+{"timestamp": "2025-07-23T17:27:50.515118", "agent": "WriterAgent", "level": "info", "message": "Agent initialized with shared core components."}
+{"timestamp": "2025-07-23T17:27:50.516106", "agent": "WriterAgent", "level": "info", "message": "Fetching trending topics to write a new post..."}
+{"timestamp": "2025-07-23T17:28:01.960811", "agent": "WriterAgent", "level": "warning", "message": "Not enough valid hashtags found, using fallback topics."}
+{"timestamp": "2025-07-23T17:28:01.961992", "agent": "WriterAgent", "level": "info", "message": "Using hashtags: #StartupLife #BuildWithAI"}
+{"timestamp": "2025-07-23T17:29:06.860658", "agent": "WriterAgent", "level": "info", "message": "New tweet generated: \"Sleep?  What's sleep?  My AI-powered startup is *almost* self-aware... almost. #StartupLife #BuildWithAI\""}
+{"timestamp": "2025-07-23T17:29:06.861674", "agent": "WriterAgent", "level": "info", "message": "\u2705 Tweet saved to memory for PosterAgent."}
+{"timestamp": "2025-07-23T17:29:06.861674", "agent": "WriterAgent", "level": "info", "message": "Work complete. Handing off to the next agent."}
+{"timestamp": "2025-07-23T17:36:25.109467", "agent": "WriterAgent", "level": "info", "message": "Agent initialized with shared core components."}
+{"timestamp": "2025-07-23T17:36:25.110467", "agent": "WriterAgent", "level": "info", "message": "Fetching trending topics to write a new post..."}
+{"timestamp": "2025-07-23T17:36:43.312894", "agent": "WriterAgent", "level": "warning", "message": "Not enough valid hashtags found, using fallback topics."}
+{"timestamp": "2025-07-23T17:36:43.314336", "agent": "WriterAgent", "level": "info", "message": "Using hashtags: #StartupLife #BuildWithAI"}
+{"timestamp": "2025-07-23T17:36:57.415877", "agent": "WriterAgent", "level": "info", "message": "New tweet generated: \"Sleep?  What's sleep?  My AI-powered coffee machine is my only friend now. #StartupLife #BuildWithAI\""}
+{"timestamp": "2025-07-23T17:36:57.415877", "agent": "WriterAgent", "level": "info", "message": "\u2705 Tweet saved to memory for PosterAgent."}
+{"timestamp": "2025-07-23T17:36:57.416968", "agent": "WriterAgent", "level": "info", "message": "Work complete. Handing off to the next agent."}
+{"timestamp": "2025-07-23T17:46:54.240917", "agent": "WriterAgent", "level": "info", "message": "Agent initialized with shared core components."}
+{"timestamp": "2025-07-23T17:46:54.241925", "agent": "WriterAgent", "level": "info", "message": "Fetching trending topics to write a new post..."}
+{"timestamp": "2025-07-23T17:47:01.825222", "agent": "WriterAgent", "level": "warning", "message": "Not enough valid hashtags found, using fallback topics."}
+{"timestamp": "2025-07-23T17:47:01.825222", "agent": "WriterAgent", "level": "info", "message": "Using hashtags: #StartupLife #BuildWithAI"}
+{"timestamp": "2025-07-23T17:47:08.879851", "agent": "WriterAgent", "level": "info", "message": "New tweet generated: \"Sleep?  What's sleep?  My AI-powered coffee machine is my new best friend. #StartupLife #BuildWithAI\""}
+{"timestamp": "2025-07-23T17:47:08.880863", "agent": "WriterAgent", "level": "info", "message": "\u2705 Tweet saved to memory for PosterAgent."}
+{"timestamp": "2025-07-23T17:47:08.880863", "agent": "WriterAgent", "level": "info", "message": "Work complete. Handing off to the next agent."}
+{"timestamp": "2025-07-23T17:51:13.802593", "agent": "WriterAgent", "level": "info", "message": "Agent initialized with shared core components."}
+{"timestamp": "2025-07-23T17:51:13.803670", "agent": "WriterAgent", "level": "info", "message": "Fetching trending topics to write a new post..."}
+{"timestamp": "2025-07-23T17:51:50.316034", "agent": "WriterAgent", "level": "info", "message": "Using hashtags: #IndiaVsAustralia #INDvsAUS"}
+{"timestamp": "2025-07-23T17:52:22.169504", "agent": "WriterAgent", "level": "info", "message": "New tweet generated: \"India vs Australia: May the best cricket-playing nation win... or at least the one with the most entertaining collapses. #IndiaVsAustralia #INDvsAUS\""}
+{"timestamp": "2025-07-23T17:52:22.169504", "agent": "WriterAgent", "level": "info", "message": "\u2705 Tweet saved to memory for PosterAgent."}
+{"timestamp": "2025-07-23T17:52:22.170865", "agent": "WriterAgent", "level": "info", "message": "Work complete. Handing off to the next agent."}
+{"timestamp": "2025-07-23T18:04:28.632329", "agent": "WriterAgent", "level": "info", "message": "Agent initialized with shared core components."}
+{"timestamp": "2025-07-23T18:04:28.633342", "agent": "WriterAgent", "level": "info", "message": "Fetching trending topics to write a new post..."}
+{"timestamp": "2025-07-23T18:04:44.298604", "agent": "WriterAgent", "level": "warning", "message": "Not enough valid hashtags found, using fallback topics."}
+{"timestamp": "2025-07-23T18:04:44.298604", "agent": "WriterAgent", "level": "info", "message": "Using hashtags: #StartupLife #BuildWithAI"}
+{"timestamp": "2025-07-23T18:04:56.390078", "agent": "WriterAgent", "level": "info", "message": "New tweet generated: \"Sleep?  What's sleep?  My AI-powered coffee machine thinks it's a myth.  #StartupLife #BuildWithAI\""}
+{"timestamp": "2025-07-23T18:04:56.391092", "agent": "WriterAgent", "level": "info", "message": "\u2705 Tweet saved to memory for PosterAgent."}
+{"timestamp": "2025-07-23T18:04:56.391092", "agent": "WriterAgent", "level": "info", "message": "Work complete. Handing off to the next agent."}
+{"timestamp": "2025-07-23T18:27:34.295711", "agent": "WriterAgent", "level": "info", "message": "Agent initialized with shared core components."}
+{"timestamp": "2025-07-23T18:27:34.296732", "agent": "WriterAgent", "level": "info", "message": "Fetching trending topics to write a new post..."}
+{"timestamp": "2025-07-23T18:27:50.695960", "agent": "WriterAgent", "level": "warning", "message": "Not enough valid hashtags found, using fallback topics."}
+{"timestamp": "2025-07-23T18:27:50.696966", "agent": "WriterAgent", "level": "info", "message": "Using hashtags: #StartupLife #BuildWithAI"}
+{"timestamp": "2025-07-23T18:28:00.772163", "agent": "WriterAgent", "level": "info", "message": "New tweet generated: \"Sleep?  What's sleep?  My AI-powered coffee maker is my new best friend.  #StartupLife #BuildWithAI\""}
+{"timestamp": "2025-07-23T18:28:00.773173", "agent": "WriterAgent", "level": "info", "message": "\u2705 Tweet saved to memory for PosterAgent."}
+{"timestamp": "2025-07-23T18:28:00.773173", "agent": "WriterAgent", "level": "info", "message": "Work complete. Handing off to the next agent."}
+{"timestamp": "2025-07-23T18:46:54.991937", "agent": "WriterAgent", "level": "info", "message": "Agent initialized with shared core components."}
+{"timestamp": "2025-07-23T18:46:54.992952", "agent": "WriterAgent", "level": "info", "message": "Fetching trending topics to write a new post..."}
+{"timestamp": "2025-07-23T18:47:16.916011", "agent": "WriterAgent", "level": "warning", "message": "Not enough valid hashtags found, using fallback topics."}
+{"timestamp": "2025-07-23T18:47:16.917019", "agent": "WriterAgent", "level": "info", "message": "Using hashtags: #StartupLife #BuildWithAI"}
+{"timestamp": "2025-07-23T18:47:37.333296", "agent": "WriterAgent", "level": "info", "message": "New tweet generated: \"Sleep?  What's sleep?  My startup's fueled by caffeine and the sheer terror of not #BuildWithAI.  Send help (and investors). #StartupLife\""}
+{"timestamp": "2025-07-23T18:47:37.334310", "agent": "WriterAgent", "level": "info", "message": "\u2705 Tweet saved to memory for PosterAgent."}
+{"timestamp": "2025-07-23T18:47:37.334310", "agent": "WriterAgent", "level": "info", "message": "Work complete. Handing off to the next agent."}
+{"timestamp": "2025-07-23T19:02:25.539079", "agent": "WriterAgent", "level": "info", "message": "Agent initialized with shared core components."}
+{"timestamp": "2025-07-23T19:02:25.540606", "agent": "WriterAgent", "level": "info", "message": "Fetching trending topics to write a new post..."}
+{"timestamp": "2025-07-23T19:02:32.976158", "agent": "WriterAgent", "level": "info", "message": "Using hashtags: #IndiaVsAustralia #INDvsAUS"}
+{"timestamp": "2025-07-23T19:02:39.618946", "agent": "WriterAgent", "level": "info", "message": "New tweet generated: \"India vs Australia: May the best cricket-playing nation win... or at least the one with the better post-match snacks. #IndiaVsAustralia #INDvsAUS\""}
+{"timestamp": "2025-07-23T19:02:39.618946", "agent": "WriterAgent", "level": "info", "message": "\u2705 Tweet saved to memory for PosterAgent."}
+{"timestamp": "2025-07-23T19:02:39.620452", "agent": "WriterAgent", "level": "info", "message": "Work complete. Handing off to the next agent."}
+{"timestamp": "2025-07-23T19:09:00.693404", "agent": "WriterAgent", "level": "info", "message": "Agent initialized with shared core components."}
+{"timestamp": "2025-07-23T19:09:00.694429", "agent": "WriterAgent", "level": "info", "message": "Fetching trending topics to write a new post..."}
+{"timestamp": "2025-07-23T19:09:05.903691", "agent": "WriterAgent", "level": "warning", "message": "Not enough valid hashtags found, using fallback topics."}
+{"timestamp": "2025-07-23T19:09:05.904693", "agent": "WriterAgent", "level": "info", "message": "Using hashtags: #StartupLife #BuildWithAI"}
+{"timestamp": "2025-07-23T19:09:07.160974", "agent": "WriterAgent", "level": "info", "message": "New tweet generated: \"Sleep?  What's sleep?  My AI-powered startup is too busy revolutionizing [insert ridiculously mundane industry here] to worry about such trivialities. #StartupLife #BuildWithAI\""}
+{"timestamp": "2025-07-23T19:09:07.162069", "agent": "WriterAgent", "level": "info", "message": "\u2705 Tweet saved to memory for PosterAgent."}
+{"timestamp": "2025-07-23T19:09:07.162069", "agent": "WriterAgent", "level": "info", "message": "Work complete. Handing off to the next agent."}
+{"timestamp": "2025-07-23T19:12:05.133094", "agent": "WriterAgent", "level": "info", "message": "Agent initialized with shared core components."}
+{"timestamp": "2025-07-23T19:12:05.134128", "agent": "WriterAgent", "level": "info", "message": "Fetching trending topics to write a new post..."}
+{"timestamp": "2025-07-23T19:12:06.156809", "agent": "WriterAgent", "level": "warning", "message": "Not enough valid hashtags found, using fallback topics."}
+{"timestamp": "2025-07-23T19:12:06.157834", "agent": "WriterAgent", "level": "info", "message": "Using hashtags: #StartupLife #BuildWithAI"}
+{"timestamp": "2025-07-23T19:12:09.331230", "agent": "WriterAgent", "level": "info", "message": "New tweet generated: \"Sleep?  What's sleep?  My AI-powered coffee maker is my new best friend.  #StartupLife #BuildWithAI\""}
+{"timestamp": "2025-07-23T19:12:09.331230", "agent": "WriterAgent", "level": "info", "message": "\u2705 Tweet saved to memory for PosterAgent."}
+{"timestamp": "2025-07-23T19:12:09.332299", "agent": "WriterAgent", "level": "info", "message": "Work complete. Handing off to the next agent."}
+{"timestamp": "2025-07-23T19:18:51.134146", "agent": "WriterAgent", "level": "info", "message": "Agent initialized with shared core components."}
+{"timestamp": "2025-07-23T19:18:51.135160", "agent": "WriterAgent", "level": "info", "message": "Fetching trending topics to write a new post..."}
+{"timestamp": "2025-07-23T19:18:53.093127", "agent": "WriterAgent", "level": "warning", "message": "Not enough valid hashtags found, using fallback topics."}
+{"timestamp": "2025-07-23T19:18:53.094149", "agent": "WriterAgent", "level": "info", "message": "Using hashtags: #StartupLife #BuildWithAI"}
+{"timestamp": "2025-07-23T19:18:56.033905", "agent": "WriterAgent", "level": "info", "message": "New tweet generated: \"Sleep?  What's sleep?  Just fueled by caffeine and the sheer terror of not disrupting the AI overlords. #StartupLife #BuildWithAI\""}
+{"timestamp": "2025-07-23T19:18:56.034953", "agent": "WriterAgent", "level": "info", "message": "\u2705 Tweet saved to memory for PosterAgent."}
+{"timestamp": "2025-07-23T19:18:56.035970", "agent": "WriterAgent", "level": "info", "message": "Work complete. Handing off to the next agent."}
+{"timestamp": "2025-07-23T20:02:44.641509", "agent": "WriterAgent", "level": "info", "message": "Agent initialized with shared core components."}
+{"timestamp": "2025-07-23T20:02:44.642015", "agent": "WriterAgent", "level": "info", "message": "Fetching trending topics to write a new post..."}
+{"timestamp": "2025-07-23T20:02:45.400205", "agent": "WriterAgent", "level": "warning", "message": "Not enough valid hashtags found, using fallback topics."}
+{"timestamp": "2025-07-23T20:02:45.402468", "agent": "WriterAgent", "level": "info", "message": "Using hashtags: #StartupLife #BuildWithAI"}
+{"timestamp": "2025-07-23T20:02:47.128411", "agent": "WriterAgent", "level": "info", "message": "New tweet generated: \"Sleep?  What's sleep?  Just fueled by caffeine and the sheer terror of missing my #BuildWithAI deadline.  This is #StartupLife, baby!\""}
+{"timestamp": "2025-07-23T20:02:47.129437", "agent": "WriterAgent", "level": "info", "message": "\u2705 Tweet saved to memory for PosterAgent."}
+{"timestamp": "2025-07-23T20:02:47.129437", "agent": "WriterAgent", "level": "info", "message": "Work complete. Handing off to the next agent."}
+{"timestamp": "2025-07-23T20:04:03.456605", "agent": "WriterAgent", "level": "info", "message": "Agent initialized with shared core components."}
+{"timestamp": "2025-07-23T20:04:03.457610", "agent": "WriterAgent", "level": "info", "message": "Fetching trending topics to write a new post..."}
+{"timestamp": "2025-07-23T20:04:04.326823", "agent": "WriterAgent", "level": "warning", "message": "Not enough valid hashtags found, using fallback topics."}
+{"timestamp": "2025-07-23T20:04:04.327832", "agent": "WriterAgent", "level": "info", "message": "Using hashtags: #StartupLife #BuildWithAI"}
+{"timestamp": "2025-07-23T20:04:05.208744", "agent": "WriterAgent", "level": "info", "message": "New tweet generated: \"Sleep?  What's sleep?  My AI-powered coffee machine is my new best friend. #StartupLife #BuildWithAI\""}
+{"timestamp": "2025-07-23T20:04:05.209874", "agent": "WriterAgent", "level": "info", "message": "\u2705 Tweet saved to memory for PosterAgent."}
+{"timestamp": "2025-07-23T20:04:05.209874", "agent": "WriterAgent", "level": "info", "message": "Work complete. Handing off to the next agent."}
+{"timestamp": "2025-07-23T20:27:19.201683", "agent": "WriterAgent", "level": "info", "message": "Agent initialized with shared core components."}
+{"timestamp": "2025-07-23T20:27:19.203792", "agent": "WriterAgent", "level": "info", "message": "Fetching trending topics to write a new post..."}
+{"timestamp": "2025-07-23T20:27:20.218721", "agent": "WriterAgent", "level": "warning", "message": "Not enough valid hashtags found, using fallback topics."}
+{"timestamp": "2025-07-23T20:27:20.218721", "agent": "WriterAgent", "level": "info", "message": "Using hashtags: #StartupLife #BuildWithAI"}
+{"timestamp": "2025-07-23T20:27:21.484228", "agent": "WriterAgent", "level": "info", "message": "New tweet generated: \"Sleep?  What's sleep?  My AI-powered startup is *almost* profitable.  Almost.  #StartupLife #BuildWithAI\""}
+{"timestamp": "2025-07-23T20:27:21.484228", "agent": "WriterAgent", "level": "info", "message": "\u2705 Tweet saved to memory for PosterAgent."}
+{"timestamp": "2025-07-23T20:27:21.484228", "agent": "WriterAgent", "level": "info", "message": "Work complete. Handing off to the next agent."}
+{"timestamp": "2025-07-23T20:27:50.857808", "agent": "WriterAgent", "level": "info", "message": "Agent initialized with shared core components."}
+{"timestamp": "2025-07-23T20:27:50.858813", "agent": "WriterAgent", "level": "info", "message": "Fetching trending topics to write a new post..."}
+{"timestamp": "2025-07-23T20:27:51.793834", "agent": "WriterAgent", "level": "warning", "message": "Not enough valid hashtags found, using fallback topics."}
+{"timestamp": "2025-07-23T20:27:51.793834", "agent": "WriterAgent", "level": "info", "message": "Using hashtags: #StartupLife #BuildWithAI"}
+{"timestamp": "2025-07-23T20:27:53.740105", "agent": "WriterAgent", "level": "info", "message": "New tweet generated: \"Sleep?  What's sleep?  My startup's fueled by caffeine and the faint hope AI will finish coding before the deadline. #StartupLife #BuildWithAI\""}
+{"timestamp": "2025-07-23T20:27:53.741120", "agent": "WriterAgent", "level": "info", "message": "\u2705 Tweet saved to memory for PosterAgent."}
+{"timestamp": "2025-07-23T20:27:53.741120", "agent": "WriterAgent", "level": "info", "message": "Work complete. Handing off to the next agent."}
+{"timestamp": "2025-07-23T20:30:57.738710", "agent": "WriterAgent", "level": "info", "message": "Agent initialized with shared core components."}
+{"timestamp": "2025-07-23T20:30:57.740718", "agent": "WriterAgent", "level": "info", "message": "Fetching trending topics to write a new post..."}
+{"timestamp": "2025-07-23T20:30:58.745516", "agent": "WriterAgent", "level": "warning", "message": "Not enough valid hashtags found, using fallback topics."}
+{"timestamp": "2025-07-23T20:30:58.746538", "agent": "WriterAgent", "level": "info", "message": "Using hashtags: #StartupLife #BuildWithAI"}
+{"timestamp": "2025-07-23T20:31:00.005387", "agent": "WriterAgent", "level": "info", "message": "New tweet generated: \"Sleep?  What's sleep?  My AI-powered startup is too busy revolutionizing the nap industry. #StartupLife #BuildWithAI\""}
+{"timestamp": "2025-07-23T20:31:00.006537", "agent": "WriterAgent", "level": "info", "message": "\u2705 Tweet saved to memory for PosterAgent."}
+{"timestamp": "2025-07-23T20:31:00.007318", "agent": "WriterAgent", "level": "info", "message": "Work complete. Handing off to the next agent."}
+{"timestamp": "2025-07-23T20:41:04.430771", "agent": "WriterAgent", "level": "info", "message": "Agent initialized with shared core components."}
+{"timestamp": "2025-07-23T20:41:04.431786", "agent": "WriterAgent", "level": "info", "message": "Fetching trending topics to write a new post..."}
+{"timestamp": "2025-07-23T20:41:23.927526", "agent": "WriterAgent", "level": "warning", "message": "Not enough valid hashtags found, using fallback topics."}
+{"timestamp": "2025-07-23T20:41:23.928064", "agent": "WriterAgent", "level": "info", "message": "Using hashtags: #StartupLife #BuildWithAI"}
+{"timestamp": "2025-07-23T20:41:30.098233", "agent": "WriterAgent", "level": "info", "message": "New tweet generated: \"Sleep?  What's sleep?  Just fueled by caffeine and the faint hope my AI-powered startup won't implode. #StartupLife #BuildWithAI\""}
+{"timestamp": "2025-07-23T20:41:30.099250", "agent": "WriterAgent", "level": "info", "message": "\u2705 Tweet saved to memory for PosterAgent."}
+{"timestamp": "2025-07-23T20:41:30.099250", "agent": "WriterAgent", "level": "info", "message": "Work complete. Handing off to the next agent."}
+{"timestamp": "2025-07-23T20:42:24.564797", "agent": "WriterAgent", "level": "info", "message": "Agent initialized with shared core components."}
+{"timestamp": "2025-07-23T20:42:24.566306", "agent": "WriterAgent", "level": "info", "message": "Fetching trending topics to write a new post..."}
+{"timestamp": "2025-07-23T20:43:00.665568", "agent": "WriterAgent", "level": "warning", "message": "Not enough valid hashtags found, using fallback topics."}
+{"timestamp": "2025-07-23T20:43:00.665568", "agent": "WriterAgent", "level": "info", "message": "Using hashtags: #StartupLife #BuildWithAI"}
+{"timestamp": "2025-07-23T20:43:15.895551", "agent": "WriterAgent", "level": "info", "message": "New tweet generated: \"Sleep?  What's sleep?  Just fueled by caffeine and the sheer terror of missing my #BuildWithAI deadline.  Send help (and pizza). #StartupLife\""}
+{"timestamp": "2025-07-23T20:43:15.896570", "agent": "WriterAgent", "level": "info", "message": "\u2705 Tweet saved to memory for PosterAgent."}
+{"timestamp": "2025-07-23T20:43:15.897073", "agent": "WriterAgent", "level": "info", "message": "Work complete. Handing off to the next agent."}
+{"timestamp": "2025-07-23T20:46:57.660451", "agent": "WriterAgent", "level": "info", "message": "Agent initialized with shared core components."}
+{"timestamp": "2025-07-23T20:46:57.661475", "agent": "WriterAgent", "level": "info", "message": "Fetching trending topics to write a new post..."}
+{"timestamp": "2025-07-23T20:47:08.198825", "agent": "WriterAgent", "level": "warning", "message": "Not enough valid hashtags found, using fallback topics."}
+{"timestamp": "2025-07-23T20:47:08.199830", "agent": "WriterAgent", "level": "info", "message": "Using hashtags: #StartupLife #BuildWithAI"}
+{"timestamp": "2025-07-23T20:47:28.012244", "agent": "WriterAgent", "level": "info", "message": "New tweet generated: \"Sleep?  What's sleep?  Powered by caffeine and #BuildWithAI, conquering the world, one sleepless night at a time.  #StartupLife\""}
+{"timestamp": "2025-07-23T20:47:28.012244", "agent": "WriterAgent", "level": "info", "message": "\u2705 Tweet saved to memory for PosterAgent."}
+{"timestamp": "2025-07-23T20:47:28.013303", "agent": "WriterAgent", "level": "info", "message": "Work complete. Handing off to the next agent."}

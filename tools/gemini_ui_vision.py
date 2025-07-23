@@ -1,7 +1,6 @@
 # tools/gemini_ui_vision.py
 
 import os
-import base64
 import json
 import re
 import google.generativeai as genai
@@ -11,16 +10,14 @@ import numpy as np
 import logging
 from dotenv import load_dotenv
 
-# --- FIX: Load environment variables at the top of this module ---
-# This ensures the API key is available as soon as this file is imported.
+# Load environment variables at the top of the module
 load_dotenv()
 
-# Configure logging for this module for better diagnostics
+# Configure logging for this module
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
-# It's good practice to configure the API key once.
-# Ensure the environment variable is set in your system.
+# Configure the API key once
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 if GEMINI_API_KEY:
     genai.configure(api_key=GEMINI_API_KEY)
@@ -34,12 +31,10 @@ DEFAULT_MODELS = ["gemini-1.5-flash-latest", "gemini-1.5-pro-latest"]
 def encode_image_to_webp_bytes(pixels: np.ndarray) -> bytes | None:
     """
     Compresses a NumPy RGB image array to in-memory WebP bytes.
-    This is highly efficient and avoids writing temporary files.
     """
     try:
         img = Image.fromarray(pixels.astype("uint8"), "RGB")
         buffer = BytesIO()
-        # Use a high quality setting for better analysis results
         img.save(buffer, format="WEBP", quality=95)
         return buffer.getvalue()
     except Exception as e:
@@ -49,8 +44,7 @@ def encode_image_to_webp_bytes(pixels: np.ndarray) -> bytes | None:
 
 def smart_vision_query(pixels: np.ndarray, prompt: str, models=DEFAULT_MODELS) -> str | None:
     """
-    Performs a vision query using in-memory image data.
-    Attempts with the faster Flash model first, then falls back to the Pro model.
+    Performs a vision query using in-memory image data, with a model fallback system.
     """
     if not GEMINI_API_KEY:
         logger.error("Cannot make API call without API key.")
@@ -58,7 +52,7 @@ def smart_vision_query(pixels: np.ndarray, prompt: str, models=DEFAULT_MODELS) -
 
     image_bytes = encode_image_to_webp_bytes(pixels)
     if not image_bytes:
-        return None # Error already logged in encode_image
+        return None # Error is already logged
 
     image_part = {
         "mime_type": "image/webp",
@@ -85,16 +79,15 @@ def smart_vision_query(pixels: np.ndarray, prompt: str, models=DEFAULT_MODELS) -
     return None
 
 
-def _parse_json_from_response(response_text: str) -> list | None:
+def _parse_json_from_response(response_text: str) -> dict | list | None:
     """
-    A robust utility to find and parse a JSON list from a model's raw text output.
+    A robust utility to find and parse a JSON object or list from a model's raw text output.
     """
-    # Use a regular expression to find a JSON array. This is more robust
-    # than string splitting as it handles text before/after the JSON.
-    match = re.search(r'\[.*\]', response_text, re.DOTALL)
+    # --- FIX: Use a more flexible regex that finds either a JSON object or an array ---
+    match = re.search(r'(\{.*\}|\[.*\])', response_text, re.DOTALL)
     
     if not match:
-        logger.error(f"No valid JSON array found in the response.")
+        logger.error("No valid JSON object or array found in the response.")
         logger.debug(f"Raw response for debugging:\n{response_text}")
         return None
     
@@ -109,7 +102,7 @@ def _parse_json_from_response(response_text: str) -> list | None:
 
 def analyze_ui_elements_from_pixels(pixels: np.ndarray, task_prompt: str) -> list:
     """
-    The main entry point for agents. It uses smart_vision_query to get and parse UI elements.
+    A high-level function specifically for getting a LIST of UI elements.
     """
     system_prompt = (
         "You are an expert UI analyst. Your task is to detect all UI elements relevant to the user's goal "
@@ -128,5 +121,7 @@ def analyze_ui_elements_from_pixels(pixels: np.ndarray, task_prompt: str) -> lis
     if not response_text:
         return []
 
-    return _parse_json_from_response(response_text) or []
+    parsed_json = _parse_json_from_response(response_text)
+    # Ensure the result is a list, as expected by the caller
+    return parsed_json if isinstance(parsed_json, list) else []
 

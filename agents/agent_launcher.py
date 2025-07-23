@@ -5,11 +5,13 @@ import json
 import importlib
 import inspect
 import logging
+import asyncio
 from dotenv import load_dotenv
 from memory.memory import Memory
 from agents.supervisor import SupervisorAgent
 from system.agentos_core import AgentOSCore
 from agents.agent_shell import AgentShell
+from system.brain import Brain
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
@@ -17,16 +19,15 @@ logger = logging.getLogger(__name__)
 
 class AgentLauncher:
     """
-    Responsible for reading a mission plan and launching the specified agents
-    in sequence, ensuring each agent is initialized with the necessary shared
-    system components.
+    An asynchronous launcher that can run both synchronous and asynchronous agents
+    in sequence from a mission plan.
     """
-    # --- FIX: Update __init__ to accept and store the shared components ---
-    def __init__(self, mission_file: str, core: AgentOSCore, memory: Memory, supervisor: SupervisorAgent):
+    def __init__(self, mission_file: str, core: AgentOSCore, memory: Memory, supervisor: SupervisorAgent, brain: Brain):
         self.mission_file = mission_file
         self.core = core
         self.memory = memory
         self.supervisor = supervisor
+        self.brain = brain
         self.agents_map = self._load_agents_map()
 
     def _load_agents_map(self):
@@ -58,7 +59,8 @@ class AgentLauncher:
         with open(self.mission_file, "w", encoding="utf-8") as f:
             json.dump(mission, f, indent=2)
 
-    def launch_agents(self):
+    # --- FIX: The launch_agents method is now asynchronous ---
+    async def launch_agents(self):
         """
         Loads the mission and executes each step by launching the corresponding agent.
         """
@@ -77,22 +79,17 @@ class AgentLauncher:
                 continue
 
             try:
-                # --- FIX: Robust agent instantiation logic ---
                 # This correctly injects all shared dependencies into every agent it launches.
                 agent_args = inspect.signature(AgentClass.__init__).parameters
                 init_params = {}
-                if 'memory' in agent_args:
-                    init_params['memory'] = self.memory
-                if 'supervisor' in agent_args:
-                    init_params['supervisor'] = self.supervisor
-                if 'core' in agent_args:
-                    init_params['core'] = self.core
-                if 'name' in agent_args:
-                    init_params['name'] = agent_name
+                if 'memory' in agent_args: init_params['memory'] = self.memory
+                if 'supervisor' in agent_args: init_params['supervisor'] = self.supervisor
+                if 'core' in agent_args: init_params['core'] = self.core
+                if 'brain' in agent_args: init_params['brain'] = self.brain
+                if 'name' in agent_args: init_params['name'] = agent_name
                 
                 agent = AgentClass(**init_params)
                 
-                # Dynamically set the task context if the agent has the attribute
                 if hasattr(agent, 'task_context'):
                     agent.task_context = task
 
@@ -100,7 +97,14 @@ class AgentLauncher:
                 self._save_mission(mission)
 
                 logger.info(f"🚀 Launching {agent_name} for task: {task}")
-                agent.run()
+                
+                # --- FIX: Use 'await' for async agents, not asyncio.run() ---
+                if inspect.iscoroutinefunction(agent.run):
+                    logger.info(f"Detected asynchronous agent '{agent_name}'. Awaiting execution.")
+                    await agent.run()
+                else:
+                    logger.info(f"Detected synchronous agent '{agent_name}'. Running directly.")
+                    agent.run()
                 
                 step["status"] = "completed"
 

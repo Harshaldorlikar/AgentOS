@@ -1,79 +1,88 @@
 # tools/runtime_controller.py
 
-import os
 import pyautogui
-import subprocess
 import webbrowser
 import time
-from dotenv import load_dotenv
+import logging
+import subprocess
 
-load_dotenv()
+# Configure logging for this module
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
 
-# DPI-aware settings for high-DPI screens
-pyautogui.FAILSAFE = True
-pyautogui.PAUSE = 0.1
+# Configure PyAutoGUI for safety and reliability
+pyautogui.FAILSAFE = True  # Allows you to abort by moving the mouse to the top-left corner
+pyautogui.PAUSE = 0.1      # A small pause after each action
 
 class RuntimeController:
     """
-    This is the 'hands' of AgentOS.
-    Executes actions in the OS (click, type, open app) based on agent commands.
+    This is the 'hands' of AgentOS. It is a pure action-taker that executes
+    low-level OS commands like mouse clicks and keyboard input as directed by the AgentOSCore.
     """
 
     @staticmethod
-    def open_app(app_path, reason=None):
+    def open_app(app_path: str, reason: str = None):
+        """
+        Opens a desktop application from a given path.
+        Note: Use with caution as this can be a security risk without sandboxing.
+        """
         if reason:
-            print(f"[RuntimeController] 🧠 Reason: {reason}")
+            print(f"[RuntimeController] 🚀 Reason: {reason}")
         try:
             subprocess.Popen(app_path)
+            logger.info(f"Opened application: {app_path}")
         except Exception as e:
-            print(f"[RuntimeController] ❌ Failed to open {app_path}: {e}")
+            logger.error(f"Failed to open application {app_path}: {e}", exc_info=True)
 
     @staticmethod
-    def browse(url, reason=None):
+    def browse(url: str, reason: str = None):
+        """Opens a URL in the default web browser."""
         if reason:
             print(f"[RuntimeController] 🌐 Reason: {reason}")
         try:
             webbrowser.open(url)
+            logger.info(f"Opened URL: {url}")
         except Exception as e:
-            print(f"[RuntimeController] ❌ Failed to open browser: {e}")
+            logger.error(f"Failed to open URL {url}: {e}", exc_info=True)
 
     @staticmethod
-    def type_text(text, reason=None, delay=0.05, window_title=None):
+    def type_text(text: str, reason: str = None, delay: float = 0.05):
+        """
+        Types the given text with a small delay between characters for reliability.
+        """
         if reason:
             print(f"[RuntimeController] ⌨️ Reason: {reason}")
-        if window_title:
-            RuntimeController.focus_window_by_title(window_title)
-        for char in text:
-            pyautogui.write(char)
-            time.sleep(delay)
+        try:
+            # A short pause before typing can help ensure the correct window is focused
+            time.sleep(0.5)
+            pyautogui.write(text, interval=delay)
+            logger.info(f"Typed {len(text)} characters.")
+        except Exception as e:
+            logger.error(f"Failed to type text: {e}", exc_info=True)
 
     @staticmethod
-    def click(x, y, reason=None, window_title=None):
+    def click(x: int, y: int, reason: str = None):
+        """
+        Moves the mouse to the specified logical coordinates and performs a click.
+        Includes boundary checks to prevent errors.
+        """
         if reason:
             print(f"[RuntimeController] 🖱️ Reason: {reason}")
-        if window_title:
-            RuntimeController.focus_window_by_title(window_title)
-
-        # Convert to DPI-safe coordinates (auto-adjust if needed)
-        scale_x, scale_y = pyautogui.size()
-        x = min(max(x, 0), scale_x - 1)
-        y = min(max(y, 0), scale_y - 1)
-
         try:
-            pyautogui.moveTo(x, y)
+            # Get the primary screen's dimensions for boundary checking
+            screen_width, screen_height = pyautogui.size()
+            
+            # Clamp coordinates to be within the screen bounds
+            safe_x = max(0, min(x, screen_width - 1))
+            safe_y = max(0, min(y, screen_height - 1))
+
+            if x != safe_x or y != safe_y:
+                logger.warning(f"Original click coordinates ({x}, {y}) were out of bounds. Clamped to ({safe_x}, {safe_y}).")
+
+            # A short move duration is more human-like and can be more reliable
+            pyautogui.moveTo(safe_x, safe_y, duration=0.25)
             pyautogui.click()
+            logger.info(f"Clicked at logical coordinates: ({safe_x}, {safe_y})")
         except Exception as e:
-            print(f"[RuntimeController] ❌ Click failed at ({x},{y}): {e}")
+            logger.error(f"Failed to click at ({x}, {y}): {e}", exc_info=True)
 
-    @staticmethod
-    def focus_window_by_title(title_keywords):
-        try:
-            import pygetwindow as gw
-            windows = gw.getWindowsWithTitle(title_keywords)
-            if windows:
-                win = windows[0]
-                if not win.isActive:
-                    win.activate()
-                    time.sleep(1)
-        except Exception as e:
-            print(f"[RuntimeController] ❌ Window focus failed: {e}")

@@ -9,7 +9,8 @@
     {
       "agent": "PosterAgent",
       "task": "Post content to X (Twitter)",
-      "status": "completed"
+      "status": "in_progress",
+      "error": "'NoneType' object has no attribute 'upper'"
     }
   ]
 }
