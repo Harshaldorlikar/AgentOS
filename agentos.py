@@ -44,6 +44,11 @@ async def main():
         # The WebController is a critical shared resource that needs to be managed.
         web_controller = WebController()
         
+        # --- FIX: Connect to the browser BEFORE launching agents ---
+        # This line was missing. It launches the browser and makes it ready for use.
+        await web_controller.connect()
+        # -----------------------------------------------------------
+        
         # The core is initialized with the supervisor and web_controller.
         shared_core = AgentOSCore(supervisor=shared_supervisor, web_controller=web_controller)
         
@@ -79,4 +84,3 @@ async def main():
 if __name__ == "__main__":
     # Run the main asynchronous function
     asyncio.run(main())
-

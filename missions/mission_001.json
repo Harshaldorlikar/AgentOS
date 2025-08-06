@@ -1,16 +1,15 @@
 {
-  "goal": "Execute the predefined mission to write and post a tweet.",
+  "goal": "Autonomously generate a tweet from a Paul Graham essay and post it to X.com.",
   "steps": [
     {
       "agent": "WriterAgent",
-      "task": "Write a motivational tweet using trending topics",
+      "task": "Navigate to Paul Graham's site, select an essay, summarize it, and save the tweet to memory.",
       "status": "completed"
     },
     {
       "agent": "PosterAgent",
-      "task": "Post content to X (Twitter)",
-      "status": "completed",
-      "error": "'NoneType' object has no attribute 'upper'"
+      "task": "Load the tweet from memory and post it to X.com by perceiving the live UI.",
+      "status": "completed"
     }
   ]
 }

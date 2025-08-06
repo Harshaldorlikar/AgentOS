@@ -1,110 +1,116 @@
 # agents/writer_agent.py
 
-import re
 import os
+import json
 import logging
+import asyncio
+import random
+from datetime import datetime # Re-import datetime
 from dotenv import load_dotenv
+import google.generativeai as genai
 from agents.agent_shell import AgentShell
 from memory.memory import Memory
-import google.generativeai as genai
 from system.agentos_core import AgentOSCore
 from agents.supervisor import SupervisorAgent
+from system.brain import Brain
 
-# --- FIX: Load environment variables at the top of this module ---
-# This ensures the API key is available as soon as this file is imported.
 load_dotenv()
-
-# Configure logging for this agent
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
-# This ensures the API key is configured before use
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 if GEMINI_API_KEY:
     genai.configure(api_key=GEMINI_API_KEY)
-else:
-    logger.warning("WriterAgent: GEMINI_API_KEY not found. Text generation will fail.")
 
 class WriterAgent(AgentShell):
-    """
-    An autonomous agent that generates creative text content (like tweets)
-    based on current trends and saves it to a shared memory space for other agents.
-    """
-    # --- FIX: Update __init__ to accept all shared components ---
-    def __init__(self, core: AgentOSCore, memory: Memory, supervisor: SupervisorAgent, name="WriterAgent"):
-        # --- FIX: Pass all shared components to the parent class ---
+    def __init__(self, core: AgentOSCore, memory: Memory, supervisor: SupervisorAgent, brain: Brain, name="WriterAgent"):
         super().__init__(name=name, core=core, memory=memory, supervisor=supervisor)
-        self.task_context = "Write a witty, trending tweet for AgentOS."
-        
-        # Initialize the model once for efficiency
+        self.brain = brain
+        self.web_controller = core.web_controller
         if GEMINI_API_KEY:
-            self.model = genai.GenerativeModel("gemini-1.5-flash-latest")
+            self.model = genai.GenerativeModel("gemini-1.5-pro-latest")
         else:
             self.model = None
 
-    def _call_gemini_for_text(self, prompt: str) -> str | None:
-        """A robust, centralized function for making text-based Gemini calls."""
-        if not self.model:
-            logger.error("Gemini model not initialized due to missing API key.")
-            return None
+    async def _get_tweet_variations(self, text: str) -> list:
+        """Asks Gemini for a list of unique tweet variations."""
+        if not self.model: return []
+        
+        prompt = f"""
+        Analyze the following essay text. Your task is to generate 3 distinct summaries of it, each suitable for a tweet under 280 characters.
+        Each version should be compelling and capture the core essence of the essay in a unique way. All tweets must end with the #PaulGraham hashtag.
+
+        Respond with a single, valid JSON object containing a key "variations" which holds a list of the 3 tweet strings.
+        Example: {{"variations": ["Tweet 1 text...", "Tweet 2 text...", "Tweet 3 text..."]}}
+
+        Essay Text: --- {text[:4000]} ---
+        """
+        
         try:
-            logger.info(f"Sending text prompt to Gemini: '{prompt[:50]}...'")
-            response = self.model.generate_content(prompt)
-            return response.text.strip()
+            response = await self.model.generate_content_async(prompt)
+            json_text = response.text[response.text.find('{'):response.text.rfind('}')+1]
+            parsed_json = json.loads(json_text)
+            return parsed_json.get("variations", [])
         except Exception as e:
-            logger.error(f"Gemini text generation failed: {e}", exc_info=True)
-            return None
-
-    def _is_english_hashtag(self, tag: str) -> bool:
-        """Validates if a string is a simple English hashtag."""
-        return bool(re.match(r"^#[a-zA-Z0-9_]+$", tag))
-
-    def _get_trending_hashtags(self) -> list[str]:
-        """Fetches and filters trending hashtags."""
-        prompt = (
-            "List 5 currently trending Twitter hashtags in India. "
-            "Only include hashtags. No explanation. Separate with spaces."
-        )
-        response_text = self._call_gemini_for_text(prompt)
-        if not response_text:
+            logger.error(f"Failed to get or parse tweet variations from Gemini: {e}")
             return []
+
+    async def run(self):
+        self.log("Starting mission: Summarize a random Paul Graham essay.")
         
-        raw_tags = response_text.split()
-        return [tag for tag in raw_tags if self._is_english_hashtag(tag)]
+        try:
+            # Step 1: Perceive the page to get all available essays
+            self.log("Navigating to Paul Graham's articles page...")
+            await self.web_controller.browse("http://paulgraham.com/articles.html")
+            await asyncio.sleep(3)
+            
+            self.log("Perceiving page to get all essay links...")
+            dom = await self.web_controller.extract_full_dom_with_bounding_rects()
+            if not dom:
+                raise Exception("Could not extract DOM to find essays.")
 
-    def _write_funny_tweet(self, hashtags: list[str]) -> str:
-        """Writes a short, witty tweet using the provided hashtags."""
-        hashtags_str = " ".join(hashtags)
-        prompt = (
-            f"Write a short, clever tweet using the following trending hashtags: {hashtags_str}.\n"
-            f"Tone: witty, funny, sarcastic, like a clever human motivating with humor.\n"
-            f"Keep under 280 characters. No emojis. Use only the given hashtags."
-        )
-        return self._call_gemini_for_text(prompt) or ""
+            # Step 2: Use Python to randomly choose an essay link
+            essay_links = [el for el in dom if el.get('tagName') == 'a' and el.get('text')]
+            if not essay_links:
+                raise Exception("Could not find any essay links on the page.")
 
-    def run(self):
-        """The main execution logic for the WriterAgent."""
-        self.log("Fetching trending topics to write a new post...")
+            chosen_essay = random.choice(essay_links)
+            chosen_essay_text = chosen_essay['text']
+            self.log(f"Agent has randomly selected the essay: '{chosen_essay_text}'")
+
+            # Step 3: Give the Brain a SPECIFIC mission to click the chosen essay
+            mission_goal = f"Click on the link for the essay titled '{chosen_essay_text}'."
+            self.log(f"Handing mission to Brain: \"{mission_goal}\"")
+            success = await self.brain.run_mission(mission_goal)
+            
+            if not success:
+                raise Exception("Brain failed its mission to click on the selected essay.")
+
+            # Step 4: Agent resumes control to read the content
+            self.log("Brain mission successful. Agent is now reading the essay content.")
+            await asyncio.sleep(2)
+            essay_text = await self.web_controller.get_text_content("body")
+            
+            if not essay_text or len(essay_text) < 500:
+                raise Exception("Failed to read sufficient essay content from the page.")
+
+            # Step 5: Get multiple tweet variations from the AI
+            self.log("Asking AI for creative tweet variations...")
+            tweet_variations = await self._get_tweet_variations(essay_text)
+            
+            if not tweet_variations:
+                # Fallback if AI fails to generate variations
+                raise Exception("AI failed to generate tweet variations.")
+
+            # Step 6: Randomly choose one variation and add the timestamp for guaranteed uniqueness
+            chosen_tweet = random.choice(tweet_variations)
+            final_tweet = f"{chosen_tweet} [{datetime.now().strftime('%H:%M:%S')}]"
+
+            self.log(f"Selected unique tweet for posting: \"{final_tweet}\"")
+            self.memory.save("post_content", final_tweet)
+            self.log("✅ Tweet saved to memory for PosterAgent.")
+
+        except Exception as e:
+            self.log(f"An error occurred during the writer's mission: {e}", level="error")
         
-        hashtags = self._get_trending_hashtags()
-        if len(hashtags) < 2:
-            self.log("Not enough valid hashtags found, using fallback topics.", level="warning")
-            hashtags_to_use = ["#StartupLife", "#BuildWithAI"]
-        else:
-            hashtags_to_use = hashtags[:2]
-
-        self.log(f"Using hashtags: {' '.join(hashtags_to_use)}")
-        
-        tweet = self._write_funny_tweet(hashtags_to_use)
-
-        # Fallback if the model fails to generate a good tweet
-        if not tweet or len(tweet) < 20:
-            self.log("Generated tweet was too short or empty, creating a fallback.", level="warning")
-            tweet = f"Make progress, not excuses. {hashtags_to_use[0]} {hashtags_to_use[1]}"
-
-        # Save the final content to the shared memory instance
-        self.memory.save("post_content", tweet)
-        self.log(f"New tweet generated: \"{tweet}\"")
-        self.log("✅ Tweet saved to memory for PosterAgent.")
-        self.log("Work complete. Handing off to the next agent.")
-
+        self.log("WriterAgent's work is done.")
